@@ -1,0 +1,2 @@
+[0327/170353.111:ERROR:process_info.cc(375)] NtQuerySystemInformation SystemExtendedHandleInformation: 指定的信息记录长度与请求的信息类别长度不符合。 (0xc0000004)
+[0327/170405.440:ERROR:process_info.cc(375)] NtQuerySystemInformation SystemExtendedHandleInformation: 指定的信息记录长度与请求的信息类别长度不符合。 (0xc0000004)

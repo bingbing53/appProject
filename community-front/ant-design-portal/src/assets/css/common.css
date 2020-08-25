@@ -1,0 +1,101 @@
+@media screen and (max-width:768px) and (min-width:640px){
+  }
+  @media screen and (max-width:640px) and (min-width:360px){
+    .top_help{
+        width: 50%!important;
+    }
+   .top_help .top_text {
+       font-size: 1.8rem!important;
+   }
+  }
+  @media screen and (max-width:360px) {
+  }
+
+
+.out_container{
+    width: 100%;
+    background: #fff;
+}
+.container {
+    max-width: 96rem;
+    margin: 0 auto;
+}
+.out_center{
+    width: 100%;
+    background: url(../image/bgc.jpg) center center no-repeat;
+    background-size: cover;
+}
+.out_center_down{
+    width: 100%;
+    background: #ffffff;
+    background-size: cover;
+    padding-bottom: 50px;
+}
+.list_image{
+    padding:0px 4.7rem
+}
+.list_image > div{
+    margin-bottom: 3.8rem;
+}
+.list_image2 > div{
+        padding: 0px 3.2rem
+}
+.list_image2  .item_container{
+    background: #ffffff;
+    border-radius: 8px;
+    padding-bottom: 2rem;
+}
+.list_image2  .item_container .item_image{
+    /* margin-bottom: 2rem; */
+    height: 9rem;
+    line-height: 9rem;
+}
+
+.list_image .item_image{
+  padding:-1rem;
+   
+}
+.list_image .item_image img{
+    width: 14.6rem;
+    height: 14.6rem;
+}
+.list_image2 .item_image img{
+    width: 5rem;
+    height: 5rem;
+}
+.navBarWrap {
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    background: #fff;
+    width: 100%;
+    /* border-bottom: 1px solid #e6e6e6; */
+  }
+  .my_steps{
+    left:0;
+    padding:20px;
+    background-color: #f9f9f9;
+  }
+  .my_search input {
+      margin-top: 10px;
+    width: 200px;
+    height: 32px;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px #ccc;
+    margin-left: 20px;
+    padding-left: 5px;
+    font-size: 12px;
+    color: #666666;
+    text-indent: 2em;
+  }
+  .iconSearch{
+    position: absolute;
+    left:30px;
+    top:5px;
+    color: #666;
+  }
+  .steps-content{
+      border-color: transparent!important;
+  }
+  

@@ -1,0 +1,93 @@
+<template>
+    <div class="">
+        <div class="pd-10 license c-333">
+            <p>
+                社区e家 App 尊重并保护所有使用服务用户的个人隐私权。为了给您提供更准确、更有个性化的服务，社区e家 App 会按照本隐私权政策的规定使用和披露您的个人信息。但社区e家 App 将以高度的勤勉、审慎义务对待这些信息。除本隐私权政策另有规定外，在未征得您事先许可的情况下，社区e家 App 不会将这些信息对外披露或向第三方提供。社区e家 App 会不时更新本隐私权政策。 您在同意社区e家 App 服务使用协议之时，即视为您已经同意本隐私权政策全部内容。本隐私权政策属于社区e家 App 服务使用协议不可分割的一部分。 
+            </p>
+
+            <div>
+                <h3>  1. 适用范围  </h3>
+                &nbsp;&nbsp;(a) 在您注册社区e家 App 帐号时，您根据社区e家 App 要求提供的个人注册信息；
+                <br> 
+                (b) 在您使用社区e家 App 网络服务，或访问社区e家 App 平台网页时，社区e家 App 自动接收并记录的您的浏览器和计算机上的信息，包括但不限于您的IP地址、浏览器的类型、使用的语言、访问日期和时间、软硬件特征信息及您需求的网页记录等数据； 
+                <br>
+                您了解并同意，以下信息不适用本隐私权政策：
+                 <br>
+                &nbsp;&nbsp;(a) 您在使用社区e家 App 平台提供的搜索服务时输入的关键字信息；
+                 <br>
+                &nbsp;&nbsp;(b) 社区e家 App 收集到的您在社区e家 App 发布的有关信息数据；
+                <br>
+                &nbsp;&nbsp;(c) 违反法律规定或违反社区e家 App 规则行为及社区e家 App 已对您采取的措施。
+            </div>
+            <div>
+                <h3>  2. 信息使用 </h3> 
+                (a) 社区e家 App 不会向任何无关第三方提供、出售、出租、分享或交易您的个人信息，除非事先得到您的许可，或该第三方和社区e家 App （含社区e家 App 关联公司）单独或共同为您提供服务，且在该服务结束后，其将被禁止访问包括其以前能够访问的所有这些资料。 
+                <br>
+                (b) 社区e家 App 亦不允许任何第三方以任何手段收集、编辑、出售或者无偿传播您的个人信息。任何社区e家 App 平台用户如从事上述活动，一经发现，社区e家 App 有权立即终止与该用户的服务协议。
+            </div>
+            <div>
+                <h3>  3. 信息披露  </h3>
+                在如下情况下，社区e家 App 将依据您的个人意愿或法律的规定全部或部分的披露您的个人信息： 
+                <br>
+                (a) 经您事先同意，向第三方披露； <br>
+                (b) 为提供您所要求的产品和服务，而必须和第三方分享您的个人信息； <br>
+                (c) 根据法律的有关规定，或者行政或司法机构的要求，向第三方或者行政、司法机构披露；<br>
+                (d) 如您出现违反中国有关法律、法规或者社区e家 App 服务协议或相关规则的情况，需要向第三方披露；  <br>
+                (e) 如您是适格的知识产权投诉人并已提起投诉，应被投诉人要求，向被投诉人披露，以便双方处理可能的权利纠纷；<br>
+                (f) 其它社区e家 App 根据法律、法规或者网站政策认为合适的披露。  
+            </div>
+            <div>
+                <h3>  4. Cookie的使用  </h3>
+                (a) 在您未拒绝接受cookies的情况下，社区e家 App 会在您的计算机上设定或取用cookies，以便您能登录或使用依赖于cookies的社区e家 App 平台服务或功能。社区e家 App 使用cookies可为您提供更加周到的个性化服务，包括推广服务。 
+                <br>
+                (b) 您有权选择接受或拒绝接受cookies。您可以通过修改浏览器设置的方式拒绝接受cookies。但如果您选择拒绝接受cookies，则您可能无法登录或使用依赖于cookies的社区e家 App 网络服务或功能。 
+                <br>
+                (c) 通过社区e家 App 所设cookies所取得的有关信息，将适用本政策。
+            </div>
+            <div>
+                <h3> 5. 信息安全  </h3>
+                (a) 社区e家 App 帐号均有安全保护功能，请妥善保管您的用户名及密码信息。社区e家 App 将通过对用户密码进行加密等安全措施确保您的信息不丢失，不被滥用和变造。尽管有前述安全措施，但同时也请您注意在信息网络上不存在“完善的安全措施”。
+            </div>
+        </div>
+
+    </div>
+</template>
+
+<script>
+    export default {
+
+    }
+</script>
+
+<style>
+    .license{
+        background: #ffffff;
+        height: 100%;
+    }
+    .license h3{
+        font-weight: bold;
+        font-size:  4.788vw;
+        color:#333;
+        margin-bottom: 2.66vw;
+    }
+    .license>div{
+        margin:2.66vw auto;
+        /* box-shadow: 1px 1px 1px 1px #ccc; */
+        border-radius: 1.3vw;
+        padding: 2.66vw;
+        letter-spacing: 0.5vw;
+        line-height: 7.8vw!important;
+        text-align: justify !important;
+
+    }
+    .license>p{
+        margin:2.66vw auto;
+        padding: 2.66vw;
+        border-bottom: 1px solid #ccc;
+        letter-spacing: 0.5vw;
+        line-height: 7.8vw!important;
+        text-align: justify !important;
+
+    }
+
+</style>

@@ -1,0 +1,44 @@
+{
+  "id": "1578484",
+  "name": "jmapp",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "486905",
+      "name": "叉号",
+      "font_class": "chahao",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "538489",
+      "name": "加",
+      "font_class": "jia1",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "1115041",
+      "name": "关注",
+      "font_class": "guanzhu",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "1240750",
+      "name": "评论",
+      "font_class": "pinglun",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "3050826",
+      "name": "点赞",
+      "font_class": "like-b",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    }
+  ]
+}

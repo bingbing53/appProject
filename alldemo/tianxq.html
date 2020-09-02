@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <title>提案详情</title>
+    <script src="common.js"></script>
+
+</head>
+<link rel="stylesheet" href="reset.css">
+<style>
+    .fl {
+        float: left;
+    }
+
+    .fr {
+        float: right;
+    }
+
+    .fontsize28 {
+        font-size: 28px;
+        color: #333333;
+    }
+
+    /* 提案标题 */
+    .proposal_title {
+        padding: 40px 0 30px;
+    }
+
+    .proposal_title h1 {
+        font-size: 32px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #333333;
+        text-align: center;
+    }
+
+    /* 提案内容 */
+    .about_proposal {
+        font-size: 26px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #666666;
+        padding: 0 30px;
+    }
+
+    .proposal_people {
+        overflow: hidden;
+    }
+
+    .proposal_content {
+        margin-top: 25px;
+        margin-bottom: 35px;
+        background-color: #fff;
+        padding: 25px;
+    }
+
+    .proposal_content p {
+        font-size: 28px;
+        color: #333333;
+        text-indent: 2em;
+    }
+
+    .residents_vote,
+    .online_order,
+    .other_opinions {
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #666666;
+        padding: 0 30px;
+    }
+
+    .residents_vote h2,
+    .online_order h2,
+    .other_opinions h2 {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+
+    .vote_data {
+        overflow: hidden;
+        /* margin: 0 30px; */
+        padding: 30px 45px 30px 25px;
+        background-color: #fff;
+        text-align: center;
+        margin-bottom: 35px;
+    }
+
+    .vote_data>div:first-child {
+        /* float: left; */
+        margin-right: 180px;
+    }
+
+    .vote_data>div>i {
+        font-size: 40px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #333333;
+        margin-bottom: 10px;
+        display: inline-block;
+    }
+
+    .vote_data>div>div span {
+        font-size: 24px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #333333;
+        overflow: hidden;
+    }
+
+    .vote_data>div>div span img {
+        float: left;
+        margin-right: 6px;
+    }
+
+    .discuss_way {
+        padding: 30px;
+        background-color: #fff;
+        margin-bottom: 35px;
+    }
+
+    .proposal_discuss {
+        padding-left: 125px;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 25px;
+    }
+
+    .proposal_discuss h4 {
+        font-size: 26px;
+        font-weight: 500;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .in_order {
+        text-align: center;
+    }
+
+    .in_order span {
+        display: inline-block;
+        width: 253px;
+        height: 60px;
+        background-color: #4375F2;
+        border-radius: 30px;
+        color: #fff;
+        text-align: center;
+        font-size: 28px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        line-height: 60px;
+    }
+
+    /* 其他意见 */
+    .other_opinions {
+        margin-bottom: 50px;
+    }
+
+    .opinions_list {
+        background-color: #fff;
+        padding-bottom: 9px;
+        padding-top: 16px;
+    }
+
+    .list_head {
+        margin-left: 9px;
+        /* margin-top: 16px; */
+        overflow: hidden;
+    }
+
+    .list_head img {
+        float: left;
+        width: 79px;
+        height: 79px;
+    }
+
+    .list_head span {
+        font-size: 26px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #717171;
+        line-height: 79px;
+    }
+
+    .list_con p {
+        margin: 5px 35px 20px 30px;
+        font-size: 28px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #333333;
+    }
+
+    .list_foot {
+        margin: 5px 53px 0 25px;
+        overflow: hidden;
+        font-size: 22px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #656565;
+    }
+
+    .list_foot span:last-child {
+        margin-right: 48px;
+    }
+
+    .con_opinions {
+        border: 1px solid #fff;
+        margin: 0 30px 20px;
+        background-color: #F6F6F6;
+        font-family: PingFang SC;
+        font-weight: 500;
+        padding-top: 10px;
+    }
+
+    .con_opinions p {
+        font-size: 28px;
+        color: #333333;
+        margin-bottom: 15px;
+    }
+
+    .con_opinions p span {
+        display: inline;
+        font-size: 26px;
+        color: #4375F2;
+    }
+</style>
+
+<body>
+    <div class="wrap">
+        <!-- 提案标题 -->
+        <div class="proposal_title">
+            <h1>XX社区修建小区娱乐设施的提案</h1>
+        </div>
+        <!-- 提案内容 -->
+        <div class="about_proposal">
+            <div class="proposal_people">
+                <div class="fl">提案人：<span class="fontsize28">赵XX</span></div>
+                <div class="fr">提案日期：<span class="fontsize28">2020年5月7日</span></div>
+            </div>
+            <div class="proposal_content">
+                <p>居民通过微信公众号或手机app绑定房屋，每间房屋可以居住多人，认证房屋之后会触发群租检测机制，检测到房屋居住人数达到一个阈值后发出告警。</p>
+            </div>
+
+        </div>
+        <!-- 居民投票 -->
+        <div class="residents_vote">
+            <h2>居民投票</h2>
+            <div class="vote_data">
+                <div class="fl">
+                    <i>10</i>
+                    <div><span><img src="img/统计.png" alt="">总票数</span></div>
+                </div>
+                <div class="fl">
+                    <i>10</i>
+                    <div><span><img src="img/赞同-fill.png" alt="">赞同数</span></div>
+                </div>
+                <div class="fr">
+                    <i>10</i>
+                    <div><span><img src="img/赞同-fill(1).png" alt="">反对数</span></div>
+                </div>
+            </div>
+        </div>
+        <!-- 线上议事 -->
+        <div class="online_order">
+            <h2>线上议事</h2>
+            <div class="discuss_way">
+                <div class="proposal_discuss">
+                    <h4>提案讨论：</h4>
+                    <span class="fl fontsize28">与提案相关居民通过认证后，可以进入议事厅参加 提案讨论，欢迎您提供宝贵意见！</span>
+                </div>
+                <div class="in_order">
+                    <span>进入议事厅</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 其他意见 -->
+        <div class="other_opinions">
+            <h2>提案留言</h2>
+            <div class="opinions_list">
+                <div class="list_head">
+                    <img src="img/组 7.png" alt="">
+                    <span>lili</span>
+                </div>
+                <div class="list_con">
+                    <p>我建议做一个学习的小闹钟，可以加强社区管理，维护社区制度安全和谐</p>
+                </div>
+                <div class="list_foot">
+                    <span class="fl">2020年3月25日</span>
+                    <span class="fr">举报</span>
+                    <span class="fr">有帮助</span>
+                </div>
+            </div>
+            <div class="opinions_list">
+                <div class="list_head">
+                    <img src="img/组 7.png" alt="">
+                    <span>lili</span>
+                </div>
+                <div class="list_con">
+                    <p>我建议做一个学习的小闹钟，可以加强社区管理，维护社区制度安全和谐</p>
+                    <div class="con_opinions">
+                        <p><span>丽丽：</span>我建议做一个学习的小闹钟，可以加强社区管区</p>
+                        <p><span>丽丽：</span>我建议做一个学习的小闹钟，可以加强社区管区我建议做一个学习的小闹钟，可以加强社区管区</p>
+                        <p><span>丽丽：</span>我建议做一个学习的小闹钟，可以加强社区管区</p>
+                    </div>
+                </div>
+                <div class="list_foot">
+                    <span class="fl">2020年3月25日</span>
+                    <span class="fr">举报</span>
+                    <span class="fr">有帮助</span>
+                </div>
+            </div>
+            <div class="opinions_list">
+                <div class="list_head">
+                    <img src="img/组 7.png" alt="">
+                    <span>lili</span>
+                </div>
+                <div class="list_con">
+                    <p>我建议做一个学习的小闹钟，可以加强社区管理，维护社区制度安全和谐</p>
+                </div>
+                <div class="list_foot">
+                    <span class="fl">2020年3月25日</span>
+                    <span class="fr">举报</span>
+                    <span class="fr">有帮助</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

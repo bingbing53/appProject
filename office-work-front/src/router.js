@@ -323,6 +323,38 @@ const router = new Router({
         title: "房屋信息",
       },
     },
+    // 代表提案
+    {
+      path: "/Proposal",
+      name: "Proposal",
+      component: (resolve) =>
+        require(["./components/Proposal/Proposal"], resolve),
+      meta: {
+        keepAlive: false, // 需要缓存
+        title: "代表提案",
+      },
+    },
+    {
+      path: "/addProposal",
+      name: "addProposal",
+      component: (resolve) =>
+        require(["./components/addProposal/addProposal"], resolve),
+      meta: {
+        keepAlive: false, // 需要缓存
+        title: "新增提案",
+      },
+    },
+    // 修改或查看提案
+    {
+        path: "/viewProposal",
+        name: "viewProposal",
+        component: (resolve) =>
+          require(["./components/viewProposal/viewProposal"], resolve),
+        meta: {
+          keepAlive: false, // 需要缓存
+          title: "查看提案",
+        },
+      },
     {
       path: "*",
       redirect: "/",

@@ -1,0 +1,93 @@
+我的提案
+GET /rest/proposal/myList
+传入参数
+	pageNo				页码		非必填
+	pageSize 			页容 	非必填
+返回参数
+	id 	id
+  	create_name 		创建人名称
+  	create_by			创建人登录名称
+  	create_date			创建日期
+  	update_name			更新人名称
+  	update_by			更新人登录名称
+  	update_date			更新日期
+  	sys_org_code		所属部门
+  	sys_company_code	所属公司
+  	proposal_no			提案编号
+  	title				标题
+  	content				内容
+  	type				提案分类
+  	publicity			是否公示  	1 是 0 否
+  	canvote				是否可投票  	1 是 0 否
+  	canjudge			是否可评论  	1 是 0 否
+  	votes				投票数
+  	favors				赞成数
+  	oppositions			反对数
+  	judges				评论数
+  	hits				浏览数
+  	meeting_id			关联会议编号
+	departName 			部门名称
+	createUserPosition 	创建人职务
+
+楼院提案
+GET /rest/proposal/orgList
+参数同上
+
+公众号我的楼院提案
+GET /rest/proposal/myCubeList
+参数同上
+
+提案详情
+GET /rest/proposal/{id}
+返回参数
+	id    			id
+	createName 		创建人名称
+	createBy 		创建人登录名称
+	createDate 		创建日期
+	updateName		更新人名称
+	updateBy  		更新人登录名称
+	updateDate 		更新日期
+	sysOrgCode 		所属部门
+	sysCompanyCode 	所属公司
+	proposalNo 		提案编号
+	title 			标题
+	content 		内容
+	type 			提案分类
+	publicity 		是否公示		 	1 是 0 否
+	canvote 		是否可投票  	  	1 是 0 否
+	canjudge 		是否可评论  		1 是 0 否
+	votes 			投票数
+	favors 			赞成数
+	oppositions 	反对数
+	judges 			评论数
+	hits 			浏览数
+	meetingId 		关联会议编号
+
+新增提案
+POST /rest/proposal/{id}
+传入参数
+	proposalNo 		提案编号
+	title 			标题
+	content 		内容
+	type 			提案分类
+	publicity 		是否公示		 	1 是 0 否
+	canvote 		是否可投票  	  	1 是 0 否
+	canjudge 		是否可评论  		1 是 0 否
+	
+
+修改提案
+PUT /rest/proposal/{id}
+传入参数
+	id 				id
+	proposalNo 		提案编号
+	title 			标题
+	content 		内容
+	type 			提案分类
+	publicity 		是否公示		 	1 是 0 否
+	canvote 		是否可投票  	  	1 是 0 否
+	canjudge 		是否可评论  		1 是 0 否
+
+删除提案
+DELETE /rest/proposal/{id}
+
+

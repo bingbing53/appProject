@@ -21,6 +21,8 @@
     <router-link to="/download">下载APP</router-link> 
     <br> <br>
     <router-link to="/census">人口查询</router-link> 
+    <br> <br>
+    <router-link to="/Proposal">代表提案</router-link> 
 <van-list
   v-model="loading"
   :finished="finished"

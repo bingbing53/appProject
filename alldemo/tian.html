@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <title>提案</title>
+    <script src="common.js"></script>
+
+</head>
+<link rel="stylesheet" href="reset.css">
+<style>
+    /* 媒体查询，大于480px小于640px*/
+    /* /* @media (min-width: 480px) and (max-width: 640px) {
+  
+}*/
+
+    /*媒体查询，小于480px*/
+    /* @media (max-width: 480px) {
+   
+} */
+    .wrap {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        border: 1px solid red;
+    }
+
+    .wrapcontent {
+        height: 100%;
+        overflow: scroll;
+        border: 1px solid blue;
+    }
+
+    .piece_leader {
+        /* height: 385px; */
+        margin: 14px 30px 29px;
+        /* border: 1px solid red; */
+        background-color: #fff;
+        padding-bottom: 30px;
+    }
+
+    .piece_leader h1 {
+        font-size: 32px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #333333;
+        /* line-height: 37px; */
+        text-align: center;
+        padding-top: 19px;
+    }
+
+    .leader_content {
+        /* border: 1px solid red; */
+        margin-top: 34px;
+        margin-left: 30px;
+        overflow: hidden;
+    }
+
+    .leader_pic img {
+        width: 142px;
+        height: 189px;
+        border: 1px solid black;
+        margin-right: 28px;
+        float: left;
+    }
+
+    .leader_msg {
+        float: left;
+        margin-top: 15px;
+    }
+
+    .leader_msg ul li {
+        font-size: 26px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #666666;
+        /* line-height: 37px; */
+        margin-bottom: 20px;
+    }
+
+    .leader_msg ul li span {
+        font-size: 28px;
+    }
+
+    /* .leader_contact {
+        overflow: hidden;
+        margin-top: 21px;
+    }
+
+    .leader_contact a {
+        background-color: #00BAFF;
+        color: #fff;
+        display: inline-block;
+        width: 165px;
+        border-radius: 5px;
+        padding: 11px 0 12px 19px;
+        font-size: 28px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        position: relative;
+        float: right;
+        right: 30px;
+    } */
+
+    /* .leader_contact a span {
+        float: right;
+        position: absolute;
+        top: 18px;
+        right: 20px;
+    } */
+
+    /* 楼院提案 */
+    .louyuan_proposal {
+        margin: 50px 30px 50px;
+    }
+
+    .louyuan_proposal h1 {
+        font-size: 36px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #333333;
+        /* line-height: 37px; */
+        text-align: center;
+    }
+
+    .proposal_list {
+        margin-top: 30px;
+        background-color: #fff;
+        /* border: 1px solid #000000; */
+        overflow: hidden;
+
+    }
+
+    .list_head {
+        height: 73px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        line-height: 73px;
+        padding-left: 28px;
+        padding-right: 32px;
+    }
+
+    .proposal_num {
+        font-size: 26px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #666666;
+        float: left;
+    }
+
+    .proposal_num span {
+        font-size: 30px;
+        color: #333333;
+    }
+
+    .head_details {
+        font-size: 26px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #4375F2;
+        float: right;
+    }
+
+    .list_middle {
+        overflow: hidden;
+    }
+
+    .proposal_content {
+        font-size: 26px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding-left: 28px;
+        padding-right: 32px;
+        padding-bottom: 25px;
+    }
+
+    .proposal_content span {
+        display: inline-block;
+        color: #666666;
+        padding: 30px 0;
+    }
+
+    .proposal_content p {
+        font-size: 28px;
+        color: #333333;
+        text-indent: 2em;
+    }
+
+    .proposal_people {
+        overflow: hidden;
+        padding-left: 28px;
+        padding-right: 32px;
+        font-size: 26px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        margin-top: 25px;
+    }
+
+    .people_name {
+        float: left;
+        color: #666666;
+    }
+
+    .people_name span,
+    .people_job span {
+        color: #333333;
+        font-size: 28px;
+    }
+
+    .people_job {
+        float: right;
+        color: #666666;
+    }
+
+    .proposal_organize {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 28px 25px 32px;
+        font-size: 26px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #666666;
+    }
+
+    .proposal_organize span {
+        color: #666;
+        font-size: 28px;
+    }
+
+    .list_foot {
+        margin: 20px 28px 30px 32px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #333333;
+        overflow: hidden;
+        font-size: 28px;
+    }
+
+    .date_icon {
+        float: left;
+        padding-left: 50px;
+        position: relative;
+    }
+
+    .date_icon img {
+        position: absolute;
+        top: 3px;
+        left: 0px;
+    }
+
+    .view_icon,
+    .msg_icon {
+        float: right;
+        position: relative;
+    }
+
+    .view_icon {
+        padding-left: 50px;
+        margin-right: 50px;
+    }
+
+    .view_icon img {
+        position: absolute;
+        top: 5px;
+        left: 0px;
+    }
+
+    .msg_icon {
+        padding-left: 40px;
+    }
+
+    .msg_icon img {
+        position: absolute;
+        top: 6px;
+        left: 0px;
+    }
+</style>
+
+<body>
+    <div class="wrap">
+        <div class="wrapcontent">
+            <!-- 包片领导 -->
+            <div class="piece_leader">
+                <h1>包片领导</h1>
+                <div class="leader_content">
+                    <div class="leader_pic">
+                        <img src="https://img.yzcdn.cn/vant/apple-1.jpg" alt="">
+                    </div>
+                    <div class="leader_msg">
+                        <ul>
+                            <li>姓名：<span>丽丽</span></li>
+                            <li>职务：<span>丽丽</span></li>
+                            <li>职责：<span>丽丽</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- <div class="leader_contact">
+                <a href="">联系他<span><img src="img/contact.png" alt=""></span></a>
+            </div> -->
+            </div>
+            <!-- 楼院提案 -->
+            <div class="louyuan_proposal">
+                <h1>楼院提案</h1>
+                <div class="proposal_list">
+                    <div class="list_head">
+                        <div class="proposal_num">提案编号：<span>230614598</span></div>
+                        <a class="head_details">查看详情</a>
+                    </div>
+                    <div class="list_middle">
+                        <div class="proposal_content">
+                            <span>提案内容：</span>
+                            <p>您好，这是本次小区改建的主要提案内容之一，你回到分解后积分的结合房价多少附近可兑换防静电带回家回到家，和进还是改第三方接电话度计划几点几分跨时代讲课的佳都科技近段时间</p>
+                        </div>
+                        <div class="proposal_people">
+                            <div class="people_name">提案人：<span>李丽丽</span></div>
+                            <div class="people_job">职务：<span>居民代表</span></div>
+                        </div>
+                        <div class="proposal_organize">自治组织：<span>XX社区XX楼院楼院事务所</span></div>
+                    </div>
+                    <div class="list_foot">
+                        <span class="date_icon"><img src="img/时间.png">2019-0203</span>
+                        <span class="msg_icon"><img src="img/消息.png">12</span>
+                        <span class="view_icon"><img src="img/浏览.png">23</span>
+                    </div>
+                </div>
+                <div class="proposal_list">
+                    <div class="list_head">
+                        <div class="proposal_num">提案编号：<span>230614598</span></div>
+                        <a class="head_details">查看详情</a>
+                    </div>
+                    <div class="list_middle">
+                        <div class="proposal_content">
+                            <span>提案内容：</span>
+                            <p>您好，这是本次小区改建的主要提案内容之一，你回到分解后积分的结合房价多少附近可兑换防静电带回家回到家，和进还是改第三方接电话度计划几点几分跨时代讲课的佳都科技近段时间</p>
+                        </div>
+                        <div class="proposal_people">
+                            <div class="people_name">提案人：<span>李丽丽</span></div>
+                            <div class="people_job">职务：<span>居民代表</span></div>
+                        </div>
+                        <div class="proposal_organize">自治组织：<span>XX社区XX楼院楼院事务所</span></div>
+                    </div>
+                    <div class="list_foot">
+                        <span class="date_icon"><img src="img/时间.png">2019-0203</span>
+                        <span class="msg_icon"><img src="img/消息.png">12</span>
+                        <span class="view_icon"><img src="img/浏览.png">23</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

@@ -162,7 +162,7 @@ export default {
       columns: [],
       columnsRight: [],
     //   tabbarList: [],
-     tabbarList: [111,222,333],
+     tabbarList: [111,222,333,44,555,66,77,88],
       tabSpan: 24,
       houseList: [],
       partList: [],

@@ -194,7 +194,7 @@ export default {
   mounted() {
     console.log("mounted!");
     console.log(this.keyword,"mounted!");
-    debugger
+    // debugger
     this.getDictionarys();
     if (this.$route.query.idcard != undefined) {
       this.keyword = this.$route.query.idcard;
@@ -237,7 +237,7 @@ export default {
   },
   methods: {
     async getPersonData(keywords) {
-        debugger
+        // debugger
       let data = await getDataList.getPersonData(keywords);
       console.log(data,'111')
       this.userData = JSON.parse(data)[0];
@@ -251,7 +251,7 @@ export default {
       this.getDictionarys();
     },
     onSearch() {
-         debugger
+        //  debugger
       this.getPersonData(this.keyword);
     },
     confirmDataPicker() {
@@ -310,7 +310,7 @@ export default {
       this.userData = {};
     },
     async getDictionarys() {
-        debugger
+        // debugger
       for (var item in this.tagArray) {
         var tag = this.tagArray[item];
         // console.log(tag);
@@ -407,7 +407,7 @@ export default {
       }
     },
     clickToSelectAddress() {
-        debugger
+        // debugger
       console.log("clickToSelectAddress");
       this.$router.push({
         path: `/censusAddress`,

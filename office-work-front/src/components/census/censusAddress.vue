@@ -228,7 +228,7 @@ export default {
       console.log("finish!!!!", _this.address[2].range);
     },
     saveClick() {
-        debugger
+        // debugger
       var _this = this;
       let addressArr = [];
       let addressStr = "";
@@ -263,7 +263,7 @@ export default {
       console.log(this.buildIdArray);
       window.localStorage.setItem("address_arrdata", addressArr);
       window.localStorage.setItem("address_str", addressStr);
-      debugger
+    //   debugger
       this.$router.go(-1);
     },
     backClick() {

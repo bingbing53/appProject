@@ -152,7 +152,7 @@
                 </van-dialog>
               <div v-for="(item,index) in willRecordListwei.rows" :key="index">
                 <div class="pl-10 pt-10 pr-10">
-                  <div @click="show_iconBottom(item.id,item.mobile,item.username,item.blowState)" class="right">
+                  <div @click="show_iconBottom(item.id,item.mobile,item.username,item.blowState,item.content,item.title)" class="right">
                     <span class="c-666 f-14 mr-10" v-if="item.blowState != 2">处理中</span>
                     <van-icon name="arrow"  color="#666666" class="v_middle"/>
                  </div>
@@ -491,19 +491,22 @@ export default {
         { name: '吹哨' },
         { name: '设置该民意无效' },
         { name: '暂存该民意' },
-        { name: '直接回复处理结果' }
+        { name: '直接回复处理结果' },
+        { name: '民意转提案' }
       ]
       
 
     };
   },
   methods: {
-    show_iconBottom(id,mobile,username,blowState){
+    show_iconBottom(id,mobile,username,blowState,content,title){
       this.show_bottom = true;
       this.id_bottom = id;
       this.mobile_bottom = mobile;
       this.username_bottom = username;
       this.blowState_bottom = blowState;
+      this.proContent=content;
+      this.proTitle=title;
     },
      onSelect(item) {
       if(item.name == '吹哨' && this.blowState_bottom == 2){
@@ -516,6 +519,15 @@ export default {
           this.zancunOnes(this.id_bottom)
       }else if(item.name == '直接回复处理结果'){
           this.callbackOnes(this.id_bottom,this.mobile_bottom,this.username_bottom)
+      }else if(item.name == '民意转提案'){
+          console.log(1);
+          this.$router.push({
+            name: "addProposal",
+            query: {
+              content: this.proContent,
+              title: this.proTitle,
+            },
+        });
       }
       this.show_bottom = false;
     },

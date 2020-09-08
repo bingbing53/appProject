@@ -1,0 +1,265 @@
+
+返回结果 http状态码 200 代表成功 其他失败
+返回信息 直接放在ResponseBody中未包装 
+
+====================================================================================================
+app接口
+====================================================================================================
+我的提案
+GET /rest/proposal/mine/page
+传入参数
+	pageNo				页码		非必填
+	pageSize 			页容 	非必填
+返回参数
+	id 	id
+  	create_name 		创建人名称
+  	create_by			创建人登录名称
+  	create_date			创建日期
+  	update_name			更新人名称
+  	update_by			更新人登录名称
+  	update_date			更新日期
+  	sys_org_code		所属部门
+  	sys_company_code	所属公司
+  	proposal_no			提案编号
+  	title				标题
+  	content				内容
+  	type				提案分类
+  	publicity			是否公示  	1 是 0 否
+  	canvote				是否可投票  	1 是 0 否
+  	canjudge			是否可评论  	1 是 0 否
+  	votes				投票数
+  	favors				赞成数
+  	oppositions			反对数
+  	judges				评论数
+  	hits				浏览数
+  	meeting_id			关联会议编号
+	departName 			部门名称
+	createUserPosition 	创建人职务
+
+楼院提案
+GET /rest/proposal/org/page
+传入参数
+	pageNo				页码		非必填
+	pageSize 			页容 	非必填
+返回参数
+	id 	id
+  	create_name 		创建人名称
+  	create_by			创建人登录名称
+  	create_date			创建日期
+  	update_name			更新人名称
+  	update_by			更新人登录名称
+  	update_date			更新日期
+  	sys_org_code		所属部门
+  	sys_company_code	所属公司
+  	proposal_no			提案编号
+  	title				标题
+  	content				内容
+  	type				提案分类
+  	publicity			是否公示  	1 是 0 否
+  	canvote				是否可投票  	1 是 0 否
+  	canjudge			是否可评论  	1 是 0 否
+  	votes				投票数
+  	favors				赞成数
+  	oppositions			反对数
+  	judges				评论数
+  	hits				浏览数
+  	meeting_id			关联会议编号
+	departName 			部门名称
+	createUserPosition 	创建人职务
+
+提案详情
+GET /rest/proposal/{id}
+返回参数
+	id    			id
+	createName 		创建人名称
+	createBy 		创建人登录名称
+	createDate 		创建日期
+	updateName		更新人名称
+	updateBy  		更新人登录名称
+	updateDate 		更新日期
+	sysOrgCode 		所属部门
+	sysCompanyCode 	所属公司
+	proposalNo 		提案编号
+	title 			标题
+	content 		内容
+	type 			提案分类
+	publicity 		是否公示		 	1 是 0 否
+	canvote 		是否可投票  	  	1 是 0 否
+	canjudge 		是否可评论  		1 是 0 否
+	votes 			投票数
+	favors 			赞成数
+	oppositions 	反对数
+	judges 			评论数
+	hits 			浏览数
+	meetingId 		关联会议编号
+
+新增提案
+POST /rest/proposal
+传入参数
+	proposalNo 		提案编号
+	title 			标题
+	content 		内容
+	type 			提案分类
+	publicity 		是否公示		 	1 是 0 否
+	canvote 		是否可投票  	  	1 是 0 否
+	canjudge 		是否可评论  		1 是 0 否
+返回参数 id(无参数名)
+	
+
+修改提案
+PUT /rest/proposal/{id}
+传入参数
+	id 				id
+	proposalNo 		提案编号
+	title 			标题
+	content 		内容
+	type 			提案分类
+	publicity 		是否公示		 	1 是 0 否
+	canvote 		是否可投票  	  	1 是 0 否
+	canjudge 		是否可评论  		1 是 0 否
+
+
+删除提案
+DELETE /rest/proposal/{id}
+
+分页获取提案评论
+GET /rest/proposalVote/{proposalId}/page
+传入参数
+	pageNo				页码		非必填
+	pageSize 			页容 	非必填
+返回参数
+	id  			主键
+	createDate		创建日期
+	proposalId 		提案id
+	baseuserId 		投票人id
+	attitude  		"1" 赞成 "0" 反对
+	content 		评论内容
+	raise 			点赞数(暂无此功能)
+	baseuser 		用户信息
+		id 			主键
+		mobile 		手机号
+		realname 	真实姓名
+		address  	详细地址
+		nickName 	昵称
+
+删除提案评论
+DELETE /rest/proposalVote/{id}
+
+
+====================================================================================================
+公众号接口
+====================================================================================================
+
+
+我的楼院提案
+GET /rest/wechat/myCube/proposal/page
+传入参数
+	pageNo				页码		非必填
+	pageSize 			页容 	非必填
+返回参数
+	id 	id
+  	create_name 		创建人名称
+  	create_by			创建人登录名称
+  	create_date			创建日期
+  	update_name			更新人名称
+  	update_by			更新人登录名称
+  	update_date			更新日期
+  	sys_org_code		所属部门
+  	sys_company_code	所属公司
+  	proposal_no			提案编号
+  	title				标题
+  	content				内容
+  	type				提案分类
+  	publicity			是否公示  	1 是 0 否
+  	canvote				是否可投票  	1 是 0 否
+  	canjudge			是否可评论  	1 是 0 否
+  	votes				投票数
+  	favors				赞成数
+  	oppositions			反对数
+  	judges				评论数
+  	hits				浏览数
+  	meeting_id			关联会议编号
+	departName 			部门名称
+	createUserPosition 	创建人职务
+
+
+包片领导
+GET /rest/wechat/myCube/leader/list
+返回参数
+	id
+	username   		用户名
+	realname	 	真实姓名
+	avatar 			头像
+	sex 			性别
+	phone			电话
+
+提案详情
+GET /rest/wechat/myCube/proposal/{id}
+返回参数
+	id    			id
+	createName 		创建人名称
+	createBy 		创建人登录名称
+	createDate 		创建日期
+	updateName		更新人名称
+	updateBy  		更新人登录名称
+	updateDate 		更新日期
+	sysOrgCode 		所属部门
+	sysCompanyCode 	所属公司
+	proposalNo 		提案编号
+	title 			标题
+	content 		内容
+	type 			提案分类
+	publicity 		是否公示		 	"1" 是 "0" 否
+	canvote 		是否可投票  	  	"1" 是 "0" 否
+	canjudge 		是否可评论  		"1" 是 "0" 否
+	votes 			投票数
+	favors 			赞成数
+	oppositions 	反对数
+	judges 			评论数
+	hits 			浏览数
+	meetingId 		关联会议编号
+
+
+分页获取提案评论
+GET /rest/wechat/myCube/{proposalId}/comment/page
+传入参数
+	pageNo				页码		非必填
+	pageSize 			页容 	非必填
+返回参数
+	id  			主键
+	createDate		创建日期
+	proposalId 		提案id
+	baseuserId 		投票人id
+	attitude  		"1" 赞成 "0" 反对
+	content 		评论内容
+	raise 			点赞数(暂无此功能)
+	baseuser 		用户信息
+		id 			主键
+		mobile 		手机号
+		realname 	真实姓名
+		address  	详细地址
+		nickName 	昵称
+
+
+投票
+POST /rest/wechat/myCube/{proposalId}/vote
+传入参数
+	attitude		"1" 赞成 "0" 反对
+返回参数
+	评论主键
+
+
+评论
+POST /rest/wechat/myCube/{proposalId}/comment
+传入参数
+	content			评论内容
+返回参数
+	评论主键
+====================================================================================================
+通用接口
+====================================================================================================
+
+数据字典
+GET /rest/dict/{code}
+
+提案分类 code=proposalType

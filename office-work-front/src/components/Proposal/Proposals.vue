@@ -4,217 +4,179 @@
       <van-tab v-for="index in 4" :title="'选项 ' + index">内容 {{ index }}</van-tab>
     </van-tabs>-->
     <van-sticky>
-      <van-tabs @click="changTab" sticky v-model="active" style="z-index:99;" color="#4374f2">
-        <van-tab title="楼院提案" name="楼院提案"></van-tab>
-        <van-tab title="我的提案" name="我的提案"></van-tab>
+      <van-tabs
+        @click="changTab"
+        sticky
+        v-model="active"
+        style="z-index:99;"
+        color="#4374f2"
+      >
+        <van-tab title="楼院提案" name="a"></van-tab>
+        <van-tab title="我的提案" name="b"></van-tab>
       </van-tabs>
     </van-sticky>
     <!-- 楼院提案 -->
-    <!-- <van-pull-refresh
-      v-if="active == '楼院提案'"
-      v-model="isLoadingly"
-      @refresh="onRefreshly"
-      style="z-index:0;"
-    >-->
-    <van-list
-      v-show="active == '楼院提案'"
-      v-model="scrollParamOne.loading"
-      :finished="scrollParamOne.finished"
-      finished-text="没有更多了"
-      @load="onLoad"
-    >
-      <van-cell v-for="(item, index) in ProposallyList" :key="index">
-        <div class="ProposalList">
-          <div @click="goProposalDetail" class="ProposalTitle">
-            <span class="hasgongshi">{{ item.publicity == 1 ? "已公示" : "未公示" }}</span>
-            <h2>{{ item.title }}</h2>
-            <a @click="goDetail(item.id, item.publicity)">查看详情</a>
-          </div>
-          <div class="ProposalMsg">
-            <p>
-              <span>提案人:</span>
-              {{ item.create_name }}
-              {{ item.address }}
-            </p>
-            <p>
-              <span>提案日期：</span>
-              {{ dealTime(item.create_date) }}
-            </p>
-          </div>
-
-          <div class="ProposalData">
-            <span class="fl">
-              <img src="../../assets/img/统计.png" alt />
-              居民投票数{{ item.votes }}
-            </span>
-            <span class="fl">
-              <img src="../../assets/img/赞同-fill.png" alt />
-              赞成数 {{ item.favors }}
-            </span>
-            <span class="fr">
-              <img src="../../assets/img/赞同-fill(1).png" alt />
-              反对数 {{ item.oppositions }}
-            </span>
-          </div>
-        </div>
-      </van-cell>
-    </van-list>
-    <!-- </van-pull-refresh> -->
-    <!-- 我的提案 -->
-    <!-- <van-pull-refresh
-      v-show="active == '我的提案'"
-      v-model="isLoadingmy"
+    <van-pull-refresh
+      v-if="active == 'a'"
+      v-model="isLoading"
       @refresh="onRefresh"
       style="z-index:0;"
-    >-->
-    <van-list
-      v-show="active == '我的提案'"
-      v-model="scrollParamTwo.loading"
-      :finished="scrollParamTwo.finished"
-      finished-text="没有更多了"
-      @load="onLoadmy"
     >
-      <van-cell v-for="(item, index) in ProposalmyList" :key="index">
+      <van-cell v-for="(item, index) in ProposalList" :key="index">
         <div class="ProposalList">
           <div @click="goProposalDetail" class="ProposalTitle">
-            <span class="hasgongshi">{{ item.publicity == 1 ? "已公示" : "未公示" }}</span>
+            <span class="hasgongshi">{{
+              item.hasgongshi === 1 ? "已公示" : "未公示"
+            }}</span>
             <h2>{{ item.title }}</h2>
-            <a @click="goMyDetail(item.id, item.publicity)">查看详情</a>
+            <a @click="goDetail(item.id)">查看详情</a>
           </div>
           <div class="ProposalMsg">
             <p>
               <span>提案人:</span>
-              {{ item.create_name }}
+              {{ item.name }}
               {{ item.address }}
             </p>
             <p>
               <span>提案日期：</span>
-              {{ dealTime(item.create_date) }}
+              {{ item.data }}
             </p>
           </div>
 
           <div class="ProposalData">
             <span class="fl">
               <img src="../../assets/img/统计.png" alt />
-              居民投票数{{ item.votes }}
+              居民投票数{{ item.toupiaoshu }}
             </span>
             <span class="fl">
               <img src="../../assets/img/赞同-fill.png" alt />
-              赞成数 {{ item.favors }}
+              赞成数 {{ item.zancheng }}
             </span>
             <span class="fr">
               <img src="../../assets/img/赞同-fill(1).png" alt />
-              反对数 {{ item.oppositions }}
+              反对数 {{ item.fandui }}
             </span>
           </div>
         </div>
       </van-cell>
-    </van-list>
-    <!-- </van-pull-refresh> -->
+      <van-list
+        v-model="scrollParam.loading"
+        :finished="scrollParam.finished"
+        finished-text="没有更多了"
+        @load="getpageList"
+      ></van-list>
+    </van-pull-refresh>
+    <!-- 我的提案 -->
+    <van-pull-refresh
+      v-if="active == 'b'"
+      v-model="isLoading"
+      @refresh="onRefresh"
+      style="z-index:0;"
+    >
+      <van-cell v-for="(item, index) in ProposalList" :key="index">
+        <div class="ProposalList">
+          <div @click="goProposalDetail" class="ProposalTitle">
+            <span class="hasgongshi">{{
+              item.hasgongshi === 1 ? "已公示" : "未公示"
+            }}</span>
+            <h2>我的{{ item.title }}</h2>
+            <a @click="goDetail(item.id)">查看详情</a>
+          </div>
+          <div class="ProposalMsg">
+            <p>
+              <span>提案人:</span>
+              {{ item.name }}
+              {{ item.address }}
+            </p>
+            <p>
+              <span>提案日期：</span>
+              {{ item.data }}
+            </p>
+          </div>
+
+          <div class="ProposalData">
+            <span class="fl">
+              <img src="../../assets/img/统计.png" alt />
+              居民投票数{{ item.toupiaoshu }}
+            </span>
+            <span class="fl">
+              <img src="../../assets/img/赞同-fill.png" alt />
+              赞成数 {{ item.zancheng }}
+            </span>
+            <span class="fr">
+              <img src="../../assets/img/赞同-fill(1).png" alt />
+              反对数 {{ item.fandui }}
+            </span>
+          </div>
+        </div>
+      </van-cell>
+      <van-list
+        v-model="scrollParam.loading"
+        :finished="scrollParam.finished"
+        finished-text="没有更多了"
+        @load="onLoad"
+      ></van-list>
+    </van-pull-refresh>
     <van-button class="addBtn" @click="addProposal">新增提案</van-button>
   </div>
 </template>
 <script>
-import { fetchMyList, fetchOrgList } from "@/api/proposal";
+import { getProposalList } from "@/api/proposal";
 export default {
   data() {
     return {
-      active: "楼院提案",
-      type: 0, //类型 0 楼院提案 1 我的提案
-      isLoadingmy: false,
-      isLoadingly: false,
+      active: "a",
+      isLoading: false,
       //   滚动列表参数
-      scrollParamOne: {
+      scrollParam: {
         loading: false,
-        finished: false,
+        finished: true,
       },
-      scrollParamTwo: {
-        loading: false,
-        finished: false,
-      },
-      //   分页
-      pageOneInfo: {
-        pageNo: 1,
-        pageSize: 7,
-      },
-      pageTwoInfo: {
-        pageNo: 1,
-        pageSize: 4,
-      },
+      type: 0, //类型 0 楼院提案 1 我的提案
       //   列表页数据
-      ProposallyList: [], //楼院
-      ProposalmyList: [], //我的提案
+      ProposalList: [
+        {
+          title: "关于修建小区健身的提案",
+          name: "王大妈",
+          address: "地址",
+          data: "2020年4月15日",
+          hasgongshi: 1,
+          toupiaoshu: 100,
+          zancheng: 10,
+          fandui: 10,
+        },
+      ],
     };
   },
   methods: {
     //   初始化
-    init() {
-      this.pageOneInfo.pageNo = 0;
-      this.pageTwoInfo.pageNo = 0;
-    },
-    // 处理时间
-    dealTime(data) {
-      var date = new Date(data);
-      var Y = date.getFullYear() + "-";
-      var M =
-        (date.getMonth() + 1 < 10
-          ? "0" + (date.getMonth() + 1)
-          : date.getMonth() + 1) + "-";
-      var D =
-        (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + " ";
-      var h =
-        (date.getHours() < 10 ? "0" + date.getHours() : date.getHours()) + ":";
-      var m =
-        (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) +
-        ":";
-      var s =
-        date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
-      return Y + M + D + h + m + s;
-    },
+    init() {},
     // 下拉刷新
-    onRefreshly() {
-      this.pageOneInfo.pageNo = 1;
-      this.getOrgList();
+    onRefresh() {
+      this.getpageList();
     },
-    onLoad() {
-      //   alert("onload");
-      //   this.getOrgList();
-    },
-    onLoadmy() {
-      //   alert("onLoadmy");
-      //   this.getMyList();
-    },
+    onLoad(){
+        alert(2)
+    }.
     // 点击tab切换事件
     changTab(name) {
-      console.log(this.active, "active");
-      if (name == "楼院提案") {
+      if (name == "a") {
         this.type = 0;
-        this.getOrgList();
+        this.getpageList();
       } else {
         this.type = 1;
-        this.getMyList();
+        this.getpageList();
       }
     },
-    // 获取我的提案
-    getMyList() {
+    // 获取列表
+    getpageList() {
       let data = {
-        // pageNo: this.pageTwoInfo.pageNo,
-        // pageSize: this.pageTwoInfo.pageSize,
+        type: this.type,
       };
-      fetchMyList(data).then((res) => {
-        let data = res.list;
-        this.ProposalmyList = data;
-      });
-    },
-    // 获取楼院提案
-    getOrgList() {
-      let data = {
-        // pageNo: this.pageOneInfo.pageNo,
-        // pageSize: this.pageOneInfo.pageSize,
-      };
-      fetchOrgList(data).then((res) => {
-        let data = res.list;
-        this.ProposallyList = data;
+      getProposalList(data).then((res) => {
+        let data = res.data;
+        this.ProposalList = data;
+        this.isLoading = false;
       });
     },
     // 跳转提案详情
@@ -226,34 +188,18 @@ export default {
       });
     },
     // 跳转详情
-    goDetail(id, publicity) {
+    goDetail(id) {
       this.$store.commit("setClassificationId", id);
       this.$router.push({
         name: "viewProposal",
         query: {
           id: id,
-          publicity: publicity,
-        },
-      });
-    },
-    // 我的提案新增或修改
-    goMyDetail(id, publicity) {
-      this.$router.push({
-        name: "addMyProposal",
-        query: {
-          id: id,
-          publicity: publicity,
         },
       });
     },
   },
   mounted() {
-    // this.getOrgList();
-    if (this.active == "我的提案") {
-      this.getMyList();
-    } else {
-      this.getOrgList();
-    }
+    this.getpageList();
   },
 };
 </script>

@@ -344,17 +344,28 @@ const router = new Router({
         title: "新增提案",
       },
     },
+    // 我的提案新增或修改
+    {
+      path: "/addMyProposal",
+      name: "addMyProposal",
+      component: (resolve) =>
+        require(["./components/addMyProposal/addMyProposal"], resolve),
+      meta: {
+        keepAlive: false, // 需要缓存
+        title: "新增提案",
+      },
+    },
     // 修改或查看提案
     {
-        path: "/viewProposal",
-        name: "viewProposal",
-        component: (resolve) =>
-          require(["./components/viewProposal/viewProposal"], resolve),
-        meta: {
-          keepAlive: false, // 需要缓存
-          title: "查看提案",
-        },
+      path: "/viewProposal",
+      name: "viewProposal",
+      component: (resolve) =>
+        require(["./components/viewProposal/viewProposal"], resolve),
+      meta: {
+        keepAlive: false, // 需要缓存
+        title: "查看提案",
       },
+    },
     {
       path: "*",
       redirect: "/",

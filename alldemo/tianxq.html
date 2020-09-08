@@ -157,6 +157,7 @@
     /* 其他意见 */
     .other_opinions {
         margin-bottom: 50px;
+        position: relative;
     }
 
     .opinions_list {
@@ -226,6 +227,19 @@
         font-size: 26px;
         color: #4375F2;
     }
+
+    .voteText {
+        position: absolute;
+        right: 30px;
+        top: 0;
+    }
+
+    .voteTextBox {
+        width: 100%;
+        height: 224px;
+        background-color: #fff;
+        border: 1px solid rgba(51, 51, 51, 0.1);
+    }
 </style>
 
 <body>
@@ -281,6 +295,11 @@
         <!-- 其他意见 -->
         <div class="other_opinions">
             <h2>提案留言</h2>
+            <span class="voteText"><img src="img/组 4.png" alt=""></span>
+            <div class="voteTextBox">
+                <textarea></textarea>
+            </div>
+
             <div class="opinions_list">
                 <div class="list_head">
                     <img src="img/组 7.png" alt="">

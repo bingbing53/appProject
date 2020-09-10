@@ -7,8 +7,10 @@ class WanAndroidApi {
   /// 最新项目tab (首页的第二个tab) http://wanandroid.com/article/listproject/0/json
   static const String ARTICLE_LISTPROJECT = "article/listproject";
 
-  static const String WEBPAGR_PREFIX = "https://www.qicaidonghu.cn/work";
-
+  //测试文章地址
+  static const String WEBPAGR_PREFIX = "https://mongo.qicaidonghu.cn/work";
+  //生产文章地址
+  //static const String WEBPAGR_PREFIX = "https://www.qicaidonghu.cn/work";
   //文件预览
   static const String FILEPREVIEW = "https://image.shequyijia.cn/onlinePreview?url=";
 
@@ -53,9 +55,9 @@ class WanAndroidApi {
       return path;
     if(size == 1){
       path = path.split('.')[0]+'Zoom.'+path.split('.')[1];
-      return Constant.test_pic_server+path;
+      return Constant.pic_server+path;
     }
-    return Constant.test_pic_server+path;
+    return Constant.pic_server+path;
   }
 
   //文件预览

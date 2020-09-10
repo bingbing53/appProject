@@ -4,21 +4,19 @@ class Constant {
   static const int status_success = 200;
 
 //  static const String server_address = wan_android;
-  static const String server_address = "https://www.qicaidonghu.cn/server/rest/";
 
-  static const String community_server_address = "https://api.shequyijia.cn/";
+  // 生产
+//  static const String server_address = "https://www.qicaidonghu.cn/server/rest/";
+//  static const String community_server_address = "https://api.shequyijia.cn/";
+//  static const String pic_server = "https://image.shequyijia.cn/pic/";
+
+  // 测试
+  static const String server_address = "https://mongo.qicaidonghu.cn/server/rest/";
+  static const String community_server_address = "https://api.dev.shequyijia.cn/";
+  static const String pic_server = "https://mongo.qicaidonghu.cn/pic/";
+
 
   static const String wan_android = "http://www.wanandroid.com/";
-
-//  //开发
-//  static const String dev_server_android = "http://192.108.1.108:8080/server/rest/";
-//  //测试
-//  static const String test_server_android = "https://mongo.qicaidonghu.cn/server/rest/";
-//  //生产
-//  static const String prod_server_android = "https://mongo.qicaidonghu.cn/server/rest/";
-
-//  static const String test_pic_server = "https://mongo.qicaidonghu.cn/pic/";
-  static const String test_pic_server = "https://image.shequyijia.cn/pic/";
 
   static const int type_sys_update = 1;
   static const String key_theme_color = 'key_theme_color';
@@ -42,7 +40,7 @@ class Constant {
 
 class AppConfig {
   static const String appName = 'flutter_wanandroid';
-  static const String version = '20200720.120000';
+  static const String version = '20200908.120000';
   static const bool isDebug = true;
 }
 

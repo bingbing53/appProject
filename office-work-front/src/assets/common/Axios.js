@@ -47,20 +47,12 @@ fly.interceptors.request.use((request) => {
     //APP环境
     request.headers = {
         //设置请求头
-        //   // "X-AUTH-TOKEN": 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI5ODI4NjUyOTJiNjI3Yjg2NjY0YzEyYzZkMzU2YWJlOSIsInN1YiI6InlhbmdxaXRvbmciLCJpYXQiOjE1OTcwNDk1ODB9.v5T1tiIRId_dLR6zzphczhVsDursMWC81t1a_cK9SkE',
-        // "X-AUTH-TOKEN": token,
-        // "Content-Type": "application/x-www-form-urlencoded"
-        //   // "Content-Type": "multipart/form-data;charset=utf-8",
-        // }
-        // } else {
-        //电脑环境
-        // request.headers = {//设置请求头
-        //   "X-AUTH-TOKEN": 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJkODc5YzZiOWYzMzE0NTEwYmVjMDM2MDEwNGJiMzI5NyIsInN1YiI6InNvbmdiaW5nIiwiaWF0IjoxNTk4MzQzNzMzfQ.6SxB9kdvjGZOiMSgxbWG-X0ABkZLlcdHgegcYKWVhvk',
-        //   "Content-Type": "application/x-www-form-urlencoded"
-        // "Content-Type": "multipart/form-data;charset=utf-8",
-        //设置请求头
-        "X-AUTH-TOKEN": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJkODc5YzZiOWYzMzE0NTEwYmVjMDM2MDEwNGJiMzI5NyIsInN1YiI6InNvbmdiaW5nIiwiaWF0IjoxNTk5Mjc1OTU0fQ.0Xcm3MWTcQENSvNHTpy1QzYt2Ix_Ti5zryttcgAYD2I",
+        "X-AUTH-TOKEN": token,
         "Content-Type": "application/x-www-form-urlencoded",
+        //电脑环境
+        //设置请求头
+        // "X-AUTH-TOKEN": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJkODc5YzZiOWYzMzE0NTEwYmVjMDM2MDEwNGJiMzI5NyIsInN1YiI6InNvbmdiaW5nIiwiaWF0IjoxNTk5NTMyNDQ4fQ.xxxXDg-_trs74ziFCp6iC0MPxlw9vdMLusUVejUgToE",
+        // "Content-Type": "application/x-www-form-urlencoded",
     };
 
     // }

@@ -3,36 +3,52 @@
     <div class="wrapcontent">
       <div class="addProposal">
         <van-row>
-          <label>提案编号：</label>
-          <input class="input" v-model="proposalNo" placeholder />
+          <label>提案编号</label>
+          <!-- <span>提案分类内容</span> -->
+          <input class="input" :disabled="disabled" v-model="proposalNo" placeholder />
         </van-row>
         <van-row>
-          <label>提案分类：</label>
-          <!-- <div class="option"> -->
-          <!-- <select @change="getValue" v-model="type">
+          <label>提案分类</label>
+          <!-- <span>提案分类内容</span> -->
+          <!-- <input class="input" :disabled="disabled" v-model="type" placeholder /> -->
+          <div class="option">
+            <select :disabled="disabled" @change="getValue" v-model="type">
               <option>--请选择--</option>
               <option
                 v-for="(item, index) in ProposalTypeList"
                 :key="index"
                 :value="item.value"
               >{{ item.text }}</option>
-          </select>-->
-          <van-dropdown-menu class="option">
-            <van-dropdown-item v-model="value" :options="ProposalTypeLists" />
-          </van-dropdown-menu>
-          <!-- </div> -->
+            </select>
+          </div>
         </van-row>
         <van-row>
-          <label>提案标题：</label>
-          <input class="input" v-model="title" placeholder />
+          <label>提案标题</label>
+          <!-- <span>提案标题</span> -->
+          <input :disabled="disabled" class="input" v-model="title" placeholder />
         </van-row>
         <van-row>
-          <label>提案内容：</label>
-          <textarea class="textarea" v-model="content" placeholder />
+          <label>提案内容</label>
+          <!-- <p class="label_msg">
+        您好，这是本次小区改建的主要提案内容之一，你
+        积分的结合房价多少附近可兑换防静电带回家回到家，
+        第三方接电话度计划几点几分跨时代讲课的佳都科技近
+          </p>-->
+          <textarea class="textarea" :disabled="disabled" v-model="content" placeholder />
         </van-row>
+        <!-- <van-row>
+      <label>是否公示</label>
+      <van-switch v-model="checked" size="24" />
+        </van-row>-->
         <van-cell center title="是否公示">
           <template #right-icon>
-            <van-switch :active-value="1" :inactive-value="0" v-model="publicity" size="24" />
+            <van-switch
+              :active-value="1"
+              :inactive-value="0"
+              @change="changePublicity"
+              v-model="publicity"
+              size="24"
+            />
           </template>
         </van-cell>
         <van-row>
@@ -55,7 +71,7 @@
           <p class="hasExplain">说明：如允许,则居民可针对改提案提出自己的建议</p>
         </van-row>
         <div class="btnSure">
-          <van-button type="info" size="normal" @click="send">提交</van-button>
+          <van-button v-if="!disabled || id == undefined" type="info" size="normal" @click="send">提交</van-button>
         </div>
       </div>
     </div>
@@ -68,8 +84,8 @@ export default {
     return {
       id: null, //我的楼俺跳转的有id
       disabled: false, //禁用
-      proposalNo: null,
-      type: 1,
+      proposalNo: 8,
+      type: "",
       title: "",
       content: "",
       publicity: 0, //是否公示
@@ -77,20 +93,24 @@ export default {
       canjudge: 0, //是否允许居民发表意见
       selecttype: "",
       ProposalTypeList: [],
-      ProposalTypeLists: [
-        { text: "环境", value: 1 },
-        { text: "安全", value: 2 },
-        { text: "卫生", value: 3 },
-      ],
-      value: 1,
     };
   },
 
   methods: {
     //  初始化
     init() {},
+    // 是否公示
+    changePublicity(val) {
+      console.log(val, "val");
+      //   if (val == 1) {
+      //     this.disabled = true;
+      //   } else {
+      //     this.disabled = false;
+      //   }
+    },
     getProposalTypeList() {
       getProposalType().then((res) => {
+        console.log(res, 1111111);
         this.ProposalTypeList = res;
       });
     },
@@ -98,35 +118,57 @@ export default {
     send() {
       let data = {
         proposalNo: this.proposalNo,
-        type: this.value,
+        type: this.type,
         title: this.title,
         content: this.content,
         publicity: this.publicity,
         canvote: this.canvote,
         canjudge: this.canjudge,
       };
-      console.log(data);
       addProposal(data).then((res) => {
         this.$router.push({
-          name: "Proposal",
+          name: "proposal",
         });
       });
     },
-    // getValue() {
-    //   console.log(this.type, "this.type");
-    // },
+    getValue() {
+      console.log(this.type, "this.type");
+    },
   },
-
+  //   watch: {
+  //     $route: {
+  //       handler: function(val, oldval) {
+  //         console.log(val, "val");
+  //         console.log(oldval, "oldval");
+  //       },
+  //     },
+  //     deep: true,
+  //   },
+  beforeRouteEnter(to, from, next) {
+    console.log(from, "form.name");
+    let item = JSON.parse(localStorage.getItem("item"));
+    console.log(item, "item");
+    if (from.name == "publicopinion") {
+      //   this.content = item.content;
+      //   this.title = item.title;
+    }
+    next();
+  },
+  beforeRouteLeave() {
+    localStorage.removeItem("item");
+  },
   mounted() {
+    console.log(this.$route.query, "this.$route.query");
     this.proposalNo = null;
     this.type = null;
+    // this.title = JSON.parse(localStorage.getItem("item")).title ;
+    // this.content = JSON.parse(localStorage.getItem("item")).content ;
     this.publicity = 0;
     this.canvote = 0;
     this.canjudge = 0;
     this.content = this.$route.query.content || null;
     this.title = this.$route.query.title || null;
     console.log(this.content, this.title, 1111);
-    // console.log(this.value);
     this.getProposalTypeList();
   },
 };
@@ -175,7 +217,9 @@ export default {
   font-weight: 500;
   color: #656565;
 }
-
+.van-row label {
+  margin-right: 15px;
+}
 .van-row span {
   color: #333;
 }
@@ -216,16 +260,16 @@ export default {
   border-bottom-color: transparent;
 }
 .option {
-  display: inline-block;
+  display: inline;
+  /* margin: 100px; */
+  /* width: 140px;
+  height: 40px; */
+  border: 1px solid #cccccc;
+  position: relative;
 }
-.option .van-dropdown-menu__bar {
-  width: auto;
-  margin-left: 1.33vw;
-  height: auto;
-  display: inline-block;
-  box-shadow: none;
-}
-.option .van-dropdown-item--down {
-  margin: 0 30px;
+.option select {
+  border: none;
+  outline: none;
+  padding-left: 20px;
 }
 </style>

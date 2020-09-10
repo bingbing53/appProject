@@ -21,6 +21,7 @@ void main() async{
 //  final provider = new Provider();
 //  await provider.init(true);
 //  db = Provider.db;
+  WidgetsFlutterBinding.ensureInitialized();
   _initFluwx();
 
   jmessage..setDebugMode(enable: false);

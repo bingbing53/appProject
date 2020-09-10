@@ -1,31 +1,34 @@
 <template>
   <div class="addProposal">
     <van-row>
-      <label>提案编号</label>
+      <label>提案编号：</label>
       <input class="input" :disabled="disabled" v-model="proposalNo" placeholder />
     </van-row>
     <van-row>
-      <label>提案分类</label>
+      <label>提案分类：</label>
       <!-- <span>提案分类内容</span> -->
       <!-- <input class="input" :disabled="disabled" v-model="type" placeholder /> -->
-      <div class="option">
+      <!-- <div class="option">
         <select :disabled="disabled" @change="getValue" v-model="type">
-          <!-- <option>--请选择--</option> -->
+          <option>--请选择--</option>
           <option
             v-for="(item, index) in ProposalTypeList"
             :key="index"
             :value="item.value"
           >{{ item.text }}</option>
         </select>
-      </div>
+      </div>-->
+      <van-dropdown-menu class="option">
+        <van-dropdown-item v-model="value" :options="ProposalTypeList" :disabled="disabled" />
+      </van-dropdown-menu>
     </van-row>
     <van-row>
-      <label>提案标题</label>
+      <label>提案标题：</label>
       <!-- <span>提案标题</span> -->
       <input :disabled="disabled" class="input" v-model="title" placeholder />
     </van-row>
     <van-row>
-      <label>提案内容</label>
+      <label>提案内容：</label>
       <!-- <p class="label_msg">
         您好，这是本次小区改建的主要提案内容之一，你
         积分的结合房价多少附近可兑换防静电带回家回到家，
@@ -39,7 +42,13 @@
     </van-row>-->
     <van-cell center title="是否公示">
       <template #right-icon>
-        <van-switch :active-value="1" :inactive-value="0" v-model="publicity" size="24" />
+        <van-switch
+          :active-value="1"
+          :inactive-value="0"
+          v-model="publicity"
+          size="24"
+          :disabled="disabled"
+        />
       </template>
     </van-cell>
     <van-row>
@@ -47,7 +56,13 @@
     </van-row>
     <van-cell center title="是否投票">
       <template #right-icon>
-        <van-switch :active-value="1" :inactive-value="0" v-model="canvote" size="24" />
+        <van-switch
+          :active-value="1"
+          :inactive-value="0"
+          v-model="canvote"
+          size="24"
+          :disabled="disabled"
+        />
       </template>
     </van-cell>
     <van-row>
@@ -55,7 +70,13 @@
     </van-row>
     <van-cell center title="是否允许居民发表意见">
       <template #right-icon>
-        <van-switch :active-value="1" :inactive-value="0" v-model="canjudge" size="24" />
+        <van-switch
+          :active-value="1"
+          :inactive-value="0"
+          v-model="canjudge"
+          size="24"
+          :disabled="disabled"
+        />
       </template>
     </van-cell>
     <van-row>
@@ -81,6 +102,7 @@ export default {
       canvote: 0, //是否投票
       canjudge: 0, //是否允许居民发表意见
       ProposalTypeList: [],
+      value: 1,
     };
   },
 
@@ -103,15 +125,15 @@ export default {
         this.ProposalTypeList = res;
       });
     },
-    getValue() {
-      console.log(this.type);
-    },
+    // getValue() {
+    //   console.log(this.type);
+    // },
     // 提交
     send() {
       let data = {
         id: this.id,
         proposalNo: this.proposalNo,
-        type: this.type,
+        type: this.value,
         title: this.title,
         content: this.content,
         publicity: this.publicity,
@@ -135,7 +157,7 @@ export default {
     getProposalList(this.id).then((res) => {
       console.log(res, "resxiangqing");
       this.proposalNo = res.proposalNo;
-      this.type = res.type;
+      this.value = res.type;
       this.title = res.title;
       this.content = res.content;
       this.publicity = Number(res.publicity);
@@ -157,11 +179,17 @@ export default {
   border: 0;
   margin-left: 10px;
 }
+.input:disabled {
+  background-color: #fff;
+}
 .textarea {
   border: none;
   height: 150px;
   width: 100%;
   text-indent: 50px;
+}
+.textarea:disabled {
+  background-color: #fff;
 }
 .addProposal {
   margin: 20px 30px;
@@ -184,9 +212,7 @@ export default {
   font-weight: 500;
   color: #656565;
 }
-.van-row label {
-  margin-right: 15px;
-}
+
 .van-row span {
   color: #333;
 }
@@ -227,16 +253,22 @@ export default {
   border-bottom-color: transparent;
 }
 .option {
-  display: inline;
-  /* margin: 100px; */
-  /* width: 140px;
-  height: 40px; */
-  border: 1px solid #cccccc;
-  position: relative;
+  display: inline-block;
 }
-.option select {
-  border: none;
-  outline: none;
-  padding-left: 20px;
+.option .van-dropdown-menu__bar {
+  width: auto;
+  margin-left: 1.33vw;
+  height: auto;
+  display: inline-block;
+  box-shadow: none;
+}
+.option .van-dropdown-item--down {
+  margin: 0 30px;
+}
+.option .van-dropdown-menu__title {
+  padding: 0 2.14vw 0 0;
+}
+.van-dropdown-menu__item--disabled .van-dropdown-menu__title {
+  color: #333;
 }
 </style>

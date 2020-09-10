@@ -324,7 +324,7 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin{
                       itemBuilder: (BuildContext context, int index) {
                         PageInfo pageInfo = _pageInfo[index];
                         return new ListTile(
-                          leading: new Icon(pageInfo.iconData),
+                            leading: new Icon(pageInfo.iconData),
                           title:
                           new Text(IntlUtil.getString(context, pageInfo.titleId)),
                           onTap: () {

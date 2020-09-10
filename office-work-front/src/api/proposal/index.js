@@ -2,58 +2,65 @@ import request from "../../assets/common/request";
 // import fly from "../../assets/common/Axios"
 // 获取我的提案
 export function fetchMyList(query) {
-    return request({
-        url: "/api/proposal/mine/page",
-        method: "get",
-        params: query,
-    });
+  return request({
+    url: "/api/proposal/mine/page",
+    method: "get",
+    params: query,
+  });
 }
 // 获取楼院提案
 export function fetchOrgList(query) {
-    return request({
-        url: "/api/proposal/org/page",
-        method: "get",
-        params: query,
-    });
+  return request({
+    url: "/api/proposal/org/page",
+    method: "get",
+    params: query,
+  });
 }
 // 提案详情
 export function getProposalList(query) {
-    return request({
-        url: "/api/proposal/" + query,
-        method: "get",
-        // params: query,
-    });
+  return request({
+    url: "/api/proposal/" + query,
+    method: "get",
+    // params: query,
+  });
 }
 // 新增提案
 export function addProposal(data) {
-    return request({
-        url: "/api/proposal",
-        method: "post",
-        data,
-    });
+  return request({
+    url: "/api/proposal",
+    method: "post",
+    data,
+  });
+}
+// 新增提案
+export function deleteProposal(query) {
+  return request({
+    url: "/api/proposal/" + query,
+    method: "delete",
+  });
 }
 // 修改提案
 export function editProposal(data) {
-    return request({
-        url: "/api/proposal/" + data.id,
-        method: "put",
-        data,
-    });
+  return request({
+    url: "/api/proposal/" + data.id,
+    method: "put",
+    data,
+  });
 }
 //评论
-export function voteProposal(data) {
-    return request({
-        url: "/api/proposalVote/" + data.id + "/page",
-        method: "get"
-    });
+export function voteProposal(id) {
+  return request({
+    url: "/api/proposalVote/" + id + "/page",
+    method: "get",
+  });
 }
 // 获取提案分类
 export function getProposalType() {
-    return request({
-        url: "/api/dict/proposalType",
-        method: "get",
-        // params: query,
-    });
+  return request({
+    url: "/api/dict/proposalType",
+    method: "get",
+    // params: query,
+  });
 }
 //   模拟数据格式
 //   {

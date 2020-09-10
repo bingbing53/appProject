@@ -5,9 +5,15 @@
     <!-- </van-form> -->
     <div class="tianBox">
       <van-row class="pad35">
+        <label>提案编号：</label>
+        <input class="input" v-model="proposalNo" placeholder />
+      </van-row>
+      <van-row class="pad35">
         <span class="font28">提案分类：</span>
         <!-- <van-field label="提案分类" :disabled="true" v-model="type" placeholder /> -->
-        <input class="input" :disabled="disabled" v-model="text" placeholder />
+        <!-- <input class="input" :disabled="disabled" v-model="text" placeholder />
+        <br />-->
+        <span style="margin-left:1.33vw">{{type |showName(ProposalTypeList) }}</span>
       </van-row>
       <van-row class="pad35">
         <span class="font28">提案标题：</span>
@@ -28,6 +34,7 @@
               :active-value="1"
               :inactive-value="0"
               size="24"
+              :disabled="disabled"
             />
           </template>
         </van-cell>
@@ -39,15 +46,27 @@
       <van-row class="pad35">
         <van-cell center title="是否投票" class="font28">
           <template #right-icon>
-            <van-switch v-model="canvote" :active-value="1" :inactive-value="0" size="24" />
+            <van-switch
+              v-model="canvote"
+              :active-value="1"
+              :inactive-value="0"
+              size="24"
+              :disabled="disabled"
+            />
           </template>
         </van-cell>
-        <p class="font24">说明：第三方放松放松sffs第三方放松放松sffs第三方放松放松sffs第三方放松放松sffs第三方放松放松sffs第三方放松放松sffs第三</p>
+        <p class="font24">说明：如允许投票，则社区居民可以对该提案投赞同或反对票</p>
       </van-row>
       <van-row class="pad35">
         <van-cell center title="是否允许居民发表意见" class="font28">
           <template #right-icon>
-            <van-switch v-model="canjudge" :active-value="1" :inactive-value="0" size="24" />
+            <van-switch
+              v-model="canjudge"
+              :active-value="1"
+              :inactive-value="0"
+              size="24"
+              :disabled="disabled"
+            />
           </template>
         </van-cell>
         <p class="font24">说明：如允许投票，则社区居民可以对该提案投赞同或反对票</p>
@@ -69,8 +88,8 @@
       </div>
     </div>
     <!-- 居民投票结果 -->
-    <h2 class="talkResultTitle" v-if="disabled">居民投票结果</h2>
-    <div class="resultBox" v-if="disabled">
+    <h2 class="talkResultTitle">居民投票结果</h2>
+    <div class="resultBox">
       <div>
         <span>{{ votes }}</span>
         <p>
@@ -91,22 +110,22 @@
       </div>
     </div>
     <!-- 居民反馈意见 -->
-    <h2 class="issueTitle" v-if="disabled">居民反馈意见</h2>
-    <div class="issueBox" v-if="disabled">
+    <h2 class="issueTitle">居民反馈意见</h2>
+    <div class="issueBox">
       <div class="issueDetail" v-for="(item, index) in issueList" :key="index">
         <p>{{ item.content }}</p>
         <div>
           <span>
             <img src="../../assets/img/人.png" alt />
-            {{ item.nickName }}
+            {{ item.baseuser.nickName }}
           </span>
           <span>
             <img src="../../assets/img/电话.png" alt />
-            {{ item.mobile}}
+            {{ item.baseuser.mobile}}
           </span>
-          <span>
+          <span style="overflow: hidden;text-overflow:ellipsis;white-space: wrap;display:block">
             <img src="../../assets/img/房子222.png" alt />
-            {{ item.address }}
+            {{ item.baseuser.address }}
           </span>
         </div>
       </div>
@@ -120,7 +139,9 @@ import groupDetailVue from "../socialgroup/groupDetail.vue";
 export default {
   data() {
     return {
-      text: "",
+      // text:'',
+      proposalNo: null,
+      ProposalTypeList: [], //分类列表集合
       hasgongshi: 0,
       // 查看编辑控制
       disabled: true,
@@ -131,12 +152,10 @@ export default {
       canjudge: 0, //是否允许居民发表意见
       title: "", //提案标题
       //提案内容那
-      content:
-        "您好，这是本次小区改建的主要提案内容之一，你 积分的结合房价多少附近可兑换防静电带回家回到家， 第三方接电话度计划几点几分跨时代讲课的佳都科技近",
-      createName: "李丽丽", //参会人
+      content: "",
+      createName: "", //参会人
       //纪要内容  后台未返回
-      jiyao:
-        "您好，这是本次小区改建的主要提案内容之一，你 积分的结合房价多少附近可兑换防静电带回家回到家， 第三方接电话度计划几点几分跨时代讲课的佳都科技近",
+      jiyao: "",
       votes: 10, //总票数
       favors: 10, //赞同数
       oppositions: 10, //反对数
@@ -152,6 +171,15 @@ export default {
       ProposalType: "",
     };
   },
+  filters: {
+    showName(value, list) {
+      let item = list.find((item) => {
+        return item.value == value;
+      });
+      item = item || {};
+      return item.text;
+    },
+  },
   methods: {
     //   初始化
     init() {
@@ -161,34 +189,22 @@ export default {
     // 是否公示
     changePublicity(val) {
       console.log(val, "val");
-      //   if (val == 1) {
-      //     this.disabled = true;
-      //   } else {
-      //     this.disabled = false;
-      //   }
     },
-    getProposalVote() {
-      let data = {
-        // pageNo: this.pageTwoInfo.pageNo,
-        // pageSize: this.pageTwoInfo.pageSize,
-      };
-      voteProposal(this.id).then((res) => {
-        console.log(res);
+    getProposalVote(id) {
+      console.log(id, "id");
+      voteProposal(id).then((res) => {
+        console.log(res, "pinglun");
         let data = res.rows;
         this.issueList = data;
       });
     },
     getProposalTypeList() {
       getProposalType().then((res) => {
-        console.log(res, 1111111);
-        // this.type=4
-        let item = res.filter((item) => {
-          return item.value == this.type;
-        });
-        console.log(item, "item11");
-        console.log(this.type, "this.type");
-        this.text = item[0].text;
-        console.log(this.text, "22222");
+        this.ProposalTypeList = res;
+        // let item = res.find((item) => {
+        //   return item.value == this.type;
+        // });
+        // this.text = item[0].text;
       });
     },
   },
@@ -196,34 +212,15 @@ export default {
     this.id = this.$route.query.id;
     this.hasgongshi = this.$route.query.publicity;
     console.log(this.hasgongshi);
-    if (this.hasgongshi == 1) {
-      this.disabled = true;
-    } else {
-      this.disabled = false;
-    }
-    console.log(this.id, "this.id");
-    // console.log(this.$store, "this.$store");
-    // this.$store.dispatch("getClassification", this.id).then((res) => {
-    //   this.publicity = res.data.publicity;
-    //   this.canvote = res.data.canvote;
-    //   this.canjudge = res.data.canjudge;
-    //   this.title = res.data.title;
-    //   this.content = res.data.content;
-    //   this.createName = res.data.createName;
-    //   this.jiyao = res.data.jiyao;
-    //   this.votes = res.data.votes;
-    //   this.favors = res.data.favors;
-    //   this.oppositions = res.data.oppositions;
-    //   this.issueList = res.data.issueList;
-    //   //   如果已公示 只能查看 开启禁用状态
-    //   if (this.publicity == true) {
-    //     this.disabled = true;
-    //   } else {
-    //     this.disabled = false;
-    //   }
-    // });
+    // if (this.hasgongshi == 1) {
+    //   this.disabled = true;
+    // } else {
+    //   this.disabled = false;
+    // }
+    this.getProposalTypeList();
     getProposalList(this.id).then((res) => {
       console.log(res, "resxiangqing");
+      this.proposalNo = res.proposalNo;
       this.type = res.type;
       this.publicity = Number(res.publicity);
       this.canvote = Number(res.canvote);
@@ -235,17 +232,8 @@ export default {
       this.votes = res.votes;
       this.favors = res.favors;
       this.oppositions = res.oppositions;
-      //   this.issueList = res.issueList;
-      //   如果已公示 只能查看 开启禁用状态
-      //   if (this.publicity == true) {
-      //     this.disabled = true;
-      //   } else {
-      //     this.disabled = false;
-      //   }
     });
-    this.getProposalVote();
-    this.getProposalTypeList();
-    console.log(this.$route.query.id, "this.$router.params");
+    this.getProposalVote(this.id);
   },
 };
 </script>
@@ -264,6 +252,9 @@ export default {
 .input {
   border: 0;
   margin-left: 10px;
+}
+.input:disabled {
+  background-color: #fff;
 }
 .tianBox {
   background: #fff;
@@ -289,14 +280,19 @@ export default {
   text-indent: 50px;
   margin-top: 15px;
 }
+.textarea:disabled {
+  background-color: #fff;
+}
 .tianText p {
   margin-top: 15px;
   text-indent: 50px;
   line-height: 45px;
 }
-.van-cell {
-  padding: 0px 0px 8px 0px;
-  /* border: 1px solid red; */
+.tianBox .van-cell {
+  padding-bottom: 8px;
+  padding-left: 0;
+  padding-right: 0;
+  width: auto;
 }
 /* 提案讨论会 */
 .talkBoxTitle,
@@ -369,9 +365,13 @@ export default {
   line-height: 85px;
   border-bottom: 1px solid rgba(52, 52, 52, 0.1);
 }
+.issueDetail {
+  padding-bottom: 15px;
+}
 .issueDetail div {
   height: 85px;
   line-height: 85px;
+  margin-bottom: 30px;
 }
 .issueDetail div span {
   /* display: inline-block; */

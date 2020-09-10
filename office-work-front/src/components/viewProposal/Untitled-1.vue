@@ -1,68 +1,60 @@
 <template>
   <div class="tian">
     <van-sticky>
-      <van-tabs sticky @click="changTab" v-model="active" style="z-index:99;" color="#4374f2">
-        <van-tab title="楼院提案" name="a"></van-tab>
-        <van-tab title="我的提案" name="b"></van-tab>
+      <van-tabs @click="changTab" sticky v-model="active" style="z-index:99;" color="#4374f2">
+        <van-tab title="楼院提案" name="楼院提案"></van-tab>
+        <van-tab title="我的提案" name="我的提案"></van-tab>
       </van-tabs>
     </van-sticky>
     <!-- 楼院提案 -->
-    <!-- <van-pull-refresh
-      v-if="active=='a'"
-      v-model="listOne.isLoading"
-      style="z-index:0;"
-      @refresh="refreshOne"
-    >-->
+    <van-pull-refresh v-if="active == '0'" style="z-index:0;">
+      <van-list finished-text="没有更多了" @load="onLoad">
+        <van-cell v-for="(item, index) in ProposallyList" :key="index">
+          <div class="ProposalList">
+            <div @click="goProposalDetail" class="ProposalTitle">
+              <span class="hasgongshi">{{ item.publicity == 1 ? "已公示" : "未公示" }}</span>
+              <h2>{{ item.title }}</h2>
+              <!-- <h2 style="margin-left:20px" @click="deleteitemly(item.id)">删除</h2> -->
 
-    <van-list class="vanlistpad100" v-if="active=='a'">
-      <van-cell v-for="(item, index) in listOne.rows" :key="index">
-        <div class="ProposalList">
-          <div @click="goProposalDetail" class="ProposalTitle">
-            <span class="hasgongshi">{{ item.publicity == 1 ? "已公示" : "未公示" }}</span>
-            <h2>{{ item.title }}</h2>
-            <!-- <h2 style="margin-left:20px" @click="deleteitemly(item.id)">删除</h2> -->
+              <a @click="goDetail(item.id, item.publicity)">查看详情</a>
+            </div>
+            <div class="ProposalMsg">
+              <p>
+                <span>提案人:</span>
+                {{ item.create_name }}
+                {{ item.address }}
+              </p>
+              <p>
+                <span>提案日期：</span>
+                {{ dealTime(item.create_date) }}
+              </p>
+            </div>
 
-            <a @click="goDetail(item.id, item.publicity)">查看详情</a>
+            <div class="ProposalData">
+              <span class="fl">
+                <img src="../../assets/img/统计.png" alt />
+                居民投票数{{ item.votes }}
+              </span>
+              <span class="fl">
+                <img src="../../assets/img/赞同-fill.png" alt />
+                赞成数 {{ item.favors }}
+              </span>
+              <span class="fr">
+                <img src="../../assets/img/赞同-fill(1).png" alt />
+                反对数 {{ item.oppositions }}
+              </span>
+            </div>
           </div>
-          <div class="ProposalMsg">
-            <p>
-              <span>提案人:</span>
-              {{ item.create_name }}
-              {{ item.address }}
-            </p>
-            <p>
-              <span>提案日期：</span>
-              {{ dealTime(item.create_date) }}
-            </p>
-          </div>
-
-          <div class="ProposalData">
-            <span class="fl">
-              <img src="../../assets/img/统计.png" alt />
-              居民投票数{{ item.votes }}
-            </span>
-            <span class="fl">
-              <img src="../../assets/img/赞同-fill.png" alt />
-              赞成数 {{ item.favors }}
-            </span>
-            <span class="fr">
-              <img src="../../assets/img/赞同-fill(1).png" alt />
-              反对数 {{ item.oppositions }}
-            </span>
-          </div>
-        </div>
-      </van-cell>
-    </van-list>
-    <!-- </van-pull-refresh> -->
+        </van-cell>
+      </van-list>
+    </van-pull-refresh>
     <!-- 我的提案 -->
     <!-- <van-pull-refresh
-      v-show="active == 'b'"
+      v-show="active == '1'"
       style="z-index:0;"
-      v-model="listTwo.isLoading"
-      @refresh="refreshTwo"
     >-->
-    <van-list finished-text="没有更多了" v-if="active=='b'" class="vanlistpad100">
-      <van-cell v-for="(item, index) in listTwo.rows" :key="index">
+    <van-list finished-text="没有更多了" @load="onLoadmy">
+      <van-cell v-for="(item, index) in ProposalmyList" :key="index">
         <div class="ProposalList">
           <div @click="goProposalDetail" class="ProposalTitle">
             <span class="hasgongshi">{{ item.publicity == 1 ? "已公示" : "未公示" }}</span>
@@ -100,22 +92,6 @@
       </van-cell>
     </van-list>
     <!-- </van-pull-refresh> -->
-    <div class="paginationa" v-if="active=='a'">
-      <van-pagination
-        @change="changeListOne"
-        v-model="listOne.currentPage"
-        :page-count="listOne.totalPage"
-        mode="simple"
-      />
-    </div>
-    <div class="paginationb" v-if="active=='b'">
-      <van-pagination
-        @change="changeListTwo"
-        v-model="listTwo.currentPage"
-        :page-count="listTwo.totalPage"
-        mode="simple"
-      />
-    </div>
     <div class="addBtn">
       <van-button @click="addProposal">新增提案</van-button>
     </div>
@@ -126,51 +102,16 @@ import { fetchMyList, fetchOrgList, deleteProposal } from "@/api/proposal";
 export default {
   data() {
     return {
-      currentPage: 1,
-      active: "a",
+      active: "0",
       type: 0, //类型 0 楼院提案 1 我的提案
       //   列表页数据
-      listOne: {
-        pageNo: 1,
-        isLoading: false,
-        finished: false,
-        //
-        rows: [],
-        totalPage: null,
-        currentPage: 1,
-        pageSize: 15,
-      },
-      listTwo: {
-        pageNo: 1,
-        isLoading: false,
-        finished: false,
-
-        //
-        rows: [],
-        totalPage: null,
-        currentPage: 1,
-        pageSize: 15,
-      },
+      ProposallyList: [], //楼院
+      ProposalmyList: [], //我的提案
     };
   },
   methods: {
     //   初始化
     init() {},
-    // 点击tab切换事件
-    changTab(name) {
-      console.log(this.active, "active");
-      if (name == "a") {
-        //   this.type = 0;
-        //   this.listOne.rows = [];
-        //   this.listOne.pageNo = 1;
-        //   this.getOrgList();
-      } else {
-        //   this.type = 1;
-        //   this.listTwo.rows = [];
-        this.listTwo.currentPage = 1;
-        this.getMyList();
-      }
-    },
     // 删除
     deleteitemly(id) {
       deleteProposal(id).then((res) => {
@@ -203,48 +144,36 @@ export default {
         date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
       return Y + M + D + h + m + s;
     },
-
+    // 下拉刷新
+    onRefreshly() {
+      this.pageOneInfo.pageNo = 1;
+      this.getOrgList();
+    },
+    onLoad() {},
+    onLoadmy() {},
+    // 点击tab切换事件
+    changTab(name) {},
     // 获取我的提案
     getMyList() {
       let data = {
-        pageNo: this.listTwo.currentPage,
-        pageSize: this.listTwo.pageSize,
+        pageNo: this.pageTwoInfo.pageNo,
+        pageSize: this.pageTwoInfo.pageSize,
       };
       fetchMyList(data).then((res) => {
         let data = res.list;
-        let _this = this;
-        console.log(data, "restwo");
-        this.listTwo.rows = [];
-        data.forEach(function (item, index) {
-          _this.listTwo.rows.push(item);
-        });
-        this.listTwo.currentPage = res.currentPage;
-        this.listTwo.totalPage = res.totalPage;
+        this.ProposalmyList = data;
       });
     },
     // 获取楼院提案
     getOrgList() {
-      let params = {
-        pageNo: this.listOne.currentPage,
-        pageSize: this.listOne.pageSize,
+      let data = {
+        pageNo: this.pageOneInfo.pageNo,
+        pageSize: this.pageOneInfo.pageSize,
       };
-      fetchOrgList(params).then((res) => {
-        let _this = this;
+      fetchOrgList(data).then((res) => {
         let data = res.list;
-        console.log(data, "resone");
-        this.listOne.rows = [];
-        data.forEach(function (item, index) {
-          _this.listOne.rows.push(item);
-        });
-        this.listOne.currentPage = res.currentPage;
-        this.listOne.totalPage = res.totalPage;
+        this.ProposallyList = data;
       });
-    },
-    changeListOne() {
-      this.getOrgList();
-    },
-    changeListTwo() {
-      this.getMyList();
     },
     // 跳转提案详情
     goProposalDetail() {},
@@ -276,9 +205,7 @@ export default {
       });
     },
   },
-  mounted() {
-    this.getOrgList();
-  },
+  mounted() {},
 };
 </script>
 <style scope>
@@ -385,22 +312,5 @@ export default {
 }
 .addBtn .van-button--normal {
   width: 100% !important;
-}
-.paginationa {
-  z-index: 9999;
-  position: fixed;
-  bottom: 80px;
-  width: 100%;
-  background: #fff;
-}
-.paginationb {
-  z-index: 9999;
-  position: fixed;
-  bottom: 80px;
-  width: 100%;
-  background: #fff;
-}
-.vanlistpad100 {
-  padding-bottom: 160px !important;
 }
 </style>

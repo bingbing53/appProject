@@ -67,7 +67,7 @@ class _BlowWillSolvePageState extends State<BlowWillSolvePage> with WidgetsBindi
       case AppLifecycleState.paused: // 应用程序不可见，后台
         print('不可见');
         break;
-      case AppLifecycleState.suspending: // 申请将暂时暂停
+      case AppLifecycleState.detached: // 申请将暂时暂停
         print('暂停1');
         break;
     }

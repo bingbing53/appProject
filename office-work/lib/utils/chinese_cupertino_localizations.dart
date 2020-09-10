@@ -28,11 +28,21 @@ class ChineseCupertinoLocalizations implements CupertinoLocalizations {
   String get cutButtonLabel => ml.cutButtonLabel;
 
   @override
+  String get modalBarrierDismissLabel=>null;
+
+  @override
   DatePickerDateOrder get datePickerDateOrder => DatePickerDateOrder.mdy;
 
   @override
   DatePickerDateTimeOrder get datePickerDateTimeOrder =>
       DatePickerDateTimeOrder.date_time_dayPeriod;
+
+  @override
+  String tabSemanticsLabel({int tabIndex, int tabCount}) {
+    assert(tabIndex >= 1);
+    assert(tabCount >= 1);
+    return 'Tab $tabIndex of $tabCount';
+  }
 
   @override
   String datePickerDayOfMonth(int dayIndex) {

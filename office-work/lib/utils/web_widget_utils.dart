@@ -9,7 +9,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class WebWidgetUtils{
   final flutterWebviewPlugin = new FlutterWebviewPlugin();
-
+  
   static WebViewController _webViewController;
 
   static Widget getWebView(String url,double height){
@@ -25,8 +25,34 @@ class WebWidgetUtils{
           },
           onPageFinished: (url) {
             injectToken();
+//            // add
+//            javascriptChannels: <JavascriptChannel>[ //javascriptChannels这个是api提供的互调的方法，
+//              _toastJavascriptChannel(context),
+//            ].toSet();
           },
-        )
+          // add
+          // javascriptChannels: <JavascriptChannel>[
+          //   JavascriptChannel(
+          //     name: "share",
+          //     onMessageReceived: (JavascriptMessage message) {
+          //       print("参数： ${message.message}");
+          //     }
+          //   ),
+          // ].toSet(),
+          // 往h5 window 里面插入全局方法 Toaster
+          // JavascriptChannel _toastJavascriptChannel(BuildContext context) {
+          //   return JavascriptChannel(
+          //     name: 'Toaster',
+          //     onMessageReceived: (JavascriptMessage message) {
+          //       print(message);
+          //       Fluttertoast.showToast(
+          //         msg: message.message
+          //       );
+          //     });
+          // }
+
+
+        ),
     );
   }
   //注入token

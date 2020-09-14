@@ -190,6 +190,17 @@ class ChatPage extends StatelessWidget {
       bloc.getChatUserList();
       isChatPageInit = true;
     }
+    // add
+//     JavascriptChannel _toastJavascriptChannel(BuildContext context) {
+//      return JavascriptChannel(
+//        name: 'Toaster',
+//        onMessageReceived: (JavascriptMessage message) {
+//          print(message);
+//          Fluttertoast.showToast(
+//            msg: message.message
+//          );
+//        });
+//    }
     return Scaffold(
         appBar: AppBar(
         title: Text("共商共治"),
@@ -206,6 +217,16 @@ class ChatPage extends StatelessWidget {
       ),
       body: Column(
             children: <Widget>[
+          //       new WebView(
+          //         initialUrl: widget.url,
+          //         javascriptMode: JavascriptMode.unrestricted,
+          //         onWebViewCreated: (controller) {
+          //           _controller = controller;
+          //         },
+          //       javascriptChannels: <JavascriptChannel>[ //javascriptChannels这个是api提供的互调的方法，
+          //     _toastJavascriptChannel(context),
+          //   ].toSet()
+          // )
               Expanded(
                 flex: 1,
                 child:StreamBuilder(
@@ -370,7 +391,7 @@ class ChatPage extends StatelessWidget {
                     ))),
           );
         }else if(list[i].superCode == 'chat' && list[i].code == 'invite'){
-          item.add(
+          item.add( 
             new PopupMenuItem<String>(
                 value: "invite",
                 child: ListTile(

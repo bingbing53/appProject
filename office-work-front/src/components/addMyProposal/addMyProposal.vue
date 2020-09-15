@@ -1,9 +1,9 @@
 <template>
   <div class="addProposal">
-    <van-row>
+    <!-- <van-row>
       <label>提案编号：</label>
       <input class="input" :disabled="disabled" v-model="proposalNo" placeholder />
-    </van-row>
+    </van-row>-->
     <van-row>
       <label>提案分类：</label>
       <!-- <span>提案分类内容</span> -->

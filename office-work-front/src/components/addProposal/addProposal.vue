@@ -2,10 +2,10 @@
   <div class="wrap">
     <div class="wrapcontent">
       <div class="addProposal">
-        <van-row>
+        <!-- <van-row>
           <label>提案编号：</label>
           <input class="input" v-model="proposalNo" placeholder />
-        </van-row>
+        </van-row>-->
         <van-row>
           <label>提案分类：</label>
           <!-- <div class="option"> -->

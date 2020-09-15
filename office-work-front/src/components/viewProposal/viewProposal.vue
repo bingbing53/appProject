@@ -84,7 +84,7 @@
         <p>{{ jiyao }}</p>
       </div>
       <div class="in_order">
-        <span>发起会议</span>
+        <span @click="goMeeting">发起会议</span>
       </div>
     </div>
     <!-- 居民投票结果 -->
@@ -206,6 +206,9 @@ export default {
         // });
         // this.text = item[0].text;
       });
+    },
+    goMeeting() {
+      Toaster.postMessage("js call flutter success!!");
     },
   },
   mounted() {

@@ -1,6 +1,12 @@
+后台
 提案后台     /opt/community/tomcat_server/webapps/server/webpage/cn/trust/handy/office
 提案样式  /opt/community/tomcat_server/webapps/server/plug-in/main/css/cn/trust/handy/office
+问卷调查控件   /opt/community/tomcat_server/webapps/server/plug-in/formbuilder/dist
+疫情防控   gsassList.jsp   /opt/community/tomcat_server/webapps/server/webpage/cn/trust/handy/sass
+民情民意   willrecordList.jsp      /opt/community/tomcat_server/webapps/server/webpage/cn/trust/handy/office
+
+
+
+公众号
 公众号提案  css/js        /opt/community/tomcat_server/webapps/server/plug-in/mobile
 公众号提案html           /opt/community/tomcat_server/webapps/server/WEB-INF/content/pages2/proposal
-后台问卷调查控件   /opt/community/tomcat_server/webapps/server/plug-in/formbuilder/dist
-

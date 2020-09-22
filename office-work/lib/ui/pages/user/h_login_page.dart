@@ -7,6 +7,10 @@ import 'package:flutter_wanandroid/ui/pages/page_index.dart';
 
 import 'h_signin_check_page.dart';
 
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_wanandroid/blocs/bloc_index.dart';
+import 'package:flutter_wanandroid/res/res_index.dart';
+
 class LoginMainPage extends StatefulWidget {
   LoginMainPage({Key key}) : super(key: key);
 
@@ -107,7 +111,7 @@ class _LoginMainPage extends State<LoginMainPage> {
 
                       SizedBox(height: 50.0,),
                       GestureDetector(
-                        child: Center(child: Text('注册',style: TextStyle(color: Colors.blue),),),
+                        child: Center(child: Text('被邀居民注册',style: TextStyle(color: Colors.blue),),),
                         onTap: (){
                           _SignInFormKey.currentState.save();
                           Navigator.push(context,
@@ -234,49 +238,53 @@ class _LoginMainPage extends State<LoginMainPage> {
   }
 
   Widget buildSignInButton() {
-
     return Row(
-      children: <Widget>[
-        Expanded(
-          child: MaterialButton(
-            color: Colors.blue,
-            textColor: Colors.white,
-            shape : const RoundedRectangleBorder(
-                side: BorderSide.none,
-                borderRadius: BorderRadius.all(Radius.circular(50))),
-            child: Text(type == 0 ? '登  录':'获取验证码',style: TextStyle(fontSize: Dimens.font_sp18),),
-            onPressed: () async {
-              var _form = _SignInFormKey.currentState;
-              _form.save();
-              if(!RegexUtil.isMobileSimple(_mobile)){
-                Fluttertoast.showToast(msg: '请输入正确的手机号');
-                return;
-              }
 
-              _bloc.checkMobile(_mobile).then((_) async {
-                print('success');
-                if(type == 1){
-                  Navigator.push(context,
-                    MaterialPageRoute(builder: (context) {
-                      return BlocProvider<LoginBloc>(
-                          child: SignInCheckPage(mobile: _mobile,),
-                          bloc: LoginBloc());
-                    }),
-                  );
-                }else if(type == 0){
-                  //账户密码登录
-                  if(_password.length < 6){
-                    Fluttertoast.showToast(msg: '密码不得少于6位');
+      children: <Widget>[
+
+        Expanded(
+
+              child: RoundButton(
+                margin: EdgeInsets.all(40),
+
+//                shape : const RoundedRectangleBorder(
+//                    side: BorderSide.none,
+//                    borderRadius: BorderRadius.all(Radius.circular(50))),
+                text:(type == 0 ? '登  录':'获取验证码'/*style: TextStyle(fontSize: Dimens.font_sp18)*/),
+                onPressed: () async {
+                  var _form = _SignInFormKey.currentState;
+                  _form.save();
+                  if(!RegexUtil.isMobileSimple(_mobile)){
+                    Fluttertoast.showToast(msg: '请输入正确的手机号');
                     return;
                   }
-                  await _bloc.login(context,username: _mobile,password: _password,type: type);
-                }
-              }).catchError((_){
-                SimpleDialogUtil.showDialogs(context,'错误提示',_.message);
-              });
-            },
-          )
-        ),
+
+                  _bloc.checkMobile(_mobile).then((_) async {
+                    print('success');
+                    if(type == 1){
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                          return BlocProvider<LoginBloc>(
+                              child: SignInCheckPage(mobile: _mobile,),
+                              bloc: LoginBloc());
+                        }),
+                      );
+                    }else if(type == 0){
+                      //账户密码登录
+                      if(_password.length < 6){
+                        Fluttertoast.showToast(msg: '密码不得少于6位');
+                        return;
+                      }
+                      await _bloc.login(context,username: _mobile,password: _password,type: type);
+                    }
+                  }).catchError((_){
+                    SimpleDialogUtil.showDialogs(context,'错误提示',_.message);
+                  });
+                },
+              )
+          ),
+
+
       ],
     );
   }

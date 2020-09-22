@@ -18,11 +18,11 @@ class MessageItem extends StatelessWidget {
   Widget build(BuildContext context) {
 
     String portrait = '',chatName = model.title,lastMessage = '',lastTime='';
-    Widget defaultChatIcon;
+    Widget  defaultChatIcon;
     if(model.conversationType == JMConversationType.single){
       //单聊
       JMUserInfo jmUserInfo = model.target;
-      portrait = WanAndroidApi.format(jmUserInfo.extras['portrait']);
+      portrait= WanAndroidApi.format(jmUserInfo.extras['portrait']);
       defaultChatIcon = Image.asset(Utils.getImgPath('chat_single'));
       if(showGroup == '1'){
         return SizedBox(height: 0,);
@@ -77,13 +77,14 @@ class MessageItem extends StatelessWidget {
                 padding: EdgeInsets.only(left:6.0,right: 15.0,top:6.0,bottom: 6.0),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(6.0),
-                  child:portrait == '' || portrait == null? defaultChatIcon :CachedNetworkImage(
+
+                    child:portrait == '' || portrait == null ?  defaultChatIcon :CachedNetworkImage(
                         fit: BoxFit.fill,
                         imageUrl: '$portrait',
-                        errorWidget: (context, url, error) => new Icon(Icons.person,color: Colors.white,),
+                        errorWidget: (context, url, error) => defaultChatIcon,/*new Icon(Icons.person,color: Colors.blue,),*/
                       ),
+                  ),
                 ),
-              ),
               Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

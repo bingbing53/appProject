@@ -93,7 +93,7 @@ class _CreateMissionPageState extends State<CreateMissionPage>{
 
                         RoundButton(
                           text: '发 送',
-                          margin: EdgeInsets.all(10),
+                          margin: EdgeInsets.all(50),
                           onPressed: () {
                             sendMission();
                           },

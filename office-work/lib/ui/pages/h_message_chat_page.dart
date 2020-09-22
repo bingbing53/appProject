@@ -56,7 +56,7 @@ class _MessageChatPage extends State<MessageChatPage> {
   Widget build(BuildContext context) {
     LogUtil.e("MessagePage build......");
     return Scaffold(
-      backgroundColor: Colours.gray_f0,
+      backgroundColor: Colours.gray_f5,
       appBar: AppBar(
         title: Text(widget.model.title),
         actions: <Widget>[
@@ -243,10 +243,10 @@ class _MessageChatPage extends State<MessageChatPage> {
 //                  ),
             ),
             inputType == 'text' ? new RoundButton(
-              radius:3,
+              radius:20,
               width: 60,
               text: '发送',
-              height: 35,
+              height: 30,
               style: TextStyle(fontSize: Dimens.font_sp14,color: Colors.white),
               onPressed: () {
                 bloc.sendMessage(_textController,widget.model);

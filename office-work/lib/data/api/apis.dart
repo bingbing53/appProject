@@ -8,9 +8,9 @@ class WanAndroidApi {
   static const String ARTICLE_LISTPROJECT = "article/listproject";
 
   //测试文章地址
-  static const String WEBPAGR_PREFIX = "https://mongo.qicaidonghu.cn/work";
+//  static const String WEBPAGR_PREFIX = "https://mongo.qicaidonghu.cn/work";
   //生产文章地址
-  //static const String WEBPAGR_PREFIX = "https://www.qicaidonghu.cn/work";
+  static const String WEBPAGR_PREFIX = "https://www.qicaidonghu.cn/work";
   //文件预览
   static const String FILEPREVIEW = "https://image.shequyijia.cn/onlinePreview?url=";
 
@@ -202,4 +202,6 @@ class WanAndroidApi {
   static const String WORKRECORD_DETAIL = WEBPAGR_PREFIX + '/#/hisDetail?id=';
   //app下载链接
   static const String APP_DOWNLOAD = WEBPAGR_PREFIX + '/#/download';
+  //
+  static const String PROPOSAL_LIST = WEBPAGR_PREFIX + '/#/Proposal';
 }

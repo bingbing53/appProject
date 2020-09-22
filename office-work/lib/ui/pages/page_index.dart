@@ -41,5 +41,6 @@ export 'h_video_player.dart';
 export 'user/h_login_page.dart';
 export 'user/h_register.dart';
 export 'user/h_modify_passwd_page.dart';
+export 'h_proposal_page.dart';
 
 export 'backdrop_demo.dart';

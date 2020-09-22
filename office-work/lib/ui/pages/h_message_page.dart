@@ -34,7 +34,7 @@ class MessagePage extends StatelessWidget {
     
     return Scaffold(
       appBar: AppBar(
-        title: Text(showGroup != '1' ? '掌上社区':'议事厅'),
+        title: Text(showGroup != '1' ? '消息':'议事厅'),
       ),
       body: new RefreshScaffold(
         labelId: labelId,

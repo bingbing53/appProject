@@ -40,7 +40,7 @@ class MessageChatItem extends StatelessWidget {
                     child:Container(
 //                      color: Colors.white70,
                       padding: EdgeInsets.only(left:10.0,right: 10.0,top: 3.0,bottom: 3.0),
-                      child: Text(createTime,style: TextStyle(fontSize: Dimens.font_sp12),),
+                      child: Text(createTime,style: TextStyle(fontSize: Dimens.font_sp12,color: Colours.gray_33),),
                     )
                 ),
               ):Container(height: 0),

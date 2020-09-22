@@ -6,14 +6,14 @@ class Constant {
 //  static const String server_address = wan_android;
 
   // 生产
-//  static const String server_address = "https://www.qicaidonghu.cn/server/rest/";
-//  static const String community_server_address = "https://api.shequyijia.cn/";
-//  static const String pic_server = "https://image.shequyijia.cn/pic/";
+  static const String server_address = "https://www.qicaidonghu.cn/server/rest/";
+  static const String community_server_address = "https://api.shequyijia.cn/";
+  static const String pic_server = "https://image.shequyijia.cn/pic/";
 
   // 测试
-  static const String server_address = "https://mongo.qicaidonghu.cn/server/rest/";
-  static const String community_server_address = "https://api.dev.shequyijia.cn/";
-  static const String pic_server = "https://mongo.qicaidonghu.cn/pic/";
+//  static const String server_address = "https://mongo.qicaidonghu.cn/server/rest/";
+//  static const String community_server_address = "https://api.dev.shequyijia.cn/";
+//  static const String pic_server = "https://mongo.qicaidonghu.cn/pic/";
 
 
   static const String wan_android = "http://www.wanandroid.com/";
@@ -40,7 +40,7 @@ class Constant {
 
 class AppConfig {
   static const String appName = 'flutter_wanandroid';
-  static const String version = '20200908.120000';
+  static const String version = '20200921.120000';
   static const bool isDebug = true;
 }
 

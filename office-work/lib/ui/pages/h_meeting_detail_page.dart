@@ -275,9 +275,9 @@ class _MeetingDetailPageState extends State<MeetingDetailPage>{
                 child: RoundButton(
                   bgColor: Colors.red,
                   text: '取消会议',
-                  margin: EdgeInsets.all(10),
-                  radius: 5.0,
-                  height: 40.0,
+                  margin: EdgeInsets.all(50),
+                  radius: 30.0,
+                  height: 50.0,
                   onPressed: () {
                     showDialog(
                         context: context,

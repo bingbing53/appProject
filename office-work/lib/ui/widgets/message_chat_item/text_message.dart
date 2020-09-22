@@ -15,12 +15,14 @@ class TextMessage extends StatelessWidget{
         margin: const EdgeInsets.only(top:5.0),
         child: ClipRRect(
             borderRadius: BorderRadius.circular(6.0),
-            child:Container(
-              color: model.isSend ? Colours.green_6a:Colors.white,
-              padding: EdgeInsets.only(top:6.0,bottom: 6.0,left: 10.0,right: 10.0),
-              child:new Text(model.text??' '),
+
+              child:Container(
+                  color: model.isSend ? Colours.green_6a:Colors.white,
+                  padding: EdgeInsets.only(top:6.0,bottom: 6.0,left: 10.0,right: 10.0),
+                child:new Text(model.text??' '),
             )
         )
+
     );
   }
 }

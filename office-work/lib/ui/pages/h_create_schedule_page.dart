@@ -122,7 +122,7 @@ class _CreateSchedulePageState extends State<CreateSchedulePage>{
 
                 RoundButton(
                   text: IntlUtil.getString(context, widget.labelId),
-                  margin: EdgeInsets.all(10),
+                  margin: EdgeInsets.all(50),
                   onPressed: () {
                     sendMission();
                   },

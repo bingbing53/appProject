@@ -41,6 +41,7 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin{
   }
 
   Widget buildMineInfo(UserInfoModel user,WorkBloc bloc){
+
     if (user == null) {
       return new Container(height: 0.0);
     }
@@ -110,7 +111,7 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin{
                 new Text(
                   "${user.memo??''}",
                   style:
-                  new TextStyle(color: Colors.white, fontSize: 10.0),
+                  new TextStyle(color: Colors.white, fontSize: 12.0),
                 ),
               ],
             )

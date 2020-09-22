@@ -85,13 +85,14 @@ class _UserRegisterPage extends State<UserRegister>{
     return Row(
       children: <Widget>[
         Expanded(
-            child: MaterialButton(
-              color: Colors.blue,
-              textColor: Colors.white,
-              shape : const RoundedRectangleBorder(
-                  side: BorderSide.none,
-                  borderRadius: BorderRadius.all(Radius.circular(50))),
-              child: Text('注 册',style: TextStyle(fontSize: Dimens.font_sp18),),
+            child: RoundButton(
+              margin: EdgeInsets.all(50),
+//              color: Colors.blue,
+//              textColor: Colors.white,
+//              shape : const RoundedRectangleBorder(
+//                  side: BorderSide.none,
+//                  borderRadius: BorderRadius.all(Radius.circular(50))),
+              text:('注 册'),
               onPressed: () {
                 var _form = _SignInFormKey.currentState;
                 _form.save();

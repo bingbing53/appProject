@@ -260,6 +260,11 @@ class ContactUserModel extends ISuspensionBean{
   String toString() {
     return 'ContactUserModel{id: $id, realname: $realname, sex: $sex, departname: $departname, portrait: $portrait, personType: $personType, namePinyin: $namePinyin, tagIndex: $tagIndex, mobilePhone: $mobilePhone, checked: $checked}';
   }
+  String getDepartName(String id){
+    if(this.id==id) {
+      return this.departname;
+    }
+  }
 
 
 }

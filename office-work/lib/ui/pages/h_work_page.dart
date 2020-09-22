@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_wanandroid/common/component_index.dart';
+import 'package:flutter_wanandroid/ui/pages/page_index.dart';
 import 'package:flutter_wanandroid/ui/pages/rec_hot_page.dart';
+import 'dart:async';
+import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter_wanandroid/utils/util_index.dart' as util;
+import 'package:flutter_wanandroid/ui/pages/page_index.dart';
+
 bool isWorkInit = true;
 class WorkPage extends StatelessWidget {
   const WorkPage({Key key, this.labelId}) : super(key: key);
@@ -41,7 +47,7 @@ class WorkPage extends StatelessWidget {
     if (ObjectUtil.isEmpty(list)) {
       return new Container(height: 0.0);
     }
-    double width = MediaQuery.of(context).size.width / 5 ;
+    double width = MediaQuery.of(context).size.width / 4 ;
     List<Widget> _children = list.map((model) {
       if(model.superCode != 'work')
         return SizedBox();
@@ -55,12 +61,24 @@ class WorkPage extends StatelessWidget {
             if(model.isWeb=='0'){
               Navigator.pushNamed(context, model.code);
             }else {
-              String version = SpUtil.getString(model.code);
-              SpUtil.putString(model.code, model.version);
-              NavigatorUtil.pushWeb(context,
-                  title: model.showName,
-                  url: model.target,
-                  refreshCache: Utils.getRefreshWeb(version, model.version));
+              if(model.code=="proposal"){
+                util.NavigatorUtil.pushPage(
+                  context,
+                  BlocProvider<MissionBloc>(
+                    child: WebViewPage( ),
+                    bloc: new MissionBloc(),
+                  ),
+                  pageName: Ids.titleMeeting,
+                );
+              }
+              else {
+                String version = SpUtil.getString(model.code);
+                SpUtil.putString(model.code, model.version);
+                NavigatorUtil.pushWeb(context,
+                    title: model.showName,
+                    url: model.target,
+                    refreshCache: Utils.getRefreshWeb(version, model.version));
+              }
             }
           },
           child: Column(
@@ -103,10 +121,10 @@ class WorkPage extends StatelessWidget {
                 children: <Widget>[
 //              SizedBox(height:Dimens.gap_dp15),
                   Wrap(
-                    runSpacing: Dimens.gap_dp15,
+                    runSpacing: Dimens.gap_dp20,
                     children: _children,
                   ),
-                  SizedBox(height:Dimens.gap_dp15),
+                  SizedBox(height:Dimens.gap_dp20),
                 ],
               ),
               decoration: new BoxDecoration(

@@ -101,7 +101,7 @@ class _BlowWillSolvePageState extends State<BlowWillSolvePage> with WidgetsBindi
     }
     return RoundButton(
       text: '提  交',
-      margin: EdgeInsets.all(10),
+      margin: EdgeInsets.all(50),
       onPressed: () {
         submitWillBlow();
       },

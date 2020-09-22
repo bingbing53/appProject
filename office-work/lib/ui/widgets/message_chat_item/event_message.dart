@@ -71,7 +71,7 @@ class _EventMessagePage extends State<EventMessage>{
           child: ClipRRect(
               borderRadius: BorderRadius.circular(6.0),
               child: Container(
-                color: Colours.transparent_40,
+                color: Colours.gray_ce,
                 padding: EdgeInsets.only(
                     left: 10.0, top: 3.0, bottom: 3.0, right: 10.0),
                 child: new Text(

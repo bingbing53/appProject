@@ -57,13 +57,16 @@ class _InvitePersonPage extends State<InvitePerson>{
     return Row(
       children: <Widget>[
         Expanded(
-            child: MaterialButton(
-              color: enableButton?Colors.blue:Colours.text_gray,
-              textColor: Colors.white,
-              shape : const RoundedRectangleBorder(
-                  side: BorderSide.none,
-                  borderRadius: BorderRadius.all(Radius.circular(50))),
-              child: Text('发 送 邀 请',style: TextStyle(fontSize: Dimens.font_sp18),),
+            child: RoundButton(
+              margin: EdgeInsets.all(50),
+
+//              color: enableButton?Colors.blue:Colours.text_gray,
+//              textColor: Colors.white,
+//              shape : const RoundedRectangleBorder(
+//                  side: BorderSide.none,
+//                  borderRadius: BorderRadius.all(Radius.circular(50))),
+              text:'发送邀请',
+//              Text('发 送 邀 请',style: TextStyle(fontSize: Dimens.font_sp18),),
               onPressed: () {
                 if(enableButton) {
                   var _form = _SignInFormKey.currentState;

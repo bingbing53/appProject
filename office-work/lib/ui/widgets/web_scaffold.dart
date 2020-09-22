@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_wanandroid/common/component_index.dart';
 import 'package:flutter_wanandroid/ui/pages/page_index.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+
+import 'package:flutter_wanandroid/utils/util_index.dart' as util;
+
 class WebScaffold extends StatefulWidget {
-  const WebScaffold({
-    Key key,
-    this.title,
-    this.titleId,
-    this.url,
-    this.refreshCache
-  }) : super(key: key);
+  const WebScaffold(
+      {Key key, this.title, this.titleId, this.url, this.refreshCache})
+      : super(key: key);
 
   final String title;
   final String titleId;
@@ -25,10 +24,9 @@ class WebScaffold extends StatefulWidget {
 }
 
 class WebScaffoldState extends State<WebScaffold> {
-
   FlutterWebviewPlugin flutterWebViewPlugin = FlutterWebviewPlugin();
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
-  bool isLoading = false,canClose = true;
+  bool isLoading = false, canClose = true;
   int progress = 0;
   Timer _timer;
 
@@ -43,13 +41,13 @@ class WebScaffoldState extends State<WebScaffold> {
     _simulateProgress();
 
     title = widget.title;
-    token = SpUtil.getString(Constant.key_token_name,defValue: '');
+    token = SpUtil.getString(Constant.key_token_name, defValue: '');
     _addListener();
   }
 
-  void _addListener(){
+  void _addListener() {
     flutterWebViewPlugin.onStateChanged.listen((viewState) async {
-      switch(viewState.type){
+      switch (viewState.type) {
         case WebViewState.shouldStart:
           // 准备加载
           print('准备加载');
@@ -57,16 +55,18 @@ class WebScaffoldState extends State<WebScaffold> {
             isLoading = true;
           });
 
-
-          NavigatorUtil.webUrlChangeJump(context,viewState.url,flutterWebViewPlugin);
+          NavigatorUtil.webUrlChangeJump(
+              context, viewState.url, flutterWebViewPlugin);
           flutterWebViewPlugin.evalJavascript('token("$token")');
-          flutterWebViewPlugin.evalJavascript('window.localStorage.setItem("token_message", "$token")');
+          flutterWebViewPlugin.evalJavascript(
+              'window.localStorage.setItem("token_message", "$token")');
           break;
         case WebViewState.startLoad:
           // 开始加载
           print('开始加载');
           flutterWebViewPlugin.evalJavascript('token("$token")');
-          flutterWebViewPlugin.evalJavascript('window.localStorage.setItem("token_message", "$token")');
+          flutterWebViewPlugin.evalJavascript(
+              'window.localStorage.setItem("token_message", "$token")');
           setState(() {
             isLoading = true;
           });
@@ -75,7 +75,8 @@ class WebScaffoldState extends State<WebScaffold> {
           //加载完成
           print('加载完成');
           flutterWebViewPlugin.evalJavascript('token("$token")');
-          flutterWebViewPlugin.evalJavascript('window.localStorage.setItem("token_message", "$token")');
+          flutterWebViewPlugin.evalJavascript(
+              'window.localStorage.setItem("token_message", "$token")');
           setState(() {
             isLoading = false;
           });
@@ -90,21 +91,22 @@ class WebScaffoldState extends State<WebScaffold> {
       }
     });
 
-    flutterWebViewPlugin.onUrlChanged.listen((url){
-      if(url == widget.url){
+    flutterWebViewPlugin.onUrlChanged.listen((url) {
+      if (url == widget.url) {
         canClose = true;
-      }else{
+      } else {
         canClose = false;
       }
-      flutterWebViewPlugin.evalJavascript("window.document.title").then((result){
-        if(!ObjectUtil.isEmpty(result) && result.length > 0) {
-          if(result.startsWith("'") || result.startsWith('"')) {
+      flutterWebViewPlugin
+          .evalJavascript("window.document.title")
+          .then((result) {
+        if (!ObjectUtil.isEmpty(result) && result.length > 0) {
+          if (result.startsWith("'") || result.startsWith('"')) {
             title = result.substring(1, result.length - 1);
-          }else{
+          } else {
             title = result;
           }
-          if(mounted)
-            setState(() {});
+          if (mounted) setState(() {});
         }
       });
     });
@@ -121,7 +123,7 @@ class WebScaffoldState extends State<WebScaffold> {
     }
   }
 
-  Future _simulateProgress() async{
+  Future _simulateProgress() async {
     if (_timer == null) {
       _timer = Timer.periodic(Duration(milliseconds: 50), (time) {
         progress++;
@@ -136,10 +138,10 @@ class WebScaffoldState extends State<WebScaffold> {
     }
   }
 
-  Future<bool> _requestBack(){
-      flutterWebViewPlugin.hide();
-      flutterWebViewPlugin.dispose();
-      Navigator.pop(context);
+  Future<bool> _requestBack() {
+    flutterWebViewPlugin.hide();
+    flutterWebViewPlugin.dispose();
+    Navigator.pop(context);
   }
 
   @override
@@ -150,63 +152,100 @@ class WebScaffoldState extends State<WebScaffold> {
       style: TextStyle(color: Colors.white),
     ));
     return WebviewScaffold(
-          key: _scaffoldKey,
-          url: widget.url,
-          // 登录的URL
-          appBar: AppBar(
-            bottom: PreferredSize(
-              child: _progressBar(),
-              preferredSize: Size.fromHeight(2.0),
-            ),
-            leading:Container(
-              child: Row(
-                children: <Widget>[
-                  IconButton(icon: Icon(Icons.close), onPressed: (){
-                    _requestBack();
-                  }),
-                ],
-              ),
-            ),
-            title: new Text(
-              title,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            iconTheme: IconThemeData(color: Colors.white),
+        key: _scaffoldKey,
+        url: widget.url,
+        // 登录的URL
+        appBar: AppBar(
+          bottom: PreferredSize(
+            child: _progressBar(),
+            preferredSize: Size.fromHeight(2.0),
           ),
-          withZoom: false,
-          // 允许网页缩放
-          withLocalStorage: true,
-          // 允许LocalStorage
-          withJavascript: true,
-          // 允许执行js代码
-          resizeToAvoidBottomInset: true,
-          scrollBar:false,
-          clearCache: true,
-          bottomNavigationBar: Theme.of(context).platform == TargetPlatform.iOS ? Row(
-            children: <Widget>[
-              Expanded(
-                child: IconButton(
-                  icon: Icon(Icons.arrow_back_ios,color: Colors.grey,),
-                  onPressed: (){
-                    flutterWebViewPlugin.evalJavascript("history.go(-1);").then((result){
-                    });
-                  },
-                ),
-              ),
-              Expanded(
-                child: IconButton(
-                  icon: Icon(Icons.arrow_forward_ios,color: Colors.grey,),
-                  onPressed: (){
-                    flutterWebViewPlugin.evalJavascript("window.history.go(1);");
-                  },
-                ),
-              ),
-            ],
-          ):Container(height: 0,)
-    );
+          leading: Container(
+            child: Row(
+              children: <Widget>[
+                IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: () {
+                      _requestBack();
+                    }),
+              ],
+            ),
+          ),
+          title: new Text(
+            title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          iconTheme: IconThemeData(color: Colors.white),
+        ),
+        withZoom: false,
+        // 允许网页缩放
+        withLocalStorage: true,
+        // 允许LocalStorage
+        withJavascript: true,
+        // 允许执行js代码
+        resizeToAvoidBottomInset: true,
+        scrollBar: false,
+        clearCache: true,
+        // //add
+        javascriptChannels: <JavascriptChannel>[
+          _toasterJavascriptChannel(context),
+        ].toSet(),
+        ////
+        bottomNavigationBar: Theme.of(context).platform == TargetPlatform.iOS
+            ? Row(
+                children: <Widget>[
+                  Expanded(
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                        color: Colors.grey,
+                      ),
+                      onPressed: () {
+                        flutterWebViewPlugin
+                            .evalJavascript("history.go(-1);")
+                            .then((result) {});
+                      },
+                    ),
+                  ),
+                  Expanded(
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.grey,
+                      ),
+                      onPressed: () {
+                        flutterWebViewPlugin
+                            .evalJavascript("window.history.go(1);");
+                      },
+                    ),
+                  ),
+                ],
+              )
+            : Container(
+                height: 0,
+              ));
   }
 
+  //add
+  JavascriptChannel _toasterJavascriptChannel(BuildContext context) {
+    return JavascriptChannel(
+        name: 'Toaster',
+        onMessageReceived: (JavascriptMessage message) {
+          Navigator.pop(context);
+
+          util.NavigatorUtil.pushPage(
+            context,
+            BlocProvider<MissionBloc>(
+              child: CreateMeetingPage(labelId: Ids.titleMeeting),
+              bloc: new MissionBloc(),
+            ),
+            pageName: Ids.titleMeeting,
+          );
+        });
+  }
+
+//////////////
   Widget _progressBar() {
     return SizedBox(
       height: isLoading && progress < 100 ? 2 : 0,

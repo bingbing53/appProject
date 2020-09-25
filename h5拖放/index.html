@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>垃圾箱</title>
+    <style>
+        ul {
+            overflow: hidden;
+        }
+
+        li {
+            width: 80px;
+            height: 50px;
+            line-height: 50px;
+            border: 1px solid #000;
+            margin: 20px;
+            list-style: none;
+            float: left;
+
+        }
+
+        #out {
+            width: 100px;
+            height: 150px;
+            background: url() 0 0 no-repeat;
+            margin: 100px;
+            background-size: 100%;
+            color: red;
+            border: 4px solid #000;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<script type="text/javascript">
+    window.onload = function () {
+        // <!--获取到所有li标签-- >
+        var ali = document.getElementsByTagName('li');
+        // <     !--通过id获取到垃圾箱-- >
+        var oDiv = document.getElementById("out");
+        // <!--通过id获取到删除提示-- >
+        var txt = document.getElementById("txt");
+
+        var targetLi = null
+
+        //拖拽事件，循环获取到的li标签的长度
+        for (var i = 0; i < ali.length; i++) {
+            // <
+            // !--ondragstart 事件在用户开始拖动元素或选择的文本时触发。-- >
+            // <
+            // !--这里是拖动每一个li标签时触发函数-- >
+            ali[i].ondragstart = function (ev) {
+                // <
+                // !--将拖动的元素的背景颜色设置为黄色-- >
+                this.style.background = 'yellow';
+                //  <
+                // !--将当前拖拽的元素赋给targetLi-- >
+                targetLi = this;
+                // <
+                // !--dataTransfer.setData() 方法设置被拖数据的数据类型和值-- >
+                //     <
+                //     !--在这个例子中， 数据类型是 "Text"，
+                // 值是拖动元素的 innerHTML-- >
+                ev.dataTransfer.setData('Text', this.innerHTML);
+
+            }
+            // <
+            // !--ondragend 事件在用户完成元素或首选文本的拖动时触发-- >
+            ali[i].ondragend = function () {
+                this.style.backgroud = ""
+            }
+        }
+        // <
+        // !--ondragenter - 当被鼠标拖动的对象进入其容器范围内时触发此事件-- >
+        oDiv.ondragenter = function () {
+            this.style.borderColor = 'red'
+        }
+        // <
+        // !--ondragover - 当某被拖动的对象在另一对象容器范围内拖动时触发此事件-- >
+        oDiv.ondragover = function (ev) {
+            ev.preventDefault()
+        }
+        // <
+        // !--ondragleave - 当被鼠标拖动的对象离开其容器范围内时触发此事件-- >
+        // <
+        // !--离开后垃圾箱边框恢复黑色-- >
+        oDiv.ondragleave = function () {
+            this.style.borderColor = '#000'
+        }
+        // <
+        // !--ondrop - 在一个拖动过程中， 释放鼠标键时触发此事件-- >
+        oDiv.ondrop = function (ev) {
+            this.style.borderColor = '#000'
+            var oText = ev.dataTransfer.getData('Text');
+            txt.innerHTML = "删除的是：" + oText;
+            targetLi.parentNode.removeChild(targetLi);
+        }
+
+
+    }
+</script>
+
+<body>
+    <ul>
+        <li draggable="true">白色垃圾</li>
+        <li draggable="true">大气污染</li>
+        <li draggable="true">香蕉皮</li>
+        <li draggable="true">易拉罐</li>
+        <li draggable="true">白色垃圾</li>
+
+
+    </ul>
+
+    <p id="txt"></p>
+
+    <div id="out">垃圾箱</div>
+</body>
+
+</html>

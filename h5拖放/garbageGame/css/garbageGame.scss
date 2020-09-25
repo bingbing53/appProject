@@ -1,0 +1,133 @@
+@import "px2rem.scss";
+$designWidth : 828; //写scss之前，必须要先定义designWidth。
+
+.game-start {
+    width: px2rem(828);
+    height: px2rem(1792);
+    background-image: url(../img/startImg.png);
+    background-size: px2rem(828) px2rem(1792);
+    background-repeat: no-repeat;
+    padding-top: px2rem(252);
+}
+
+.login-msg {
+    width: px2rem(738);
+    height: px2rem(1127);
+    background-image: url(../img/矩形5.png);
+    background-size: px2rem(738) px2rem(1127);
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    position: relative;
+
+    .login-img {
+        position: absolute;
+        top: px2rem(-131);
+        left: px2rem(-12);
+
+        img {
+            width: px2rem(287);
+            height: px2rem(154);
+        }
+    }
+
+    .login-main {
+        padding-top: px2rem(60);
+
+        .main-title img {
+            width: px2rem(666);
+            height: px2rem(194);
+            margin: 0 auto;
+
+        }
+
+
+    }
+}
+
+.login {
+
+    color: #333;
+    margin-top: px2rem(57);
+
+    h2 {
+        font-size: px2rem(46);
+        text-align: center;
+
+
+        span img {
+            display: inline;
+            width: px2rem(26);
+            height: px2rem(37);
+            margin-right: px2rem(10);
+        }
+    }
+
+    ul {
+        margin-top: px2rem(20);
+        overflow: hidden;
+
+        li {
+            padding-left: px2rem(54);
+            padding-right: px2rem(60);
+            overflow: hidden;
+            margin-top: px2rem(65);
+
+            img {
+                display: inline;
+                width: px2rem(29);
+                float: left;
+                margin-right: px2rem(13);
+
+            }
+
+
+            span {
+                font-size: px2rem(30);
+                color: #333;
+                float: left;
+                width: px2rem(120);
+            }
+
+            input {
+                float: right;
+                width: px2rem(445);
+                height: px2rem(30);
+                font-size: px2rem(30);
+                color: #333;
+                background: transparent;
+                border: 0;
+                border-bottom: 1px solid #739BFF;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.login-btn {
+    width: px2rem(719);
+    height: px2rem(221);
+    background-image: url(../img/矩形3.png);
+    background-size: px2rem(719) px2rem(221);
+    background-repeat: no-repeat;
+    margin: px2rem(175) auto 0;
+    text-align: center;
+    padding-top: px2rem(64);
+    cursor: pointer;
+
+    img {
+        display: inline;
+        width: px2rem(38);
+        height: px2rem(47);
+    }
+
+    h2 {
+        display: inline;
+        color: #3185FF;
+        font-size: px2rem(52);
+
+    }
+}
+
+.width22 {
+    width: px2rem(22) !important;
+}

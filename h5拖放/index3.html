@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #box {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #000;
+        }
+
+        #img {
+            width: 150px;
+            height: 100px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            function start(ev) {
+                ev.dataTransfer.setData("Text", ev.target.id); //设置数据类型为（“Text”）和ID 
+            }
+
+            function stop(ev) {
+                ev.preventDefault(); //阻止元素发生默认行为 
+                var id = ev.dataTransfer.getData("Text"); //获取数据类型对应的ID         
+                ev.target.appendChild(document.getElementById(id));
+            }
+
+            function over(ev) {
+                ev.preventDefault();
+            }
+            var oBox = document.getElementById('box');
+            var oImg = document.getElementById('img');
+            oImg.ondragstart = function (ev) { //要拖动的元素触发本函数 
+                start(ev);
+            };
+            oBox.ondragover = function (ev) { //拖动过程中触发本函数 
+                over(ev);
+            };
+            oBox.ondrop = function (ev) { //拖动结束时触发本函数 
+                stop(ev);
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <div id="box"></div>
+    <img src="garbageGame/img/blue.png" draggable="true" id="img" />
+</body>
+
+</html>

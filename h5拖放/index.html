@@ -43,8 +43,8 @@
         var ali = document.getElementsByTagName('li');
         // <     !--通过id获取到垃圾箱-- >
         var oDiv = document.getElementById("out");
-        // <!--通过id获取到删除提示-- >
-        var txt = document.getElementById("txt");
+        // // <!--通过id获取到删除提示-- >
+        // var txt = document.getElementById("txt");
 
         var targetLi = null
 
@@ -72,7 +72,7 @@
             // <
             // !--ondragend 事件在用户完成元素或首选文本的拖动时触发-- >
             ali[i].ondragend = function () {
-                this.style.backgroud = ""
+                this.style.backgroud = " "
             }
         }
         // <

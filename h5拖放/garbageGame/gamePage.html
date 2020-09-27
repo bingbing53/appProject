@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="hotcss" content="initial-dpr=1">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/garbageGame.css">
+    <script src="js/hotcss.js"></script>
+    <title>游戏开始</title>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <div class="content">
+            <div class="start-game">
+                <div class="game-head">
+                    <p>看看您能不能把垃圾扔进指定的垃圾桶</p>
+                    <p>拖动垃圾 放入正确垃圾桶</p>
+                </div>
+                <div class="game-middle">
+                    <img src="img/垃圾_slices/图层 31.png" alt="" class="animated slideInDown inDownSpeed" id="img"
+                        draggable="true">
+                </div>
+                <div class=" game-bottom">
+                    <img src="img/red.png" alt="" id="box">
+                    <img src="img/brown.png" alt="">
+                    <img src="img/blue.png" alt="">
+                    <img src="img/gray.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="js/garbageGame.js"></script> -->
+<script type="text/javascript">
+    window.onload = function () {
+        function start(ev) {
+            ev.dataTransfer.setData("Text", ev.target.id); //设置数据类型为（“Text”）和ID 
+            console.log('1111')
+        }
+
+        function stop(ev) {
+            ev.preventDefault(); //阻止元素发生默认行为 
+            var id = ev.dataTransfer.getData("Text"); //获取数据类型对应的ID         
+            ev.target.appendChild(document.getElementById(id));
+            console.log('222')
+        }
+
+        function over(ev) {
+            ev.preventDefault();
+            console.log('333')
+        }
+        var oBox = document.getElementById('box');
+        var oImg = document.getElementById('img');
+        // oImg.addEventListener('tochstart', function (e) {
+        //     console.log(e)
+        // })
+        oImg.ondragstart = function (ev) { //要拖动的元素触发本函数 
+            start(ev);
+        };
+        oBox.ondragover = function (ev) { //拖动过程中触发本函数 
+            over(ev);
+        };
+        oBox.ondrop = function (ev) { //拖动结束时触发本函数 
+            stop(ev);
+        };
+    }
+</script>
+
+</html>

@@ -1,6 +1,7 @@
 @import "px2rem.scss";
 $designWidth : 828; //写scss之前，必须要先定义designWidth。
 
+//游戏开始登录
 .game-start {
     width: px2rem(828);
     height: px2rem(1792);
@@ -25,8 +26,7 @@ $designWidth : 828; //写scss之前，必须要先定义designWidth。
         left: px2rem(-12);
 
         img {
-            width: px2rem(287);
-            height: px2rem(154);
+            width: 50%;
         }
     }
 
@@ -130,4 +130,72 @@ $designWidth : 828; //写scss之前，必须要先定义designWidth。
 
 .width22 {
     width: px2rem(22) !important;
+}
+
+//开始游戏
+.start-game {
+    width: px2rem(828);
+    height: px2rem(1792);
+    background-image: url(../img/gameStart.png);
+    background-size: px2rem(828) px2rem(1792);
+    background-repeat: no-repeat;
+    padding-top: px2rem(40);
+    position: relative;
+}
+
+.game-head {
+    width: px2rem(745);
+    height: px2rem(157);
+    background-image: url(../img/矩形1.png);
+    background-size: px2rem(745) px2rem(157);
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: px2rem(20);
+
+    p {
+        font-size: px2rem(40);
+        color: #3D744C;
+        font-family: PingFang SC;
+        font-weight: bold;
+        line-height: px2rem(60);
+    }
+}
+
+.game-bottom {
+    position: absolute;
+    bottom: 0;
+    padding-left: px2rem(115);
+    // padding-bottom: px2rem(24);
+
+    img {
+        width: px2rem(230);
+        height: px2rerm(350);
+        margin-right: px2rem(102);
+        margin-bottom: px2rem(24);
+    }
+}
+
+.game-middle {
+    text-align: center;
+    height: px2rem(900);
+    position: relative;
+
+    img {
+        width: 47%;
+        // width: px2rem(383);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+
+    }
+
+    .inDownSpeed {
+        animation-duration: 3s;
+        -webkit-animation-duration: 3s;
+        /* Safari 和 Chrome */
+    }
 }

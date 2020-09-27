@@ -25,8 +25,7 @@
 }
 
 .login-msg .login-img img {
-  width: 5.54589rem;
-  height: 2.97585rem;
+  width: 50%;
 }
 
 .login-msg .login-main {
@@ -120,4 +119,68 @@
 
 .width22 {
   width: 0.42512rem !important;
+}
+
+.start-game {
+  width: 16rem;
+  height: 34.62802rem;
+  background-image: url(../img/gameStart.png);
+  background-size: 16rem 34.62802rem;
+  background-repeat: no-repeat;
+  padding-top: 0.77295rem;
+  position: relative;
+}
+
+.game-head {
+  width: 14.39614rem;
+  height: 3.03382rem;
+  background-image: url(../img/矩形1.png);
+  background-size: 14.39614rem 3.03382rem;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 0.38647rem;
+}
+
+.game-head p {
+  font-size: 0.77295rem;
+  color: #3D744C;
+  font-family: PingFang SC;
+  font-weight: bold;
+  line-height: 1.15942rem;
+}
+
+.game-bottom {
+  position: absolute;
+  bottom: 0;
+  padding-left: 2.22222rem;
+}
+
+.game-bottom img {
+  width: 4.44444rem;
+  height: px2rerm(350);
+  margin-right: 1.97101rem;
+  margin-bottom: 0.46377rem;
+}
+
+.game-middle {
+  text-align: center;
+  height: 17.3913rem;
+  position: relative;
+}
+
+.game-middle img {
+  width: 47%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.game-middle .inDownSpeed {
+  animation-duration: 3s;
+  -webkit-animation-duration: 3s;
+  /* Safari 和 Chrome */
 }

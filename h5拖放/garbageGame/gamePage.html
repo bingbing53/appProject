@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <meta name="hotcss" content="initial-dpr=1">
@@ -22,55 +21,61 @@
                     <p>看看您能不能把垃圾扔进指定的垃圾桶</p>
                     <p>拖动垃圾 放入正确垃圾桶</p>
                 </div>
-                <div class="game-middle">
-                    <img src="img/垃圾_slices/图层 31.png" alt="" class="animated slideInDown inDownSpeed" id="img"
-                        draggable="true">
+                <div class="game-middle" id="box">
+                    <!-- <img src="img/垃圾_slices/图层 30.png" alt="" id="img"> -->
+                    <img ref="img" :src="garbageImgList[num].url" alt="" id="img">
+                    <div class=" game-bottom">
+                        <img src="img/red.png" alt="" id="1" @click="goGarbage($event)">
+                        <img src="img/brown.png" alt="" id="2" @click="goGarbage($event)">
+                        <img src="img/blue.png" alt="" id="3" @click="goGarbage($event)">
+                        <img src="img/gray.png" alt="" id="4" @click="goGarbage($event)">
+                    </div>
                 </div>
-                <div class=" game-bottom">
-                    <img src="img/red.png" alt="" id="box">
-                    <img src="img/brown.png" alt="">
-                    <img src="img/blue.png" alt="">
-                    <img src="img/gray.png" alt="">
-                </div>
+
             </div>
         </div>
     </div>
 </body>
-<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script>
-<script src="js/garbageGame.js"></script> -->
+<!-- <script src="https://cdn.bootcdn.net/ajax/libs/vue/0.10.0/vue.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/garbageGame.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
 <script type="text/javascript">
-    window.onload = function () {
-        function start(ev) {
-            ev.dataTransfer.setData("Text", ev.target.id); //设置数据类型为（“Text”）和ID 
-            console.log('1111')
-        }
+    // 动画结束事件监听 
+    // var oBox = document.querySelector('img');
+    // oBox.addEventListener("animationstart", fnStart, false);
+    // oBox.addEventListener("webkitAnimationStart", fnStart, false);
+    // oBox.addEventListener("animationend", fnEnd, false);
+    // oBox.addEventListener("webkitAnimationIteration", fn, false);
+    // oBox.addEventListener("animationiteration", fn, false);
+    // oBox.addEventListener("webkitAnimationEnd", fnEnd, false);
 
-        function stop(ev) {
-            ev.preventDefault(); //阻止元素发生默认行为 
-            var id = ev.dataTransfer.getData("Text"); //获取数据类型对应的ID         
-            ev.target.appendChild(document.getElementById(id));
-            console.log('222')
-        }
+    // function fn() {
+    //     console.log("动画重复播放");
+    // }
 
-        function over(ev) {
-            ev.preventDefault();
-            console.log('333')
-        }
-        var oBox = document.getElementById('box');
-        var oImg = document.getElementById('img');
-        // oImg.addEventListener('tochstart', function (e) {
-        //     console.log(e)
-        // })
-        oImg.ondragstart = function (ev) { //要拖动的元素触发本函数 
-            start(ev);
-        };
-        oBox.ondragover = function (ev) { //拖动过程中触发本函数 
-            over(ev);
-        };
-        oBox.ondrop = function (ev) { //拖动结束时触发本函数 
-            stop(ev);
-        };
-    }
+    // function fnStart() {
+    //     console.log("动画开始了");
+    // }
+
+    // function fnEnd() {
+    //     console.log("动画结束了");
+    //     oBox.style.cssText = "top:0px;left:0px;";
+    // }
+    // 动画队列
+    // $('#1').click(function () {
+    //     var top = $(this).offset().top;
+    //     var left = $(this).offset().left;
+    //     $('#img').animate({
+    //         'top': top - $(this).height() / 2 + 'px',
+    //         'left': left - $(this).width() / 2 + 'px',
+    //         'width': '0.1%',
+    //         'height': '0.1%'
+    //     }, function () {
+    //         $('#img').css('display', 'none');
+    //         // $('#img').css('opacity', 0)
+    //     })
+    // })
 </script>
 
 </html>

@@ -4,9 +4,9 @@ $designWidth : 828; //写scss之前，必须要先定义designWidth。
 //游戏开始登录
 .game-start {
     width: px2rem(828);
-    height: px2rem(1792);
+    height: px2rem(1472);
     background-image: url(../img/startImg.png);
-    background-size: px2rem(828) px2rem(1792);
+    background-size: px2rem(828) px2rem(1472);
     background-repeat: no-repeat;
     padding-top: px2rem(252);
 }
@@ -135,9 +135,9 @@ $designWidth : 828; //写scss之前，必须要先定义designWidth。
 //开始游戏
 .start-game {
     width: px2rem(828);
-    height: px2rem(1792);
+    height: px2rem(1472);
     background-image: url(../img/gameStart.png);
-    background-size: px2rem(828) px2rem(1792);
+    background-size: px2rem(828) px2rem(1472);
     background-repeat: no-repeat;
     padding-top: px2rem(40);
     position: relative;
@@ -167,6 +167,7 @@ $designWidth : 828; //写scss之前，必须要先定义designWidth。
     bottom: 0;
     padding-left: px2rem(115);
     // padding-bottom: px2rem(24);
+    z-index: 998;
 
     img {
         width: px2rem(230);
@@ -178,24 +179,57 @@ $designWidth : 828; //写scss之前，必须要先定义designWidth。
 
 .game-middle {
     text-align: center;
-    height: px2rem(900);
+    height: px2rem(1275);
     position: relative;
 
-    img {
-        width: 47%;
-        // width: px2rem(383);
+    #img {
+        width: 30%;
+        max-height: 20%;
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-
+        // 定位方式局中
+        // top: 0;
+        // left: 0;
+        // right: 0;
+        // margin: auto;
+        // 百分比方式居中
+        // top: 0;
+        // left: 50%;
+        // transform: translate(-50%, -50%);
+        // flex居中
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // margin-left: clac(100%-47%)/2;
+        margin-top: 80px;
+        margin-left: 35%;
+        animation: dropdown .5s ease-in;
+        // animation-name: dropdown;
+        // animation-duration: 1s; //执行时间
+        // animation-timing-function: ease-in; //加速进入
     }
 
-    .inDownSpeed {
-        animation-duration: 3s;
-        -webkit-animation-duration: 3s;
-        /* Safari 和 Chrome */
+
+}
+
+// 动画
+@keyframes dropdown {
+    0% {
+        top: -210px;
+        transform: rotate(0);
+    }
+
+    // 50% {
+    //     top: -140px;
+    //     transform: rotate(90deg);
+    // }
+
+    // 75% {
+    //     top: -70px;
+    //     transform: rotate(180deg);
+    // }
+
+    100% {
+        top: 0px;
+        transform: rotate(360deg);
     }
 }

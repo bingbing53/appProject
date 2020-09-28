@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="hotcss" content="initial-dpr=1">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/garbageGame.css">
+    <script src="js/hotcss.js"></script>
+    <title>游戏开始</title>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <div class="content">
+            <div class="start-game">
+                <div class="game-head">
+                    <p>看看您能不能把垃圾扔进指定的垃圾桶</p>
+                    <p>拖动垃圾 放入正确垃圾桶</p>
+                </div>
+                <div class="game-middle" id="box">
+                    <!-- <img style="border: 1px solid red;" src="img/垃圾_slices/图层 31.png" alt=""
+                        class="animated slideInDown inDownSpeed" id="img" draggable="true"> -->
+                    <img style="border: 1px solid red;" src="img/垃圾_slices/图层 31.png" alt="" id="img" draggable="true">
+                    <div class=" game-bottom">
+                        <img src="img/red.png" alt="" id="box1">
+                        <img src="img/brown.png" alt="">
+                        <img src="img/blue.png" alt="">
+                        <img src="img/gray.png" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="js/garbageGame.js"></script> -->
+<script type="text/javascript">
+    var box = document.getElementById('box')
+    var box2 = document.getElementById('box2')
+    var img = document.getElementById('img')
+    var startX, startY;
+    var disX, diY;
+    var x, y
+    var box2Area; //box2范围
+
+    img.addEventListener('touchstart', touchStart, false)
+    img.addEventListener('touchmove', touchMove, false)
+    img.addEventListener('touchend', touchEnd, false)
+
+    //获取距离盒子的距离
+    function touchStart(e) {
+        startX = e.changedTouches[0].pageX - img.offsetLeft;
+        startY = e.changedTouches[0].pageY - img.offsetTop;
+    }
+
+    function touchMove(e) {
+        x = e.changedTouches[0].pageX - startX
+        y = e.changedTouches[0].pageY - startY;
+        //confined area (限制范围)
+        if (x < 0) {
+            x = 0;
+        } else if (x > box.offsetWidth - img.offsetWidth) {
+            x = box.offsetWidth - img.offsetWidth
+        }
+        if (y < 0) {
+            y = 0;
+        } else if (y > box.offsetHeight - img.offsetHeight) {
+            y = box.offsetHeight - img.offsetHeight
+        }
+        img.style.top = y + 'px'
+        img.style.left = x + 'px'
+    }
+
+    function touchEnd(e) {
+        if (x > box2.offsetLeft && x < box2.offsetLeft + box2.offsetWidth &&
+            y > box2.offsetTop && y < box2.offsetHeight + box2.offsetTop) {
+            img.style.cssText = ""
+            img.parentNode.removeChild(img)
+            box2.appendChild(img)
+        } else {
+            img.style.top = 0;
+            img.style.left = 0;
+        }
+
+    }
+</script>
+
+</html>

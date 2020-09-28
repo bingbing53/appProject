@@ -1,9 +1,9 @@
 @charset "UTF-8";
 .game-start {
   width: 16rem;
-  height: 34.62802rem;
+  height: 28.44444rem;
   background-image: url(../img/startImg.png);
-  background-size: 16rem 34.62802rem;
+  background-size: 16rem 28.44444rem;
   background-repeat: no-repeat;
   padding-top: 4.86957rem;
 }
@@ -123,9 +123,9 @@
 
 .start-game {
   width: 16rem;
-  height: 34.62802rem;
+  height: 28.44444rem;
   background-image: url(../img/gameStart.png);
-  background-size: 16rem 34.62802rem;
+  background-size: 16rem 28.44444rem;
   background-repeat: no-repeat;
   padding-top: 0.77295rem;
   position: relative;
@@ -154,6 +154,7 @@
   position: absolute;
   bottom: 0;
   padding-left: 2.22222rem;
+  z-index: 998;
 }
 
 .game-bottom img {
@@ -165,22 +166,29 @@
 
 .game-middle {
   text-align: center;
-  height: 17.3913rem;
+  height: 24.63768rem;
   position: relative;
 }
 
-.game-middle img {
-  width: 47%;
+.game-middle #img {
+  width: 30%;
+  max-height: 20%;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+  margin-left: 35%;
+  animation: dropdown .5s ease-in;
 }
 
-.game-middle .inDownSpeed {
-  animation-duration: 3s;
-  -webkit-animation-duration: 3s;
-  /* Safari 和 Chrome */
+@keyframes dropdown {
+  0% {
+    top: -210px;
+    transform: rotate(0);
+  }
+  100% {
+    top: 0px;
+    transform: rotate(360deg);
+  }
 }

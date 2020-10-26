@@ -10,3 +10,11 @@
 公众号
 公众号提案  css/js        /opt/community/tomcat_server/webapps/server/plug-in/mobile
 公众号提案html           /opt/community/tomcat_server/webapps/server/WEB-INF/content/pages2/proposal
+
+游戏css/js   /opt/community/tomcat_server/webapps/server/plug-in/mobile
+游戏html    /opt/community/tomcat_server/webapps/server/WEB-INF/content/pages2/games
+
+
+极光聊天室
+E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\plug-in\mobile\js\party
+E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\WEB-INF\content\pages2\party

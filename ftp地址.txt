@@ -14,6 +14,9 @@
 游戏css/js   /opt/community/tomcat_server/webapps/server/plug-in/mobile
 游戏html    /opt/community/tomcat_server/webapps/server/WEB-INF/content/pages2/games
 
+聊天室html  /opt/community/tomcat_server/webapps/server/WEB-INF/content/pages2/chatRoom
+聊天室js  /opt/community/tomcat_server/webapps/server/plug-in/mobile/js/chatRoom
+
 
 极光聊天室
 E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\plug-in\mobile\js\party

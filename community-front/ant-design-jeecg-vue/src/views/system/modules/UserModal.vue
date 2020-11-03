@@ -285,7 +285,7 @@ export default {
     }
   },
   created() {
-    const token = Vue.ls.get(ACCESS_TOKEN)
+    const token = Vue.ls.get(ACCESS_TOKEN) 
     this.headers = { 'X-Access-Token': token }
   },
   computed: {
@@ -435,6 +435,7 @@ export default {
             values.birthday = values.birthday.format(this.dateFormat)
           }
           let formData = Object.assign(this.model, values)
+          console.log(formData)
           formData.selectedposts = this.selectedOrgan.length > 0 ? this.selectedOrgan.join(',') : ''
           formData.avatar = avatar
           formData.selectedroles = this.selectedRole.length > 0 ? this.selectedRole.join(',') : ''

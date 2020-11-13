@@ -17,9 +17,11 @@
 
 E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\WEB-INF\content\pages2\chatRoom
 E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\plug-in\mobile\js\chatRoom
+E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\plug-in\mobile\css\chatRoom
 
 聊天室html  /opt/community/tomcat_server/webapps/server/WEB-INF/content/pages2/chatRoom
 聊天室js  /opt/community/tomcat_server/webapps/server/plug-in/mobile/js/chatRoom
+/opt/community/tomcat_server/webapps/server/plug-in/mobile/css/chatRoom
 
 
 极光聊天室

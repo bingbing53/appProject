@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>测试上传图片</title>
+ 
+<script src="./js/jquery-1.12.4.min.js"></script>
+<!--需要调用摄像头-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+ 
+<script type="text/javascript">
+	function chooseImg(){
+		var data = {
+			    "reqHead": {
+			        "token": "1dda44c1afc77e875fdfd1nd9fdc3f",
+			        "transCode": "VYK00505",
+			        "openId": "openId",
+			        "transTime": "2018-02-12 15:28:02"
+			    },
+			    "reqBody": {
+			        "url": location.href.split('#')[0]//当前页面url
+			    }
+			};
+		$.ajax({
+	        url:"http://***.***.com/examAction!examBank.action",//获取appId、时间戳、随机字符串、签名等参数接口
+	        dataType:"json",
+	        type:"post",
+	        contentType : "application/json;charsetset=UTF-8",//必须
+	        data : JSON.stringify(data),//必须
+	        success:function(res){
+				wx.config({
+				       debug: true,//开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+				       appId:res.resBody.appId, // 必填，公众号的唯一标识
+				       timestamp: res.resBody.timestamp, // 必填，生成签名的时间戳
+				       nonceStr: res.resBody.nonceStr, // 必填，生成签名的随机串
+				       signature: res.resBody.signature,// 必填，签名，见附录1
+				       jsApiList: ['chooseImage','previewImage','uploadImage','downloadImage']// 必填
+				    });
+		       	wx.ready(function(){
+					//检查config是否正确
+					wx.checkJsApi({
+						jsApiList: [
+						    'chooseImage',//拍照或从手机相册中选图接口
+						    'previewImage',//预览图片接口
+						    'uploadImage',//上传图片接口
+						    'downloadImage'//下载图片接口
+						],
+						success: function (res) {//检查结果成功
+						    //alert(JSON.stringify(res));
+						    //alert(JSON.stringify(res.checkResult.getLocation));
+						    if (res.checkResult.getLocation == false) {
+						        alert('你的微信版本太低，不支持微信JS接口，请升级到最新的微信版本！');
+						        return;
+						    }else{
+						    	var localIds=[];
+						        var serverIds=[];
+						      	wx.chooseImage({
+						      		count: 6, // 微信默认9
+							          sizeType: ['original', 'compressed'],// 可以指定是原图还是压缩图，默认二者都有
+							          sourceType: ['album', 'camera'],// 可以指定来源是相册还是相机，默认二者都有
+							          success: function (res) {
+							        	  console.log(res);
+							              serverIds=[];
+								          medil_id="";
+								          var imgUrl= "";
+								          localIds = res.localIds;// 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+								          //console.log('已选择 ' + res.localIds.length + ' 张图片');
+								          if(res.localIds.length == 0) {
+								          	console.log('请先使用微信的 chooseImage 接口选择图片');
+								          	return;
+								          }
+							              uploadImages(localIds);//调用长传图片接口
+							              for(var i=0;i<localIds.length;i++){//展示图片
+							                imgUrl+=localIds[i]+",";
+							                $(".img_container").append('<div style="width:50%;padding: 0 5px;"><img width="100%" height="480px" style="margin-right: 10px;" src="'+localIds[i]+'"/></div>');
+							              }
+							          },
+							          fail:function(res){
+							        	    console.log("失败的原因"+res);
+							          }
+						        })
+						    }
+						}
+				    });
+ 
+			});
+	        },
+            error:function(){
+         	   console.log("上传失败");
+            }
+	   })
+	}
+ 
+	function uploadImages(localImagesIds) {
+		if (localImagesIds.length === 0) {
+	        $.showPreloader('正在提交数据...');
+	    }
+	    var localId = localImagesIds[0];
+	    //解决IOS无法上传的坑
+	    if (localId.indexOf("wxlocalresource") != -1) {
+	        localId = localId.replace("wxlocalresource", "wxLocalResource");
+	    }
+	    wx.uploadImage({//微信上传图片接口
+	        localId: localId, // 需要上传的图片的本地ID，由chooseImage接口获得
+	        isShowProgressTips: 2, // 默认为1，显示进度提示
+	        success: function (res) {
+	            var mediaId = res.serverId; // 返回图片的服务器端ID
+	            //调用方法savePicture，将获取到的 mediaId 传入后台 
+	            /* $.post("<%=request.getContextPath()%>/my/savePicture",
+	               {mediaId:mediaId},function(res){
+	                if(res){
+	                    alert("上传成功!mediaId:"+mediaId);
+	                }else{
+	                }
+	            }) */
+	            // serverIds.push(res.serverId);
+	            // localImagesIds.shift();//把数组的第一个元素从其中删除，并返回第一个元素的值。
+	            // uploadImages(localImagesIds);
+	        },
+	        fail: function (res) {
+	        	console.log('上传失败，请重新上传！');
+	        }
+	    });
+	}
+</script>
+ 
+</head>
+<body>
+<div align="center">
+   <div onclick="chooseImg()" style=" background-color: aquamarine;width: 500px;height: 100px; line-height: 90px;">点击上传图片</div>
+   <div class="img_container"></div>
+</div>
+ 
+</body>
+</html>

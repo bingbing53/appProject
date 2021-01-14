@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="hotcss" content="initial-dpr=1">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/garbageGame.css">
+    <script src="js/hotcss.js"></script>
+    <!-- <script src="node_modules/vue/dist/vue.js"></script> -->
+    <title>游戏开始</title>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <div class="content">
+            <div class="start-game">
+                <div class="game-head">
+                    <p>看看您能不能把垃圾扔进指定的垃圾桶</p>
+                    <p>拖动垃圾 放入正确垃圾桶</p>
+                </div>
+                <div class="game-middle" id="box">
+                    <!-- <img src="img/垃圾_slices/图层 30.png" alt="" id="img"> -->
+                    <img src="gamePage.html" alt="" id="img">
+
+                    <div class=" game-bottom">
+                        <img src="img/red.png" alt="" id="1" onclick="goTrash()">
+                        <img src="img/brown.png" alt="" id="2">
+                        <img src="img/blue.png" alt="" id="3">
+                        <img src="img/gray.png" alt="" id="4">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+<script src="js/garbageGame.js"></script>
+
+<script type="text/javascript">
+
+</script>
+
+</html>

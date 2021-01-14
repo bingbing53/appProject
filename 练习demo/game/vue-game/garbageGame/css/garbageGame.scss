@@ -1,0 +1,416 @@
+@import "px2rem.scss";
+$designWidth : 828; //写scss之前，必须要先定义designWidth。
+
+.game-container {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* border: 1px solid red; */
+
+}
+
+.game-content {
+    height: 100%;
+    overflow: scroll;
+    width: 100%;
+    /* border: 1px solid blue; */
+}
+
+//游戏开始一级登录
+.game-start {
+    width: px2rem(828);
+    height: px2rem(1472);
+    background-image: url(../img/startImg.png);
+    background-size: px2rem(828) px2rem(1472);
+    background-repeat: no-repeat;
+    padding-top: px2rem(252);
+}
+
+.login-msg {
+    width: px2rem(738);
+    height: px2rem(1127);
+    background-image: url(../img/矩形5.png);
+    background-size: px2rem(738) px2rem(1127);
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    position: relative;
+
+    .login-img {
+        position: absolute;
+        top: px2rem(-131);
+        left: px2rem(-12);
+
+        img {
+            width: 50%;
+        }
+    }
+
+    .login-main {
+        padding-top: px2rem(60);
+        text-align: center;
+
+        .main-title img {
+            width: px2rem(666);
+            height: px2rem(194);
+            margin: 0 auto;
+
+        }
+
+
+    }
+}
+
+.login {
+
+    color: #333;
+    margin-top: px2rem(57);
+
+    h2 {
+        font-size: px2rem(46);
+        text-align: center;
+
+
+        span img {
+            display: inline;
+            width: px2rem(26);
+            height: px2rem(37);
+            margin-right: px2rem(10);
+        }
+    }
+
+    ul.login-list {
+        margin-top: px2rem(20);
+        overflow: hidden;
+
+        >li {
+            padding-left: px2rem(54);
+            padding-right: px2rem(60);
+            overflow: hidden;
+            margin-top: px2rem(65);
+
+            img {
+                display: inline;
+                width: px2rem(29);
+                float: left;
+                margin-right: px2rem(13);
+
+            }
+
+
+            span {
+                font-size: px2rem(30);
+                color: #333;
+                float: left;
+                width: px2rem(140);
+                text-align: left;
+            }
+
+            input {
+                float: right;
+                width: px2rem(425);
+                height: px2rem(30);
+                font-size: px2rem(30);
+                color: #333;
+                background: transparent;
+                border: 0;
+                border-bottom: 1px solid #739BFF;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.login-btn {
+    width: px2rem(719);
+    height: px2rem(221);
+    background-image: url(../img/矩形3.png);
+    background-size: px2rem(719) px2rem(221);
+    background-repeat: no-repeat;
+    margin: px2rem(175) auto 0;
+    text-align: center;
+    padding-top: px2rem(64);
+    cursor: pointer;
+
+    img {
+        display: inline;
+        width: px2rem(38);
+        height: px2rem(47);
+    }
+
+    h2 {
+        display: inline;
+        color: #3185FF;
+        font-size: px2rem(52);
+
+    }
+}
+
+.width22 {
+    width: px2rem(22) !important;
+}
+
+//游戏开始二级登录
+div.identity-list {
+    width: px2rem(120);
+    border: 1px solid #739BFF;
+    position: relative;
+    font-size: px2rem(34);
+    // overflow: hidden;
+    color: #333;
+    background-color: transparent;
+    float: left;
+    text-align: left;
+
+    select {
+        /*清除select的边框样式*/
+        border: none;
+        /*清除select聚焦时候的边框颜色*/
+        outline: none;
+        /*将select的宽高等于div的宽高*/
+        width: 100%;
+        /*隐藏select的下拉图标*/
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: transparent;
+    }
+
+    // option {
+    //     font-size: px2rem(34);
+    //     width: px2rem(100);
+    // }
+}
+
+div.chose-community {
+    width: px2rem(580);
+    border: 1px solid #739BFF;
+    position: relative;
+    font-size: px2rem(34);
+    // overflow: hidden;
+    color: #333;
+    background-color: transparent;
+    float: left;
+    text-align: left;
+
+    select {
+        /*清除select的边框样式*/
+        border: none;
+        /*清除select聚焦时候的边框颜色*/
+        outline: none;
+        /*将select的宽高等于div的宽高*/
+        width: 100%;
+        /*隐藏select的下拉图标*/
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: transparent;
+    }
+}
+
+.login ul>li input.num-input {
+    width: 45%;
+}
+
+.login ul>li input.num-input:first-child {
+    float: left;
+}
+
+//开始游戏
+.start-game {
+    width: px2rem(828);
+    height: px2rem(1472);
+    background-image: url(../img/gameStart.png);
+    background-size: px2rem(828) px2rem(1472);
+    background-repeat: no-repeat;
+    padding-top: px2rem(40);
+    position: relative;
+}
+
+.game-head {
+    width: px2rem(745);
+    height: px2rem(157);
+    background-image: url(../img/矩形1.png);
+    background-size: px2rem(745) px2rem(157);
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: px2rem(20);
+
+    p {
+        font-size: px2rem(40);
+        color: #3D744C;
+        font-family: PingFang SC;
+        font-weight: bold;
+        line-height: px2rem(60);
+    }
+}
+
+.game-bottom {
+    position: absolute;
+    bottom: 0;
+    padding-left: px2rem(115);
+    // padding-bottom: px2rem(24);
+    z-index: 10;
+
+    img {
+        width: px2rem(230);
+        height: px2rerm(350);
+        margin-right: px2rem(102);
+        margin-bottom: px2rem(24);
+    }
+}
+
+.game-middle {
+    text-align: center;
+    height: px2rem(1275);
+    position: relative;
+
+    #img {
+        width: 30%;
+        max-height: 20%;
+        position: absolute;
+        // 定位方式局中
+        // top: 0;
+        // left: 0;
+        // right: 0;
+        // margin: auto;
+        // 百分比方式居中
+        // top: 0;
+        // left: 50%;
+        // transform: translate(-50%, -50%);
+        // flex居中
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // margin-left: clac(100%-47%)/2;
+        margin-top: 80px;
+        margin-left: 35%;
+        animation: dropdown .5s ease-in;
+        // animation-name: dropdown;
+        // animation-duration: 1s; //执行时间
+        // animation-timing-function: ease-in; //加速进入
+    }
+
+
+}
+
+// 动画
+@keyframes dropdown {
+    0% {
+        top: -210px;
+        transform: rotate(0);
+    }
+
+    // 50% {
+    //     top: -140px;
+    //     transform: rotate(90deg);
+    // }
+
+    // 75% {
+    //     top: -70px;
+    //     transform: rotate(180deg);
+    // }
+
+    100% {
+        top: 0px;
+        transform: rotate(360deg);
+    }
+}
+
+.true-dialog,
+.flase-dialog {
+    width: px2rem(648);
+    height: px2rem(346);
+    background-image: url(../img/dialogImg.png);
+    background-size: px2rem(648) px2rem(346);
+    background-repeat: no-repeat;
+    position: fixed;
+    top: px2rem(380);
+    left: 50%;
+    z-index: 12;
+    margin-left: px2rem(-324);
+    text-align: center;
+    padding-top: px2rem(40);
+    // display: none;
+
+    img {
+        width: px2rem(409);
+        height: px2rem(202);
+    }
+}
+
+//积分
+.score-dialog {
+    width: px2rem(648);
+    height: px2rem(1000);
+    background-image: url(../img/scoreImg.png);
+    background-size: px2rem(648) 100%;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: px2rem(200);
+    left: 50%;
+    z-index: 12;
+    margin-left: px2rem(-324);
+    text-align: center;
+
+    >a {
+        display: inline-block;
+        width: px2rem(400);
+        height: px2rem(80);
+        background: linear-gradient(144deg, #3295FA 0%, #4B6BFA 100%);
+        border-radius: px2rem(40);
+        text-align: center;
+        font-weight: bold;
+        font-size: px2rem(40);
+        font-family: zihun100hao-fangfangxianfengti;
+        color: #FEFEFE;
+        line-height: px2rem(80);
+        margin-bottom: px2rem(40);
+    }
+
+    .goodScore,
+    .passScore,
+    .failScore {
+        margin-bottom: px2rem(100);
+
+        div.good-msg {
+            margin-top: px2rem(210);
+            font-size: px2rem(60);
+            font-family: zihun100hao-fangfangxianfengti;
+            font-weight: bold;
+            color: #333;
+
+            label {
+                display: block;
+                color: #3285FF;
+                margin-top: px2rem(20);
+            }
+        }
+
+        div.score {
+            margin-top: px2rem(40);
+            font-size: px2rem(54);
+            font-family: zihun100hao-fangfangxianfengti;
+            font-weight: bold;
+            color: #333333;
+
+            i {
+                font-size: px2rem(78);
+                font-family: zihun100hao-fangfangxianfengti;
+                font-weight: bold;
+                color: #FEA53F;
+            }
+        }
+
+        >label {
+            margin-top: px2rem(40);
+            font-size: px2rem(38);
+            font-family: zihun100hao-fangfangxianfengti;
+            font-weight: bold;
+            color: #666666;
+        }
+    }
+}

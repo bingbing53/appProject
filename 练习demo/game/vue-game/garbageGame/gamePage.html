@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="hotcss" content="initial-dpr=1">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/garbageGame.css">
+    <script src="js/hotcss.js"></script>
+    <!-- <script src="node_modules/vue/dist/vue.js"></script> -->
+    <title>游戏开始</title>
+</head>
+
+<body>
+    <div class="game-container" id="app">
+        <div class="game-content">
+            <div class="start-game">
+                <div class="game-head">
+                    <p>看看您能不能把垃圾扔进指定的垃圾桶</p>
+                    <p>点击垃圾桶·垃圾自动飘入 </p>
+                </div>
+                <div class="game-middle" id="box">
+                    <!-- <img src="img/垃圾_slices/图层 30.png" alt="" id="img"> -->
+                    <img ref="img" :src="garbageImgList[num].url" :alt="garbageImgList[num].label" id="img">
+                    <div class=" game-bottom">
+                        <img src="img/red.png" alt="" id="1" @click="goGarbage($event)">
+                        <img src="img/brown.png" alt="" id="2" @click="goGarbage($event)">
+                        <img src="img/blue.png" alt="" id="3" @click="goGarbage($event)">
+                        <img src="img/gray.png" alt="" id="4" @click="goGarbage($event)">
+                    </div>
+                </div>
+
+            </div>
+            <!-- 回答问题弹框 -->
+            <div class="true-dialog" v-if='trueDialogMsg'>
+                <img src="img/dialogMsg.png" alt="">
+                
+            </div>
+            <div class="flase-dialog" v-if='flaseDialogMsg'>
+                <img src="img/dialogMsg2.png" alt="">
+            </div>
+            <!-- 积分弹框 -->
+            <div class="score-dialog">
+                <!-- 优秀 -->
+                <div class="goodScore" style="display: none;">
+                    <div class="good-msg">
+                        <p>恭 喜 您</p>
+                        <label>优 秀</label>
+                    </div>
+                    <div class="score">获 得 <i>10</i> 积 分</div>
+                    <label>您对垃圾分类已经很清楚了</label>
+                   
+                </div>
+                <!-- 及格 -->
+                <div class="passScore" style="display: none;">
+                    <div class="good-msg">
+                        <p>还 不 错</p>
+                        <label>及 格</label>
+                    </div>
+                    <div class="score">获 得 <i>10</i> 积 分</div>
+                    <label>您对垃圾分类已经比较了解了</label>
+                </div>
+                <!-- 不及格 -->
+                <div class="failScore">
+                    <div class="good-msg">
+                        <p>很 遗 憾</p>
+                        <label>没 及 格</label>
+                    </div>
+                    <div class="score">获 得 <i>10</i> 积 分</div>
+                    <label>您还是多学习一下吧</label>
+                </div>
+                <!-- 按钮 -->
+                <a>再来一次</a>
+                <a>离开了</a>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- <script src="https://cdn.bootcdn.net/ajax/libs/vue/0.10.0/vue.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/garbageGame.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+<script type="text/javascript">
+    // 动画结束事件监听 
+    // var oBox = document.querySelector('img');
+    // oBox.addEventListener("animationstart", fnStart, false);
+    // oBox.addEventListener("webkitAnimationStart", fnStart, false);
+    // oBox.addEventListener("animationend", fnEnd, false);
+    // oBox.addEventListener("webkitAnimationIteration", fn, false);
+    // oBox.addEventListener("animationiteration", fn, false);
+    // oBox.addEventListener("webkitAnimationEnd", fnEnd, false);
+
+    // function fn() {
+    //     console.log("动画重复播放");
+    // }
+
+    // function fnStart() {
+    //     console.log("动画开始了");
+    // }
+
+    // function fnEnd() {
+    //     console.log("动画结束了");
+    //     oBox.style.cssText = "top:0px;left:0px;";
+    // }
+    // 动画队列
+    // $('#1').click(function () {
+    //     var top = $(this).offset().top;
+    //     var left = $(this).offset().left;
+    //     $('#img').animate({
+    //         'top': top - $(this).height() / 2 + 'px',
+    //         'left': left - $(this).width() / 2 + 'px',
+    //         'width': '0.1%',
+    //         'height': '0.1%'
+    //     }, function () {
+    //         $('#img').css('display', 'none');
+    //         // $('#img').css('opacity', 0)
+    //     })
+    // })
+</script>
+
+</html>

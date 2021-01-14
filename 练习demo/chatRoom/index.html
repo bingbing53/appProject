@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="hotcss" content="initial-dpr=1">
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- 引入样式库 -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="css/chatRoom.css">
+    <script src="js/hotcss.js"></script>
+
+    <title>聊天室</title>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <div class="content chat-room">
+            <div class="header">
+                <img src="img/sponsorImg.png" alt="" class="sponsor-img">
+                <div class="sponsor-name">
+                    <label>赵X海</label>
+                    <p>XX小区XX号楼XX单元</p>
+                </div>
+
+                <span @click='applyMsgClick()'>...</span>
+                <i class="call-num">{{}}</i>
+                <div class="sponsor-icon">
+                    <img src="img/icon@.png" alt="" class="searchIcon">
+                    <img src="img/iconMsg.png" alt="" class="handleIcon">
+                </div>
+            </div>
+            <div class="chat-middle">
+            <div class="middle">
+                <div class="m-loadmore">
+                    <div class="spokesman-lt">
+                        <img src="img/spokesman.png">
+                        <div>你好，我是AMLIL。你好，我是A 你好，我是AMLIL</div>
+                    </div>
+                    <div class="spokesman-rg rePath">
+                        <img src="img/spokesman.png">
+                        <div>你好，我是AMLIL。你好，我是A 你好，我是AMLIL</div>
+                        <div class="msg-icon" style="display: none;">
+                            <div class="copy-icon">
+                                <label>复制</label>
+                                <i><img src="img/复制.png" alt=""></i>
+                            </div>
+                            <i></i>
+                            <div class="withdraw-icon">
+                                <label>撤回</label>
+                                <i><img src="img/撤回.png" alt=""></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spokesman-rg rePath" @click='msgOperationsOption= true'>
+                        <img src="img/spokesman.png">
+                        <div class="voice-msg">
+                            <label>90”</label>
+                            <span><img src="img/play.png" alt=""></span>
+                            <i><img src="img/play1.png" alt=""></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="footer fixPath">
+                <div>
+                    <img src="img/iconVoice.png" alt="" class="fl">
+                    <input type="text">
+                    <img src="img/iconAdd.png" alt="" class="fr iconAdd">
+                    <img src="img/iconShare.png" alt="" class="fr">
+                </div>
+                
+                <ul class="footerIcon">
+                    <li>
+                        <img src="img/相机.png" alt="">
+                    </li>
+                    <li>
+                        <img src="img/图片.png" alt="">
+                    </li>
+                </ul>
+
+            </div>
+            <!-- 搜索@ -->
+            <div class="search-list">
+                <input type="search">
+                <ul>
+                    <li>
+                        <img src="img/imgListX.jpg" alt="">
+                        <label>赵X海</label>
+                    </li>
+                    <li>
+                        <img src="img/imgListY.jpg" alt="">
+                        <label>赵X海</label>
+                    </li>
+                    <li>
+                        <img src="img/imgListX.jpg" alt="">
+                        <label>赵X海</label>
+                    </li>
+                    <li>
+                        <img src="img/imgListY.jpg" alt="">
+                        <label>赵X海</label>
+                    </li>
+                    <li>
+                        <img src="img/imgListX.jpg" alt="">
+                        <label>赵X海</label>
+                    </li>
+                    <li>
+                        <img src="img/imgListY.jpg" alt="">
+                        <label>赵X海</label>
+                    </li>
+                </ul>
+                <i class="el-icon-back"></i>
+            </div>
+            <!-- 搜索操作 -->
+            <div class="search-handle">
+                <input type="search">
+                <ul>
+                    <li>
+                        <img src="img/imgListX.jpg" alt="">
+                        <div class="search-msg">
+                            <label>赵X海</label>
+                            <span>XX小区XX房间XX单元</span>
+                        </div>
+                        <div class="handle-icon">
+                            <img src="img/禁言.png" alt="" @click="dialogFormVisible = true">
+                            <i></i>
+                            <span>移出</span>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="img/sponsorImg.png" alt="">
+                        <div class="search-msg">
+                            <label>赵X海</label>
+                            <span>XX小区XX房间XX单元</span>
+                        </div>
+                        <div class="handle-icon">
+                            <!-- <img src="img/禁言.png" alt=""> -->
+                            <span>取消</span>
+                            <i></i>
+                            <span>移出</span>
+                        </div>
+                    </li>
+                </ul>
+            </div> 
+            <!-- 入群信息处理 -->
+            <div class="apply-group">
+                <ul>
+                    <li>
+                        <img src="img/imgListX.jpg" alt="">
+                        <div class="search-msg">
+                            <label>赵X海</label>
+                            <span>XX小区XX房间XX单元</span>
+                        </div>
+                        <div class="handle-icon">
+                            <span>同意入群</span>
+                        </div>
+                        
+                    </li>
+                </ul>
+            </div> 
+            <!-- 禁言时间选择 -->
+            <el-dialog title="禁言时间" :visible.sync="dialogFormVisible" class="forbidden-time">
+                <el-form :model="form">                    
+                    <el-radio v-model="radio" label="1">一分钟</el-radio>
+                    <el-radio v-model="radio" label="2">五分钟</el-radio>
+                    <el-radio v-model="radio" label="3">十分钟</el-radio>
+                    <el-radio v-model="radio" label="-1">永久</el-radio>
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                  <el-button @click="dialogFormVisible = false">取 消</el-button>
+                  <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+                </div>
+            </el-dialog>
+            <!-- 提示 -->
+            <ul class="tips" style="display: none;">
+                <li>这是一个提示</li>
+            </ul>
+            <!--消息处理，删除，复制，撤回-->
+            <!-- <ul class='msg-operations'>
+                <li>复制</li>
+                <li>撤回</li>
+                <li>删除</li>
+            </ul> -->
+            <el-dialog :visible.sync="msgOperationsOption" class="forbidden-time">
+                <div>
+                  <el-button @click="msgOperationsOption = false">复制</el-button>
+                  <el-button @click="msgOperationsOption = false">撤回</el-button>
+                  <el-button @click="msgOperationsOption = false">删除</el-button>
+                </div>
+            </el-dialog>
+
+        </div>
+    </div>
+</body>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="js/index.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+<script src="js/chatRoom.js"></script>
+<script type="module">
+    $(".searchIcon").click(function(){
+        $(".search-list").show();
+    });
+    $(".middle").click(function(){
+        $(".search-list").hide();
+        $(".search-handle").hide();
+        $('.apply-group').hide();
+    });
+    $(".handleIcon").click(function(){
+        $(".search-handle").show();
+    });
+
+    $(".iconAdd").click(function(){
+        $(".footerIcon").toggle();       
+    })
+    
+    
+    
+</script>
+
+</html>

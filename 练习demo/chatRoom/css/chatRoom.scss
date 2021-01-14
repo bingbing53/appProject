@@ -1,0 +1,557 @@
+@import "px2rem.scss";
+$designWidth : 828; //写scss之前，必须要先定义designWidth。
+
+//聊天室
+.chat-room {
+    width: px2rem(828);
+    font-family: 'PingFang-SC-Medium';
+}
+
+// 聊天室头部
+.header {
+    height: px2rem(160);
+    background-color: #fff;
+    overflow: hidden;
+    padding: 0 px2rem(30);
+
+    .sponsor-img {
+        width: px2rem(100);
+        float: left;
+        margin-right: px2rem(18);
+        margin-top: px2rem(30);
+    }
+
+    .sponsor-name {
+        float: left;
+        color: #333;
+        margin-top: px2rem(22);
+
+        label {
+            font-size: px2rem(32);
+        }
+
+        p {
+            font-size: px2rem(28);
+        }
+    }
+
+    .sponsor-icon {
+        float: right;
+        margin-top: px2rem(50);
+
+        img {
+            width: px2rem(60);
+            margin-left: px2rem(10);
+        }
+    }
+
+    i.call-num {
+        display: inline-block;
+        width: px2rem(40);
+        height: px2rem(40);
+        border-radius: 50%;
+        background-color: red;
+    }
+}
+
+//聊天室中部
+.chat-middle {
+    width: 100%;
+    position: fixed;
+    top: px2rem(160);
+    bottom: px2rem(130);
+    left: 0;
+    right: 0;
+    border: 1px solid red;
+}
+
+.middle {
+    // min-height: px2rem(800);
+    height: 100%;
+    overflow: scroll;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.m-loadmore {
+    height: 100%;
+    overflow: scroll;
+    padding: px2rem(30);
+
+    .spokesman-lt {
+        overflow: hidden;
+
+        img {
+            width: px2rem(91);
+            height: px2rem(91);
+            border-radius: 50%;
+            float: left;
+        }
+
+        div {
+            width: px2rem(568);
+            // height: px2rem(312);
+            float: left;
+            // background-image: url(../img/);
+            background-color: #75AFFF;
+            border-radius: px2rem(20);
+            padding: px2rem(20);
+            font-size: px2rem(32);
+            font-family: PingFang SC;
+            font-weight: 500;
+            color: #FFFEFE;
+            line-height: px2rem(50);
+            margin-top: px2rem(45);
+        }
+    }
+
+    .spokesman-rg {
+
+        overflow: hidden;
+
+        >img {
+            width: px2rem(91);
+            height: px2rem(91);
+            border-radius: 50%;
+            float: right;
+        }
+
+        div {
+            width: px2rem(568);
+            // height: px2rem(312);
+            float: right;
+            // background-image: url(../img/);
+            background-color: #75AFFF;
+            border-radius: px2rem(20);
+            padding: px2rem(20);
+            font-size: px2rem(32);
+            font-family: PingFang SC;
+            font-weight: 500;
+            color: #FFFEFE;
+            line-height: px2rem(50);
+            margin-top: px2rem(45);
+        }
+
+        >div.voice-msg {
+            width: px2rem(468);
+            height: px2rem(87);
+            float: right;
+            background-color: #4375F2;
+            border-radius: px2rem(20);
+            margin-top: px2rem(45);
+
+            >label {
+                font-size: px2rem(32);
+                font-family: PingFang SC;
+                font-weight: 500;
+                color: #FFFEFE;
+                line-height: px2rem(50);
+                margin-left: px2rem(30);
+            }
+
+            >span {
+                float: right;
+                margin-right: px2rem(30);
+
+                img {
+                    width: px2rem(24);
+                    height: px2rem(33);
+                }
+            }
+
+            >i {
+                float: right;
+                margin-right: px2rem(13);
+
+                img {
+                    width: px2rem(22);
+                    height: px2rem(20);
+                }
+            }
+        }
+
+        //操作按钮
+        .msg-icon {
+            position: absolute;
+            width: px2rem(310);
+            height: px2rem(91);
+            background-image: url(../img/handle.png);
+            background-repeat: no-repeat;
+            background-size: px2rem(310) px2rem(91);
+            right: px2rem(60);
+            top: px2rem(87);
+            background-color: transparent;
+
+            >div {
+                width: 49%;
+                float: left;
+                // margin-top: px2rem(5);
+                overflow: hidden;
+
+                label {
+                    font-size: px2rem(28);
+                    font-family: PingFang SC;
+                    font-weight: 400;
+                    color: #FFFFFF;
+                    margin-top: px2rem(33);
+                    float: left;
+                    margin-left: px2rem(30);
+                }
+
+                >i {
+                    float: left;
+                    overflow: hidden;
+
+                    img {
+                        margin-top: px2rem(35);
+                    }
+
+                }
+            }
+
+            >i {
+                width: px2rem(3);
+                height: px2rem(40);
+                background: #F5F5F5;
+                border-radius: px2rem(2);
+                float: left;
+                margin: 0;
+                margin-top: px2rem(29);
+            }
+
+            .copy-icon>i img {
+                width: px2rem(27);
+                height: px2rem(27);
+                margin-left: px2rem(15);
+                margin-top: px2rem(37);
+
+            }
+
+            .withdraw-icon>i img {
+                width: px2rem(25);
+                height: px2rem(26);
+                margin-left: px2rem(14);
+            }
+        }
+    }
+}
+
+//定位
+.rePath {
+    position: relative;
+}
+
+.fixPath {
+    position: fixed;
+    bottom: 0;
+}
+
+.fixPath1 {
+    position: fixed;
+    bottom: px2rem(370);
+}
+
+//聊天室底部
+.footer {
+    width: 100%;
+    // height: 2.24155rem;
+    background-color: #fff;
+    // padding: 0 px2rem(30);
+    overflow: hidden;
+
+
+    div {
+        overflow: hidden;
+        height: px2rem(126);
+        padding: px2rem(18) px2rem(30);
+        border-bottom: px2rem(1) solid #F5F5F5;
+
+        img {
+            width: px2rem(80);
+
+        }
+
+        img:last-child {
+            margin-right: px2rem(20);
+        }
+
+        input {
+            width: px2rem(397);
+            height: px2rem(80);
+            background-image: url(../img/msgInput.png);
+            background-repeat: no-repeat;
+            background-size: px2rem(437) px2rem(80);
+            border: 0;
+            float: left;
+            font-size: px2rem(30);
+            padding: 0 px2rem(20);
+            margin-left: px2rem(30);
+        }
+
+        input[type=text]:focus {
+            outline: none;
+            border: 0;
+        }
+    }
+
+    ul {
+        overflow: hidden;
+        padding: px2rem(20) px2rem(30) 0;
+        margin-left: px2rem(-30);
+        margin-bottom: px2rem(120);
+        display: none;
+
+        li {
+            float: left;
+            margin-left: px2rem(30);
+
+            img {
+                width: px2rem(100);
+                height: px2rem(100);
+            }
+        }
+    }
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+
+
+//搜索
+.search-list {
+    display: none;
+    background-color: #fff;
+    // padding-left: px2rem(20);
+    padding-left: px2rem(30);
+    padding-right: px2rem(30);
+    position: fixed;
+    top: 0;
+    z-index: 10;
+
+    input {
+        width: px2rem(768);
+        height: px2rem(77);
+        background: #F5F5F5;
+        border-radius: px2rem(35);
+        border: 0;
+        text-align: center;
+        // margin-bottom: px2rem(30);
+    }
+
+    ul {
+        overflow: hidden;
+        margin-left: px2rem(-55);
+        margin-bottom: px2rem(30);
+
+        li {
+            float: left;
+            overflow: hidden;
+            margin-left: px2rem(70);
+            text-align: center;
+            margin-top: px2rem(30);
+
+            img {
+                width: px2rem(90);
+                height: px2rem(90);
+                display: block;
+            }
+
+            label {
+                font-size: px2rem(32);
+                font-family: PingFang SC;
+                font-weight: 500;
+                color: #333333;
+                display: block;
+            }
+        }
+    }
+}
+
+// 搜索操作
+.search-handle,
+.apply-group {
+    background-color: #fff;
+    // padding-left: px2rem(20);
+    padding-left: px2rem(30);
+    padding-right: px2rem(30);
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    padding-bottom: px2rem(30);
+    display: none;
+    width: 100%;
+
+    input {
+        width: px2rem(768);
+        height: px2rem(77);
+        background: #F5F5F5;
+        border-radius: px2rem(35);
+        border: 0;
+        text-align: center;
+    }
+
+    ul {
+        li {
+            overflow: hidden;
+            border-bottom: px2rem(1) solid rgba(0, 0, 0, 0.1);
+            // opacity: 0.1;
+            padding: px2rem(25) 0;
+
+            img {
+                width: px2rem(100);
+                height: px2rem(100);
+                float: left;
+            }
+
+            div.search-msg {
+                float: left;
+                font-family: PingFang SC;
+                font-weight: 500;
+                color: #333333;
+                margin-top: px2rem(15);
+                margin-left: px2rem(30);
+
+                label {
+                    font-size: px2rem(32);
+                    display: block;
+                }
+
+                span {
+                    font-size: px2rem(28);
+                    display: block;
+                    color: #7E7E7E;
+                }
+            }
+        }
+    }
+
+    .handle-icon {
+        float: right;
+        width: px2rem(211);
+        height: px2rem(60);
+        background-image: url(../img/handleBack.png);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        margin-top: px2rem(30);
+        overflow: hidden;
+        padding: px2rem(11) px2rem(30);
+
+        img {
+            width: px2rem(38);
+            height: px2rem(38);
+            float: left;
+        }
+
+        i {
+            width: px2rem(2);
+            height: px2rem(31);
+            background: #FFFFFF;
+            border-radius: px2rem(1);
+            float: left;
+            margin-left: px2rem(30);
+            margin-top: px2rem(4);
+        }
+
+        span {
+            font-size: px2rem(26);
+            font-family: PingFang SC;
+            font-weight: 500;
+            color: #FFFFFF;
+            float: right;
+        }
+    }
+}
+
+//申请入群列表
+.apply-group1 {
+    background-color: #fff;
+    padding-left: px2rem(20);
+    padding-right: px2rem(20);
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    padding-bottom: px2rem(30);
+    display: none;
+    margin-top: px2rem(160);
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: px2rem(10);
+
+    ul {
+        overflow: hidden;
+
+        li {
+            font-family: PingFang SC;
+            font-weight: 500;
+            padding-top: px2rem(20);
+            float: left;
+
+            div {
+                float: left;
+
+                label {
+                    font-size: px2rem(32);
+                    display: block;
+                }
+
+                span {
+                    font-size: px2rem(32);
+                }
+            }
+
+            button {
+                float: right;
+                margin-left: px2rem(20);
+            }
+        }
+    }
+
+}
+
+//禁言时间选择
+.forbidden-time {
+    .el-dialog {
+        width: 75%;
+    }
+
+    .el-dialog__body {
+        padding: 20px;
+    }
+
+    .el-radio__label {
+        font-size: 16px;
+    }
+
+    .el-radio {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .el-dialog__footer {
+        text-align: center;
+        padding: 10px;
+    }
+
+}
+
+//提示
+ul.tips {
+    padding: px2rem(20);
+    z-index: 20;
+    position: absolute;
+
+    li {
+        padding: px2rem(10);
+        background-color: tan;
+        border-radius: px2rem(10);
+        font-size: px2rem(26);
+        color: #fff
+    }
+}

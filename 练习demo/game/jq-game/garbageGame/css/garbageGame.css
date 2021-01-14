@@ -1,0 +1,194 @@
+@charset "UTF-8";
+.game-start {
+  width: 16rem;
+  height: 28.44444rem;
+  background-image: url(../img/startImg.png);
+  background-size: 16rem 28.44444rem;
+  background-repeat: no-repeat;
+  padding-top: 4.86957rem;
+}
+
+.login-msg {
+  width: 14.26087rem;
+  height: 21.77778rem;
+  background-image: url(../img/矩形5.png);
+  background-size: 14.26087rem 21.77778rem;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  position: relative;
+}
+
+.login-msg .login-img {
+  position: absolute;
+  top: -2.5314rem;
+  left: -0.23188rem;
+}
+
+.login-msg .login-img img {
+  width: 50%;
+}
+
+.login-msg .login-main {
+  padding-top: 1.15942rem;
+}
+
+.login-msg .login-main .main-title img {
+  width: 12.86957rem;
+  height: 3.74879rem;
+  margin: 0 auto;
+}
+
+.login {
+  color: #333;
+  margin-top: 1.10145rem;
+}
+
+.login h2 {
+  font-size: 0.88889rem;
+  text-align: center;
+}
+
+.login h2 span img {
+  display: inline;
+  width: 0.50242rem;
+  height: 0.71498rem;
+  margin-right: 0.19324rem;
+}
+
+.login ul {
+  margin-top: 0.38647rem;
+  overflow: hidden;
+}
+
+.login ul li {
+  padding-left: 1.04348rem;
+  padding-right: 1.15942rem;
+  overflow: hidden;
+  margin-top: 1.25604rem;
+}
+
+.login ul li img {
+  display: inline;
+  width: 0.56039rem;
+  float: left;
+  margin-right: 0.25121rem;
+}
+
+.login ul li span {
+  font-size: 0.57971rem;
+  color: #333;
+  float: left;
+  width: 2.31884rem;
+}
+
+.login ul li input {
+  float: right;
+  width: 8.59903rem;
+  height: 0.57971rem;
+  font-size: 0.57971rem;
+  color: #333;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #739BFF;
+  text-align: center;
+}
+
+.login-btn {
+  width: 13.89372rem;
+  height: 4.27053rem;
+  background-image: url(../img/矩形3.png);
+  background-size: 13.89372rem 4.27053rem;
+  background-repeat: no-repeat;
+  margin: 3.38164rem auto 0;
+  text-align: center;
+  padding-top: 1.23671rem;
+  cursor: pointer;
+}
+
+.login-btn img {
+  display: inline;
+  width: 0.7343rem;
+  height: 0.90821rem;
+}
+
+.login-btn h2 {
+  display: inline;
+  color: #3185FF;
+  font-size: 1.00483rem;
+}
+
+.width22 {
+  width: 0.42512rem !important;
+}
+
+.start-game {
+  width: 16rem;
+  height: 28.44444rem;
+  background-image: url(../img/gameStart.png);
+  background-size: 16rem 28.44444rem;
+  background-repeat: no-repeat;
+  padding-top: 0.77295rem;
+  position: relative;
+}
+
+.game-head {
+  width: 14.39614rem;
+  height: 3.03382rem;
+  background-image: url(../img/矩形1.png);
+  background-size: 14.39614rem 3.03382rem;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 0.38647rem;
+}
+
+.game-head p {
+  font-size: 0.77295rem;
+  color: #3D744C;
+  font-family: PingFang SC;
+  font-weight: bold;
+  line-height: 1.15942rem;
+}
+
+.game-bottom {
+  position: absolute;
+  bottom: 0;
+  padding-left: 2.22222rem;
+  z-index: 998;
+}
+
+.game-bottom img {
+  width: 4.44444rem;
+  height: px2rerm(350);
+  margin-right: 1.97101rem;
+  margin-bottom: 0.46377rem;
+}
+
+.game-middle {
+  text-align: center;
+  height: 24.63768rem;
+  position: relative;
+}
+
+.game-middle #img {
+  width: 30%;
+  max-height: 20%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+  margin-left: 35%;
+  animation: dropdown 2s ease-in;
+}
+
+@keyframes dropdown {
+  0% {
+    top: -210px;
+    transform: rotate(0);
+  }
+  100% {
+    top: 0px;
+    transform: rotate(360deg);
+  }
+}

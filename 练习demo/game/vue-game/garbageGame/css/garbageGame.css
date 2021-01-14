@@ -1,0 +1,375 @@
+@charset "UTF-8";
+.game-container {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* border: 1px solid red; */
+}
+
+.game-content {
+  height: 100%;
+  overflow: scroll;
+  width: 100%;
+  /* border: 1px solid blue; */
+}
+
+.game-start {
+  width: 16rem;
+  height: 28.44444rem;
+  background-image: url(../img/startImg.png);
+  background-size: 16rem 28.44444rem;
+  background-repeat: no-repeat;
+  padding-top: 4.86957rem;
+}
+
+.login-msg {
+  width: 14.26087rem;
+  height: 21.77778rem;
+  background-image: url(../img/矩形5.png);
+  background-size: 14.26087rem 21.77778rem;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  position: relative;
+}
+
+.login-msg .login-img {
+  position: absolute;
+  top: -2.5314rem;
+  left: -0.23188rem;
+}
+
+.login-msg .login-img img {
+  width: 50%;
+}
+
+.login-msg .login-main {
+  padding-top: 1.15942rem;
+  text-align: center;
+}
+
+.login-msg .login-main .main-title img {
+  width: 12.86957rem;
+  height: 3.74879rem;
+  margin: 0 auto;
+}
+
+.login {
+  color: #333;
+  margin-top: 1.10145rem;
+}
+
+.login h2 {
+  font-size: 0.88889rem;
+  text-align: center;
+}
+
+.login h2 span img {
+  display: inline;
+  width: 0.50242rem;
+  height: 0.71498rem;
+  margin-right: 0.19324rem;
+}
+
+.login ul.login-list {
+  margin-top: 0.38647rem;
+  overflow: hidden;
+}
+
+.login ul.login-list > li {
+  padding-left: 1.04348rem;
+  padding-right: 1.15942rem;
+  overflow: hidden;
+  margin-top: 1.25604rem;
+}
+
+.login ul.login-list > li img {
+  display: inline;
+  width: 0.56039rem;
+  float: left;
+  margin-right: 0.25121rem;
+}
+
+.login ul.login-list > li span {
+  font-size: 0.57971rem;
+  color: #333;
+  float: left;
+  width: 2.70531rem;
+  text-align: left;
+}
+
+.login ul.login-list > li input {
+  float: right;
+  width: 8.21256rem;
+  height: 0.57971rem;
+  font-size: 0.57971rem;
+  color: #333;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #739BFF;
+  text-align: center;
+}
+
+.login-btn {
+  width: 13.89372rem;
+  height: 4.27053rem;
+  background-image: url(../img/矩形3.png);
+  background-size: 13.89372rem 4.27053rem;
+  background-repeat: no-repeat;
+  margin: 3.38164rem auto 0;
+  text-align: center;
+  padding-top: 1.23671rem;
+  cursor: pointer;
+}
+
+.login-btn img {
+  display: inline;
+  width: 0.7343rem;
+  height: 0.90821rem;
+}
+
+.login-btn h2 {
+  display: inline;
+  color: #3185FF;
+  font-size: 1.00483rem;
+}
+
+.width22 {
+  width: 0.42512rem !important;
+}
+
+div.identity-list {
+  width: 2.31884rem;
+  border: 1px solid #739BFF;
+  position: relative;
+  font-size: 0.657rem;
+  color: #333;
+  background-color: transparent;
+  float: left;
+  text-align: left;
+}
+
+div.identity-list select {
+  /*清除select的边框样式*/
+  border: none;
+  /*清除select聚焦时候的边框颜色*/
+  outline: none;
+  /*将select的宽高等于div的宽高*/
+  width: 100%;
+  /*隐藏select的下拉图标*/
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+}
+
+div.chose-community {
+  width: 11.20773rem;
+  border: 1px solid #739BFF;
+  position: relative;
+  font-size: 0.657rem;
+  color: #333;
+  background-color: transparent;
+  float: left;
+  text-align: left;
+}
+
+div.chose-community select {
+  /*清除select的边框样式*/
+  border: none;
+  /*清除select聚焦时候的边框颜色*/
+  outline: none;
+  /*将select的宽高等于div的宽高*/
+  width: 100%;
+  /*隐藏select的下拉图标*/
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+}
+
+.login ul > li input.num-input {
+  width: 45%;
+}
+
+.login ul > li input.num-input:first-child {
+  float: left;
+}
+
+.start-game {
+  width: 16rem;
+  height: 28.44444rem;
+  background-image: url(../img/gameStart.png);
+  background-size: 16rem 28.44444rem;
+  background-repeat: no-repeat;
+  padding-top: 0.77295rem;
+  position: relative;
+}
+
+.game-head {
+  width: 14.39614rem;
+  height: 3.03382rem;
+  background-image: url(../img/矩形1.png);
+  background-size: 14.39614rem 3.03382rem;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 0.38647rem;
+}
+
+.game-head p {
+  font-size: 0.77295rem;
+  color: #3D744C;
+  font-family: PingFang SC;
+  font-weight: bold;
+  line-height: 1.15942rem;
+}
+
+.game-bottom {
+  position: absolute;
+  bottom: 0;
+  padding-left: 2.22222rem;
+  z-index: 10;
+}
+
+.game-bottom img {
+  width: 4.44444rem;
+  height: px2rerm(350);
+  margin-right: 1.97101rem;
+  margin-bottom: 0.46377rem;
+}
+
+.game-middle {
+  text-align: center;
+  height: 24.63768rem;
+  position: relative;
+}
+
+.game-middle #img {
+  width: 30%;
+  max-height: 20%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+  margin-left: 35%;
+  animation: dropdown .5s ease-in;
+}
+
+@keyframes dropdown {
+  0% {
+    top: -210px;
+    transform: rotate(0);
+  }
+  100% {
+    top: 0px;
+    transform: rotate(360deg);
+  }
+}
+
+.true-dialog,
+.flase-dialog {
+  width: 12.52174rem;
+  height: 6.68599rem;
+  background-image: url(../img/dialogImg.png);
+  background-size: 12.52174rem 6.68599rem;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 7.343rem;
+  left: 50%;
+  z-index: 12;
+  margin-left: -6.26087rem;
+  text-align: center;
+  padding-top: 0.77295rem;
+}
+
+.true-dialog img,
+.flase-dialog img {
+  width: 7.90338rem;
+  height: 3.90338rem;
+}
+
+.score-dialog {
+  width: 12.52174rem;
+  height: 19.32367rem;
+  background-image: url(../img/scoreImg.png);
+  background-size: 12.52174rem 100%;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 3.86473rem;
+  left: 50%;
+  z-index: 12;
+  margin-left: -6.26087rem;
+  text-align: center;
+}
+
+.score-dialog > a {
+  display: inline-block;
+  width: 7.72947rem;
+  height: 1.54589rem;
+  background: linear-gradient(144deg, #3295FA 0%, #4B6BFA 100%);
+  border-radius: 0.77295rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.77295rem;
+  font-family: zihun100hao-fangfangxianfengti;
+  color: #FEFEFE;
+  line-height: 1.54589rem;
+  margin-bottom: 0.77295rem;
+}
+
+.score-dialog .goodScore,
+.score-dialog .passScore,
+.score-dialog .failScore {
+  margin-bottom: 1.93237rem;
+}
+
+.score-dialog .goodScore div.good-msg,
+.score-dialog .passScore div.good-msg,
+.score-dialog .failScore div.good-msg {
+  margin-top: 4.05797rem;
+  font-size: 1.15942rem;
+  font-family: zihun100hao-fangfangxianfengti;
+  font-weight: bold;
+  color: #333;
+}
+
+.score-dialog .goodScore div.good-msg label,
+.score-dialog .passScore div.good-msg label,
+.score-dialog .failScore div.good-msg label {
+  display: block;
+  color: #3285FF;
+  margin-top: 0.38647rem;
+}
+
+.score-dialog .goodScore div.score,
+.score-dialog .passScore div.score,
+.score-dialog .failScore div.score {
+  margin-top: 0.77295rem;
+  font-size: 1.04348rem;
+  font-family: zihun100hao-fangfangxianfengti;
+  font-weight: bold;
+  color: #333333;
+}
+
+.score-dialog .goodScore div.score i,
+.score-dialog .passScore div.score i,
+.score-dialog .failScore div.score i {
+  font-size: 1.50725rem;
+  font-family: zihun100hao-fangfangxianfengti;
+  font-weight: bold;
+  color: #FEA53F;
+}
+
+.score-dialog .goodScore > label,
+.score-dialog .passScore > label,
+.score-dialog .failScore > label {
+  margin-top: 0.77295rem;
+  font-size: 0.7343rem;
+  font-family: zihun100hao-fangfangxianfengti;
+  font-weight: bold;
+  color: #666666;
+}

@@ -27,3 +27,9 @@ E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\p
 极光聊天室
 E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\plug-in\mobile\js\party
 E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\WEB-INF\content\pages2\party
+
+
+新添后台
+首页  /opt/community/tomcat_server/webapps/server/webpage/cn/trust/screen
+   图片  本地E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\plug-in\main\images\main
+                 /opt/community/tomcat_server/webapps/server/plug-in/main/images/main

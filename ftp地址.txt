@@ -33,3 +33,7 @@ E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\W
 首页  /opt/community/tomcat_server/webapps/server/webpage/cn/trust/screen
    图片  本地E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\plug-in\main\images\main
                  /opt/community/tomcat_server/webapps/server/plug-in/main/images/main
+楼宇信息 本地E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\webpage\cn\trust\datas\community
+	/opt/community/tomcat_server/webapps/server/webpage/cn/trust/datas/community
+   样式   本地E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\plug-in\main\css\cn\datas\community
+                /opt/community/tomcat_server/webapps/server/plug-in/main/css/cn/datas/community

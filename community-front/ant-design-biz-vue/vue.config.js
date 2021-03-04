@@ -6,8 +6,8 @@ function resolve(dir) {
 
 // vue.config.js
 module.exports = {
-  publicPath:'/',
-  outputDir:'dist',
+  publicPath: '/',
+  outputDir: 'dist',
   /*
     Vue-cli3:
     Crashed when using Webpack `import()` #2463
@@ -59,29 +59,30 @@ module.exports = {
   },
 
   devServer: {
-    open:true,
+    open: true,
     port: 4001,
+    https: true,
     proxy: {
-     /* '/api': {
-        target: 'https://mock.ihx.me/mock/5baf3052f7da7e07e04a5116/antd-pro', //mock API接口系统
-        ws: false,
-        changeOrigin: true,
-        pathRewrite: {
-          '/jeecg-boot': ''  //默认所有请求都加了jeecg-boot前缀，需要去掉
-        }
-      },*/
+      /* '/api': {
+         target: 'https://mock.ihx.me/mock/5baf3052f7da7e07e04a5116/antd-pro', //mock API接口系统
+         ws: false,
+         changeOrigin: true,
+         pathRewrite: {
+           '/jeecg-boot': ''  //默认所有请求都加了jeecg-boot前缀，需要去掉
+         }
+       },*/
       '/community-user': {
         // target: 'http://localhost:8080', //请求本地 需要jeecg-boot后台项目
         target: 'https://api.dev.shequyijia.cn', //请求本地 需要jeecg-boot后台项目
         ws: false,
-        changeOrigin: true,
+        changeOrigin: true
       },
       '/community-biz': {
         target: 'https://api.dev.shequyijia.cn', //请求本地 需要jeecg-boot后台项目
         // target: 'http://localhost:8084', //请求本地 需要jeecg-boot后台项目
         ws: false,
-        changeOrigin: true,
-      },
+        changeOrigin: true
+      }
     }
   },
 

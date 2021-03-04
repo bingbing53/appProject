@@ -12,6 +12,7 @@
                 <a-select-option value="office">掌上办公</a-select-option>
                 <a-select-option value="estate">掌上物业</a-select-option>
                 <a-select-option value="shequyijia">社区e家</a-select-option>
+                <a-select-option value="chat">网页聊天室</a-select-option>
               </a-select>
             </a-form-item>
           </a-col>
@@ -147,6 +148,8 @@
                return '掌上物业';
              }else if(r.appcode == 'shequyijia'){
                return '社区e家';
+             }else if(r.appcode == 'chat'){
+               return '网页聊天室';
              }
              return '';
            }

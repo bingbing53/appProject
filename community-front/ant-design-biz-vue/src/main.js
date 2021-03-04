@@ -22,6 +22,11 @@ import preview from 'vue-photo-preview'
 import 'vue-photo-preview/dist/skin.css'
 import "@jeecg/antd-onine"
 import '@jeecg/antd-onine/dist/OnlineForm.css'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+// import App from './App.vue';
+
+Vue.use(ElementUI);
 
 
 import {

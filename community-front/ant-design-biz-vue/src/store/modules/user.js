@@ -159,7 +159,7 @@ const user = {
     //     logout(logoutToken).then(() => {
     //       //var sevice = "http://"+window.location.host+"/";
     //       //var serviceUrl = encodeURIComponent(sevice);
-    //       //window.location.href = window._CONFIG['casPrefixUrl']+"/logout?service="+serviceUrl;
+    //       //window.location.href = window._CONFIG['casPrefixUrl']+"/cas/logout?service="+serviceUrl;
     //       resolve()
     //     }).catch(() => {
     //       resolve()

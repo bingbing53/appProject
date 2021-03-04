@@ -16,10 +16,11 @@
           :wrapperCol="wrapperCol"
           label="所属应用">
           <!--<a-input placeholder="请输入所属app" v-decorator="['appcode', validatorRules.appcode ]" />-->
-          <a-select placeholder="所属应用" v-decorator="['code', validatorRules.appcode ]">
+          <a-select placeholder="所属应用" v-decorator="['appcode', validatorRules.appcode ]">
             <a-select-option value="office">掌上办公</a-select-option>
             <a-select-option value="estate">掌上物业</a-select-option>
             <a-select-option value="shequyijia">社区e家</a-select-option>
+            <a-select-option value="chat">网页聊天室</a-select-option>
           </a-select>
         </a-form-item>
         <a-form-item

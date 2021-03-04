@@ -225,23 +225,13 @@
     window._CONFIG['module'] = 'biz';
 
     //单点登录地址
-    window._CONFIG['casPrefixUrl'] = 'https://sso.dev.shequyijia.cn';
+    window._CONFIG['casPrefixUrl'] = '<%= VUE_APP_CAS_PREFIX_URL %>';
     //sso登录校验地址
-    window._CONFIG['ssoPrefixUrl'] = 'https://api.dev.shequyijia.cn/community-user';
-    window._CONFIG['imageViewURL'] = 'https://mongo.qicaidonghu.cn/pic';
-    window._CONFIG['domianURL'] = 'https://api.dev.shequyijia.cn/community-biz';
-    window._CONFIG['imgDomainURL'] = 'https://api.dev.shequyijia.cn/community-user/sys/common/view';
-    window._CONFIG['pdfDomainURL'] = 'https://api.dev.shequyijia.cn/community-user/sys/common/pdf/pdfPreviewIframe';
-
-    //单点登录地址
-    // window._CONFIG['casPrefixUrl'] = 'https://sso.shequyijia.cn';
-    // //sso登录校验地址
-    // window._CONFIG['ssoPrefixUrl'] = 'https://api.shequyijia.cn/community-user';
-    // window._CONFIG['imageViewURL'] = 'https://image.shequyijia.cn/pic/';
-    // window._CONFIG['domianURL'] = 'https://api.shequyijia.cn/community-biz';
-    // window._CONFIG['imgDomainURL'] = 'https://api.shequyijia.cn/community-user/sys/common/view';
-    // window._CONFIG['pdfDomainURL'] = 'https://api.shequyijia.cn/community-user/sys/common/pdf/pdfPreviewIframe';
-
+    window._CONFIG['ssoPrefixUrl'] = '<%= VUE_APP_SSO_PREFIX_URL %>';
+    window._CONFIG['imageViewURL'] = '<%= VUE_APP_IMAGE_VIEW_URL %>';
+    window._CONFIG['domianURL'] = '<%= VUE_APP_DOMIAN_URL %>';
+    window._CONFIG['imgDomainURL'] = '<%= VUE_APP_IMG_DOMAIN_URL %>';
+    window._CONFIG['pdfDomainURL'] = '<%= VUE_APP_PDF_DOMAIN_URL %>';
 
   </script>
 </head>

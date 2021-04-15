@@ -37,3 +37,18 @@ E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\W
 	/opt/community/tomcat_server/webapps/server/webpage/cn/trust/datas/community
    样式   本地E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\plug-in\main\css\cn\datas\community
                 /opt/community/tomcat_server/webapps/server/plug-in/main/css/cn/datas/community
+设置后台
+帮助  /opt/community/tomcat_server/webapps/server/webpage/cn/trust/handy/system
+   本地  E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\webpage\cn\trust\handy\system
+
+志愿者后台
+   查询  
+  web  /opt/community/tomcat_server/webapps/server/webpage/cn/trust/handy/account
+本地  E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\webpage\cn\trust\handy\account
+	
+   Js     /opt/community/tomcat_server/webapps/server/plug-in/main/js/cn/trust/handy/account
+本地    E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\plug-in\main\js\cn\trust\handy\account
+
+公众号
+二级认证  本地E:\信驿科技\community-family-dubbo\community-family-server\src\main\webapp\WEB-INF\content\pages2\certification
+                     /opt/community/tomcat_server/webapps/server/WEB-INF/content/pages2/certification
